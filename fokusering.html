@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<title>Historie B - fokuseringsøvelse</title>
+		<!-- http://www.robotstxt.org/meta.html -->
+		<meta name="robots" content="noindex, nofollow" />
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../library/css/styles.css" type="text/css" />
+	    <link rel="stylesheet" href="fokusering.css" type="text/css" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	</head>
+	<body>
+		<div class="container-fluid">  
+            <div class="col-xs-12">
+                <h1 id="header">Fokuseringsøvelse</h1>
+                <h4 id="subHeader">Instruktioner til kursisten: Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam...</h4>
+
+                <span id="PagerContainer"></span>
+
+                <div id="DataInput"></div>
+
+                <div class="PointFeedback">
+                    <h5>
+                        Korrekte svar: <span class="QuestionCounter QuestionTask">0/10</span> Fejl: <span class="ErrorCount QuestionTask">0</span> 
+                        <span class="checkAnswer btn btn-default" href="#"> Tjek svar på denne kilde</span>
+                    </h5>
+                    <h5>
+                        <span class="checkAllAnswers btn btn-default" href="#"> Tjek svar på HELE opgaven </span>
+                    </h5>
+                </div>
+                <div id="TEST"></div>
+            </div>
+        </div>
+
+
+
+		<script src="../library/vendor_scripts.js"></script>
+        <script src="../library/custom_scripts.js"></script>       
+		<script src="fokusering.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                one_line_footer();
+            });
+        </script>
+	</body>
+</html>

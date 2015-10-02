@@ -1,0 +1,223 @@
+
+.container-fluid:nth-of-type(2) {
+    margin-top: 0px;
+}
+
+h1 {
+	margin: 40px 0px; 
+	line-height: 1em;
+}
+h2 {
+	margin: 30px 0px 20px 0px; 
+	line-height: 1em; 
+}
+h4 {
+	margin: 0px 0px 20px 0px; 
+	line-height: 1em;
+}
+
+#questionCarousel{margin-top: 20px;}
+
+
+.TextHolder{margin-left: auto; margin-right: auto; width: 80%; min-height: 200px;}
+.resultTable  .TextHolder{min-height: 0px;}
+
+.indent{margin-left: 10px}
+
+.PointFeedback{margin-top: 10px;}
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    width: 70%;
+    margin: auto;
+}
+
+.btnPressed{
+    background-color: #1da6db;
+    border: 1px solid #1da6db;
+    color: #fff;
+}
+.btnPressed:hover {
+	background-color: #3dc6fb;
+    border: 1px solid #3dc6fb;
+    color: #FFF;
+}
+
+.QuestionTask{
+	color: #000;
+}
+
+.checkAnswer {
+	background-color: #0dcea0;
+	color: #FFF;
+	border-style: none;
+}
+.checkAnswer:hover{
+	background-color: #2deec0;
+	color: #FFF;
+	border-style: none;
+}
+
+/*
+.MarkedAnswer{
+	background-color: #1da6db;
+	color: #FFF;
+}
+*/
+
+.CorrectAnswer{
+	background-color: #0dcea0;
+	border: 1px solid #0dcea0;
+	color: #FFF;
+}
+.CorrectAnswer:hover{
+	background-color: #2deec0;
+	border: 1px solid #2deec0;
+	color: #FFF;
+}
+
+
+.WrongAnswer{
+	background-color: #ed3e3a;
+	border: 1px solid #ed3e3a;
+	color: #FFF;
+}
+.WrongAnswer:hover{
+	background-color: #ff5e5a;
+	border: 1px solid #ff5e5a;
+	color: #FFF;
+}
+
+
+.StudentCorrect{
+	background-color: #00cb60;
+	border: 1px solid #00cb60;
+	color: #FFF;
+}
+.StudentCorrect:hover{
+
+}
+
+
+.StudentWrong{
+	background-color: #ea3b36;
+	border: 1px solid #ea3b36;
+	color: #FFF;
+}
+.StudentWrong:hover{
+
+}
+
+
+.checkAllAnswers{
+	background-color: #0dcea0;
+	border: 1px solid #0dcea0;
+	color: #FFF;
+}
+.checkAllAnswers:hover{
+	background-color: #2deec0;
+	border: 1px solid #2deec0;
+	color: #FFF;
+}
+
+
+/**************************************************************************/
+
+/*
+	CSS trick til at alle colums til at have 100% height:
+	http://stackoverflow.com/questions/1122381/how-to-force-child-div-to-100-of-parents-div-without-specifying-parents-heigh
+*/
+/*
+html, body, .container-fluid, .col-xs-12, #DataInput, .SourcePage, .SourceAndNoteWrapper{
+    height:100%;
+}
+*/
+/*
+.XXXbtnPressed{
+	background-color: #1da6db;
+    border: 1px solid #1da6db;
+    color: #fff;
+}
+*/
+.btn{margin-bottom: 10px;}
+
+.Clear{clear: both;}
+
+.Source{float: left; width: 40%; border: 1px solid #C0C0C0; }
+.NoteField{float: right; width: 59%; border: 1px solid #C0C0C0; padding: 10px}
+
+/*
+.col-md-8{margin-left: 10px; width: 65.5%;}
+.col-sm-12{width: 100%; margin-top: 10px; margin-right: 0px;}
+*/
+
+.BtnContainer{margin-top: 10px;}
+
+.SourcePage{border: 1px solid #C0C0C0; padding: 10px 10px 0px 10px; display: none;}
+
+.PagerClass{display: inline-block;}
+#PagerContainer{display: inline-block;}
+#PagerContainer ul {padding: 0px;}
+#PagerContainer ul li {display: inline;}
+
+.dshow{display: block}
+
+@media (max-width: 768px) {
+    .Source{width: 100%;}
+	.NoteField{width: 100%; margin-top: 10px;}
+}
+
+
+/*****************************
+		DIV TABLE STYLE 
+*****************************/
+
+.DivColumn{
+	display: inline-block;
+	width: 19%;
+}
+
+.tth{
+	display: inline-block;	/* TEST */
+	width: 19%; 			/* TEST */
+	/*border: 1px solid #C0C0C0;*/
+}
+
+.ttd{
+	display: inline-block; 	/* TEST */
+	width: 19%; 			/* TEST */
+	text-align: center;
+	border: 1px solid #C0C0C0;
+}
+
+
+
+/*****************************
+		TABLE STYLE 
+*****************************/
+
+table.resultTable {
+	width: 100%;
+	border-width: 1px;
+	border-spacing: 0px;
+	border-style: none;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: white;
+	/*box-shadow: 10px 10px 5px #888888;*/
+}
+table.resultTable th {
+	width: 19%;
+	border-width: 1px;
+	padding: 3px;
+	border-style: solid;
+	border-color: gray;
+	background-color: white;
+}
+table.resultTable td {
+	border-width: 1px;
+	padding: 3px;
+	border-style: solid;
+	border-color: gray;
+	background-color: white;
+	text-align: center;
+}
