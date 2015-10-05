@@ -31,16 +31,6 @@ h4 {
     margin: auto;
 }
 
-.btnPressed{
-    background-color: #1da6db;
-    border: 1px solid #1da6db;
-    color: #fff;
-}
-.btnPressed:hover {
-	background-color: #3dc6fb;
-    border: 1px solid #3dc6fb;
-    color: #FFF;
-}
 
 .QuestionTask{
 	color: #000;
@@ -119,31 +109,32 @@ h4 {
 	color: #FFF;
 }
 
-
-/**************************************************************************/
-
-/*
-	CSS trick til at alle colums til at have 100% height:
-	http://stackoverflow.com/questions/1122381/how-to-force-child-div-to-100-of-parents-div-without-specifying-parents-heigh
-*/
-/*
-html, body, .container-fluid, .col-xs-12, #DataInput, .SourcePage, .SourceAndNoteWrapper{
-    height:100%;
+.btn-default{
+	background-color: #E4E4E4;
+	border: 1px solid #E4E4E4;
+	color: #000;
 }
-*/
-/*
-.XXXbtnPressed{
-	background-color: #1da6db;
-    border: 1px solid #1da6db;
+
+.btn{margin-bottom: 10px;}
+
+.btnPressed{
+    background-color: #666666;
+    border: 1px solid #666666;
     color: #fff;
 }
-*/
-.btn{margin-bottom: 10px;}
+.btnPressed:hover {
+	background-color: #969696;
+    border: 1px solid #969696;
+    color: #FFF;
+}
+
+.RightContent{float: right; width: 80%;}
+.LeftContent{float: left; width: 20%;}
+
 
 .Clear{clear: both;}
 
-.Source{float: left; width: 40%; border: 1px solid #C0C0C0; }
-.NoteField{float: right; width: 59%; border: 1px solid #C0C0C0; padding: 10px}
+.Source{border: 1px solid #C0C0C0; }
 
 /*
 .col-md-8{margin-left: 10px; width: 65.5%;}
