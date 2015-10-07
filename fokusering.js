@@ -567,13 +567,15 @@ function Pager(PagerSelector, TargetSelectorChild, CssId) {
 
     var HTML = '<ul id="' + CssId + '" class="PagerClass">';
 
+    // MARK XXX
+
     if (NumOfPages == 1) {
-        HTML += '<li><a href="#" class="PagerButton btn btn-default"> 1 </a></li>';
+        HTML += '<li><a href="#" class="PagerButton btn btn-default"> kilde 1 </a></li>';
     }
 
     if ((1 < NumOfPages) && (NumOfPages <= Range + 1)) {
         for (var i = 1; i <= NumOfPages; i++) {
-            HTML += '<li><a href="#" class="PagerButton btn btn-default">' + i + '</a></li>';
+            HTML += '<li><a href="#" class="PagerButton btn btn-default">kilde ' + i + '</a></li>';
         }
     }
 
@@ -587,18 +589,18 @@ function Pager(PagerSelector, TargetSelectorChild, CssId) {
 
 
         if (StartIndex == 2) { // Ugly special case...
-            HTML += '<li><a href="#" class="PagerButton btn btn-default"> 1 </a></li>';
+            HTML += '<li><a href="#" class="PagerButton btn btn-default"> kilde 1 </a></li>';
         }
         if (StartIndex > 2)
-            HTML += '<li><a href="#" class="PagerButton btn btn-default"> 1 </a></li><li> ... </li>';
+            HTML += '<li><a href="#" class="PagerButton btn btn-default"> kilde 1 </a></li><li> ... </li>';
         for (var j = StartIndex; j < Range + StartIndex; j++) {
-            HTML += '<li><a href="#" class="PagerButton btn btn-default">' + j + '</a></li>';
+            HTML += '<li><a href="#" class="PagerButton btn btn-default">kilde ' + j + '</a></li>';
         }
         if (Range + StartIndex == NumOfPages)
             for (var k = Range + StartIndex; k <= NumOfPages; k++) {
-                HTML += '<li><a href="#" class="PagerButton btn btn-default">' + k + '</a></li>';
+                HTML += '<li><a href="#" class="PagerButton btn btn-default">kilde ' + k + '</a></li>';
             } else
-                HTML += '<li> ... </li><li><a href="#" class="PagerButton btn btn-default">' + NumOfPages + '</a></li>';
+                HTML += '<li> ... </li><li><a href="#" class="PagerButton btn btn-default">kilde ' + NumOfPages + '</a></li>';
 
     }
     HTML += '</ul>';
@@ -616,7 +618,7 @@ function Pager(PagerSelector, TargetSelectorChild, CssId) {
         $("#" + CssId + " .PagerButton").addClass("btn-default");
         $(this).toggleClass("btn-default btn-primary");
 
-        ActiveLinkNum = $(this).text();
+        ActiveLinkNum = $(this).text().replace("kilde","").trim();
         console.log("ActiveLinkNum 2: " + ActiveLinkNum);
 
         // TargetSelectorChildText = $(TargetSelectorChild).text();
@@ -630,7 +632,7 @@ function Pager(PagerSelector, TargetSelectorChild, CssId) {
 
     // Set the chosen color if the pager-button is showen:
     $(PagerSelector + " li a").each(function(index, element) {
-        if ($(element).text() == ActiveLinkNum) {
+        if ($(element).text().replace("kilde","").trim() == ActiveLinkNum) {
             $(element).toggleClass("btn-default btn-primary");
         }
         LastElement = element;

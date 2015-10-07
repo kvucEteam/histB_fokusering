@@ -51,6 +51,17 @@ h4 {
 
 .btn{margin-bottom: 10px;}
 
+.btn-primary{
+	background-color: #666666;
+    border: 1px solid #666666;
+    color: #fff;
+}
+.btn-primary:hover{
+	background-color: #969696;
+    border: 1px solid #969696;
+    color: #FFF;
+}
+
 
 .checkAnswer {
 	background-color: #0dcea0;
@@ -115,14 +126,14 @@ h4 {
 
 
 .checkAllAnswers{
-	background-color: #0dcea0;
-	border: 1px solid #0dcea0;
-	color: #FFF;
+	background-color: #05a0a8;
+    border-color: #05a0a8;
+    color: #fff;
 }
 .checkAllAnswers:hover{
-	background-color: #2deec0;
-	border: 1px solid #2deec0;
-	color: #FFF;
+	background-color: #047176;
+    border-color: #047176;
+    color: #fff;
 }
 
 .btnPressed{
@@ -142,7 +153,7 @@ h4 {
 
 .Clear{clear: both;}
 
-.Source{border: 1px solid #C0C0C0;}
+.Source{/*border: 1px solid #C0C0C0;*/}
 
 /*
 .col-md-8{margin-left: 10px; width: 65.5%;}
@@ -151,7 +162,7 @@ h4 {
 
 .BtnContainer{padding-top: 10px; clear: both;}
 
-.SourcePage{border: 1px solid #C0C0C0; padding: 10px 10px 0px 10px; display: none;}
+.SourcePage{/*border: 1px solid #C0C0C0;*/ padding: 10px 10px 0px 10px; display: none;}
 
 .PagerClass{display: inline-block;}
 #PagerContainer{display: inline-block;}
