@@ -72,7 +72,7 @@ function hastagStrToArray(hastagStr){
     return btnArray;
 }
 console.log("hastagStrToArray: " + hastagStrToArray("#Ungdomsoprør, #Kvindebevægelsen, #Rødstrømper, #Kønsroller, #Individ, #Familie"));
-console.log("hastagStrToArray: " + hastagStrToArray("#Tag1 a b, #Tag2 a b, #Tag3 a b"));
+console.log("hastagStrToArray: " + JSON.stringify( hastagStrToArray("#Tag1 a b, #Tag2 a b, #Tag3 a b") ) );
 
 
 function returnSourcePages(jsonData){
@@ -190,36 +190,75 @@ function countCorrectAnswers(jsonData){
     console.log("countCorrectAnswers - correct_total: " + correct_total + ", error_total: " + error_total + ", error_displayed_total: " + error_displayed_total);
 }
 
-
-function returnTable(tableSelector, headerArray, bodyArray2D, footerArray){
-    var HTML = '<table '+((tableSelector.indexOf("#")!==-1)?'id="'+tableSelector.replace("#","")+'"':((tableSelector.indexOf(".")!==-1)?'class="'+tableSelector.replace(".","")+'"':''))+'>';
-    if (headerArray.length > 0){  // Content in headerArray is not required - just an empty array 
-        HTML += '<thead><tr>';
-        for (i in headerArray){
-            HTML += '<th>'+headerArray[i]+'</th>';
-        }
-        HTML += '</tr></thead>';
+function ShuffelArray(ItemArray){
+    var NumOfItems = ItemArray.length;
+    var NewArray = ItemArray.slice();  // Copy the array...
+    var Item2; var TempItem1; var TempItem2;
+    for (var Item1 = 0; Item1 < NumOfItems; Item1++) {
+        Item2 = Math.floor( Math.random() * NumOfItems);
+        TempItem1 = NewArray[Item1];
+        TempItem2 = NewArray[Item2];
+        NewArray[Item2] = TempItem1;
+        NewArray[Item1] = TempItem2;
     }
-    if (footerArray.length > 0){  // Content in footerArray is not required - just an empty array 
-        HTML += '<tfoot><tr>';
-        for (i in footerArray){
-            HTML += '<td>'+footerArray[i]+'</td>';
-        }
-        HTML += '</tr></tfoot>';
-    }
-    HTML += '<tbody>';
-    for (var y = 0; y < bodyArray2D.length; y++) {
-        HTML += '<tr>';
-        for (var x = 0; x < bodyArray2D[y].length; x++) {
-            HTML += '<td>'+bodyArray2D[y][x]+'</td>'+((bodyArray2D[y].length-1 == x)?'</tr>':'');
-        };
-    };
-    HTML += '</tbody></table>';
-    console.log("returnTable - HTML: " + HTML);
-    return HTML;
+    return NewArray;
 }
-// $("body").append(returnTable(".resultTable", ["HHHHH 1", "HHHHH 2", "HHHHH 3"], [["B11", "B12", "B13"], ["B21", "B22", "B23"], ["B31", "B32", "B33"], ["B41", "B42", "B43"]],["F1", "F2", "F3"]));
-// $("body").append(returnTable(".resultTable", ["HHHHH 1", "HHHHH 2", "HHHHH 3"], [["B11", "B12", "B13"], ["B21", "B22", "B23"], ["B31", "B32", "B33"], ["B41", "B42", "B43"]],[]));
+
+function SwitchElements(TargetArray, TRanArray){
+    var TArray = TargetArray.slice();  // Copy the array...
+    var E1, E2;
+    for (n in TRanArray){
+        TArray[TRanArray[n]] = TargetArray[n];
+    }
+    console.log("SwitchElements - TArray: " + TArray);
+    return TArray;
+}
+SwitchElements(["a","b","c","d","e"],[0,1,2,3,4]);
+SwitchElements(["a","b","c","d","e"],[4,3,2,1,0]);
+
+
+function RemoveAbsentElements(TargetArray, ElementsToKeepArray){
+
+}
+
+
+function randomizeJsonData(jsonData){
+    for (n in jsonData){
+        var ArrayLength = jsonData[n].userInterface.btn.length;
+        var TRanArray = [];
+        for (var i = 0; i < ArrayLength; i++) {
+            TRanArray.push(i);
+        };
+        console.log("randomizeJsonData - TRanArray: " + TRanArray);
+        var RanTAnsArray = ShuffelArray(TRanArray);
+        console.log("randomizeJsonData - RanTAnsArray: " + RanTAnsArray);
+
+        console.log("randomizeJsonData - jsonData["+n+"] - btn 1: " + jsonData[n].userInterface.btn);
+        console.log("randomizeJsonData - jsonData["+n+"] - btn 2B: " + SwitchElements(jsonData[n].userInterface.btn, RanTAnsArray));
+        console.log("randomizeJsonData - jsonData["+n+"] - btn 2: " + jsonData[n].userInterface.btn);
+        // jsonData.userInterface.btn = SwitchElements(jsonData.userInterface.btn, RanTAnsArray);
+        console.log("randomizeJsonData - jsonData["+n+"] - feedbackData 1: " + jsonData[n].quizData.feedbackData);
+        jsonData[n].quizData.feedbackData = SwitchElements(jsonData[n].quizData.feedbackData, RanTAnsArray);
+        console.log("randomizeJsonData - jsonData["+n+"] - feedbackData 2: " + jsonData[n].quizData.feedbackData);
+    }
+}
+
+
+function AddColorToPagerButtons(jsonData){
+    $(".PagerButton").removeClass("btn-primary").addClass("btn-default");  // Removes the color of the selected btn
+    for (k in jsonData){
+        if (jsonData[k].StudentAnswers.Correct.length == jsonData[k].quizData.correctAnswer.length){
+            // $(".PagerButton:eq("+k+")").addClass("btn-success");
+            $(".PagerButton:eq("+k+")").addClass("CorrectAnswer");
+        } 
+
+        if (jsonData[k].StudentAnswers.Wrong.length > 0){
+            // $(".PagerButton:eq("+k+")").removeClass("btn-success").addClass("btn-danger");
+            $(".PagerButton:eq("+k+")").removeClass("CorrectAnswer").addClass("WrongAnswer");
+        } 
+        // btn-danger
+    }
+}
 
 
 function returnDivTable(tableSelector, headerArray, bodyArray2D){
@@ -241,13 +280,26 @@ function returnDivTable(tableSelector, headerArray, bodyArray2D){
 // $("body").append(returnDivTable(".resultTable", ["HHHHH 1", "HHHHH 2", "HHHHH 3"], [["B11", "B12", "B13"], ["B21", "B22", "B23"], ["B31", "B32", "B33"], ["B41", "B42", "B43"]]));
 
 
+function returnTextPart(objectText, Maxlength){
+    if (objectText.indexOf(" ", Maxlength) !== -1)
+        return objectText.substr(0,objectText.indexOf(" ", Maxlength), Maxlength)+"...";
+    else
+        return objectText;
+}
+console.log("returnTextPart: " + returnTextPart("a b c d", 10));
+console.log("returnTextPart: " + returnTextPart("a b c d e f g h i j k l", 10));
+
+
+
+
 function returnDivTable_MAM(tableSelector, headerArray, bodyArray2D){
     // bodyArray2D = matrixTranspose(bodyArray2D);
     var HTML = '<div '+((tableSelector.indexOf("#")!==-1)?'id="'+tableSelector.replace("#","")+'"':((tableSelector.indexOf(".")!==-1)?'class="'+tableSelector.replace(".","")+'"':''))+'>';
     for (var y = 0; y < bodyArray2D.length; y++) {
-        HTML += '<div class="DivRow2">';
+        HTML += '<div class="DivRow">';
         if (headerArray.length > 0){  // Content in headerArray is not required - just an empty array 
             HTML += '<div class="LeftContent">'+headerArray[y]+'</div>';
+            // HTML += '<div class="LeftContent">'+((jsonData[y].quizData.kildeData.type == "text")? returnTextPart(headerArray[y], 200) : headerArray[y] )+'</div>';
         }
         HTML += '<div class="RightContent">';
         for (var x = 0; x < bodyArray2D[y].length; x++) {
@@ -303,30 +355,6 @@ function matrixTranspose(matrix) {
 console.log("matrixTranspose 1: " + JSON.stringify(matrixTranspose([["B11", "B12", "B13"], ["B21", "B22", "B23"], ["B31", "B32", "B33"], ["B41", "B42", "B43"]])));
 console.log("matrixTranspose 2: " + JSON.stringify(matrixTranspose([["B11","B21","B31","B41"],["B12","B22","B32","B42"],["B13","B23","B33","B43"]])));
 
-
-function makeEndGameSenario(jsonData){
-    var sourceArray = [];
-    var correctAnswerMatrix = [];  // 2 dimensional array!
-    for (n in jsonData) {
-        sourceArray.push(returnSourcelItem(n, jsonData));
-        var rowArray = [];
-        correctAnswerMatrix.push(jsonData[n].quizData.feedbackData);  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
-    }
-    console.log("makeEndGameSenario - correctAnswerMatrix: " + JSON.stringify(correctAnswerMatrix));
-
-    var TcorrectAnswerMatrix = matrixTranspose(correctAnswerMatrix);
-    console.log("makeEndGameSenario - TcorrectAnswerMatrix: " + JSON.stringify(TcorrectAnswerMatrix));
-
-    var HTML = '<div id="EndGameSenario">' + returnTable('.resultTable', sourceArray, TcorrectAnswerMatrix, []) + '</div>';
-
-    // UserMsgBox("body", HTML);
-    // UserMsgBox_SetWidth(".container-fluid", 0.7);
-
-    $("#DataInput").append(HTML);
-
-    // $("#EndGameSenario th").css("width", String(100/sourceArray.length)+'%');
-
-}
 
 // MARK 5
 
@@ -414,9 +442,9 @@ function makeEndGameSenario_3(jsonData){
         for (var k = 0; k < MaxLength; k++) {
         // for (k in jsonData[n].userInterface.btn){
             if (typeof(jsonData[n].userInterface.btn[k]) !== "undefined"){
-                rowArray.push('<div class="btn btn-default '+((elementInArray(jsonData[n].quizData.correctAnswer, k))?'CorrectAnswer ':'')+
-                                             ((elementInArray(jsonData[n].StudentAnswers.Correct, k))?'StudentCorrect ':'')+
-                                             ((elementInArray(jsonData[n].StudentAnswers.Wrong, k))?'StudentWrong ':'')+'">'
+                rowArray.push('<div class="btn btn-default '+((elementInArray(jsonData[n].quizData.correctAnswer, k))?'XXX_CorrectAnswer ':'')+
+                                             ((elementInArray(jsonData[n].StudentAnswers.Correct, k))?'XXX_StudentCorrect ':'')+
+                                             ((elementInArray(jsonData[n].StudentAnswers.Wrong, k))?'XXX_StudentWrong ':'')+'">'
                                              +jsonData[n].userInterface.btn[k]+
                               '</div>');  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
             } else {
@@ -437,14 +465,10 @@ function makeEndGameSenario_3(jsonData){
     // var HTML = '<div id="EndGameSenario">' + returnDivTable('.resultTable', sourceArray, TcorrectAnswerMatrix) + '</div>';
 
 
-    UserMsgBox("body", HTML);
-    // UserMsgBox_SetWidth(".container-fluid", 0.7);
+    // UserMsgBox("body", HTML);
+    // $("#EndGameSenario .ttd").css("width", String(Math.floor(100/jsonData.length)-0.1)+'%');
 
-    // $("#DataInput").append(HTML);
-
-    // $("#EndGameSenario th").css("width", String(100/sourceArray.length)+'%');
-    $("#EndGameSenario .ttd").css("width", String(Math.floor(100/jsonData.length)-0.1)+'%');
-
+    return HTML;
 }
 
 
@@ -497,10 +521,28 @@ $(document).on('click', ".checkAnswer", function(event) {
     }
 });
 
+// Functionality that displays the results for the student.
 $(document).on('click', ".checkAllAnswers", function(event) {
     countCorrectAnswers(jsonData);
-    // makeEndGameSenario_2(jsonData);
-    makeEndGameSenario_3(jsonData);
+    AddColorToPagerButtons(jsonData);
+
+    $("#AnswerOverview").html(makeEndGameSenario_3(jsonData));
+    $("#header").text("Svaroversigt");
+    $("#DataInput").hide();
+    $(".checkAllAnswers").hide();
+    $(".TextHolder p").hide();
+    // $("#AnswerOverview").html(makeEndGameSenario_3(jsonData));
+}); 
+
+// Returns "focus" to the quiz-mode once on of the pager buttons are pressed.
+$(document).on('click', ".PagerButton", function(event) {
+    if ($("#AnswerOverview").html()){  // If AnswerOverview has content (which is only when viewing the result of the quiz), do...
+        // $("#header").show();
+        $("#DataInput").show();        // Show the requested source (requestedby pressing the pager).
+        $(".checkAllAnswers").show();
+        $(".TextHolder p").show();
+        $("#AnswerOverview").html(""); // "Hide"/overwrite the content in AnswerOverview.
+    } 
 }); 
 
 
@@ -620,9 +662,10 @@ $(document).ready(function() {
 
     var UlrVarObj = {"file" : ""};   // Define a default file-refrence (empty) ---> "QuizData.json"
     UlrVarObj = ReturnURLPerameters(UlrVarObj);  // Get URL file perameter.
-    console.log("UlrVarObj: " + JSON.stringify(UlrVarObj) );
+    console.log("UlrVarObj: " + JSON.stringify(UlrVarObj) + ", UlrVarObj.file: " + UlrVarObj.file);
 
-    ReturnAjaxData("GET", "json/QuizData"+UlrVarObj.file+".json", false, "json");
+    ReturnAjaxData("GET", "json/QuizData"+String(UlrVarObj.file)+".json", false, "json");
+    // ReturnAjaxData("GET", "json/QuizData100.json", false, "json");
 
  //        	// returnQuizlHtml(0, jsonData);  // TEST
 
@@ -667,4 +710,8 @@ $(document).ready(function() {
     $(window).resize(function () {
         // $(".NoteField").height($(".Source").height());
     });
+
+    // ====================   TEST  ===================
+
+    // randomizeJsonData(jsonData);
 });

@@ -16,11 +16,11 @@ h4 {
 	line-height: 1em;
 }
 
-#questionCarousel{margin-top: 20px;}
+#questionCarousel{margin-top: 20px; border-radius: 8px; background-color: #FFF;}
 
 
 .TextHolder{margin-left: auto; margin-right: auto; width: 80%; min-height: 200px;}
-.resultTable  .TextHolder{min-height: 0px;}
+.resultTable  .TextHolder{min-height: 0px; width: 100%;}
 
 .indent{margin-left: 10px}
 
@@ -31,10 +31,26 @@ h4 {
     margin: auto;
 }
 
+.DivRow{
+	margin-bottom: 10px; 
+	padding: 10px;
+	border: 1px solid #C0C0C0;
+}
+
 
 .QuestionTask{
 	color: #000;
 }
+
+/* e7e6e2 */
+.btn-default{
+	background-color: #e7e6e2;
+	border: 1px solid #e7e6e2;
+	color: #000;
+}
+
+.btn{margin-bottom: 10px;}
+
 
 .checkAnswer {
 	background-color: #0dcea0;
@@ -109,14 +125,6 @@ h4 {
 	color: #FFF;
 }
 
-.btn-default{
-	background-color: #E4E4E4;
-	border: 1px solid #E4E4E4;
-	color: #000;
-}
-
-.btn{margin-bottom: 10px;}
-
 .btnPressed{
     background-color: #666666;
     border: 1px solid #666666;
@@ -128,20 +136,20 @@ h4 {
     color: #FFF;
 }
 
-.RightContent{float: right; width: 80%;}
+.RightContent{float: right; width: 80%; padding-left: 10px;}
 .LeftContent{float: left; width: 20%;}
 
 
 .Clear{clear: both;}
 
-.Source{border: 1px solid #C0C0C0; }
+.Source{border: 1px solid #C0C0C0;}
 
 /*
 .col-md-8{margin-left: 10px; width: 65.5%;}
 .col-sm-12{width: 100%; margin-top: 10px; margin-right: 0px;}
 */
 
-.BtnContainer{margin-top: 10px;}
+.BtnContainer{padding-top: 10px; clear: both;}
 
 .SourcePage{border: 1px solid #C0C0C0; padding: 10px 10px 0px 10px; display: none;}
 
@@ -152,9 +160,18 @@ h4 {
 
 .dshow{display: block}
 
-@media (max-width: 768px) {
-    .Source{width: 100%;}
-	.NoteField{width: 100%; margin-top: 10px;}
+/*e7e6e2*/
+
+.btn-success {
+    background-color: #0dcea0;
+    border-color: #0dcea0;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: #0dcea0;
+    border-color: #0dcea0;
+    color: #fff;
 }
 
 
