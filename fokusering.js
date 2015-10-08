@@ -1,6 +1,8 @@
 var jsonData = "<h1>OK</h1>";
 var CurrentQuestionId = 0;
 var correct_total = 0;
+var TagArray = [];
+var NumOfUniqueTags;
 
 // MARK 4
 
@@ -75,6 +77,34 @@ console.log("hastagStrToArray: " + hastagStrToArray("#Ungdomsoprør, #Kvindebev�
 console.log("hastagStrToArray: " + JSON.stringify( hastagStrToArray("#Tag1 a b, #Tag2 a b, #Tag3 a b") ) );
 
 
+function GetAllUniqueTags(jsonData){
+    var TagArray = [];
+    var TagArrayWrong = [];
+    for (n in jsonData){
+        TagArray = TagArray.concat(jsonData[n].userInterface.btn);  // Add all correct answers
+        if (jsonData[n].userInterface.hasOwnProperty("btnWrong"))
+            TagArrayWrong = TagArrayWrong.concat(jsonData[n].userInterface.btnWrong);
+    }
+    console.log("GetAllUniqueTags - TagArray 1: " + TagArray);
+
+    TagArray = TagArray.filter( onlyUnique );
+    NumOfUniqueTags = TagArray.length;
+    console.log("GetAllUniqueTags - NumOfUniqueTags: " + NumOfUniqueTags);
+
+    TagArrayWrong = TagArrayWrong.filter( onlyUnique );
+
+    TagArray = TagArray.concat(TagArrayWrong);
+
+    console.log("GetAllUniqueTags - TagArray 2: " + TagArray);
+
+    function onlyUnique(value, index, self) { 
+        return self.indexOf(value) === index;
+    }
+
+    return TagArray;
+}
+
+
 function returnSourcePages(jsonData){
     var HTML = '';
     for (n in jsonData) {
@@ -94,8 +124,10 @@ function returnSourcePages(jsonData){
 
         HTML +=     '<div '+'id="btnContainer_'+n+'" class="BtnContainer">';
         var btnArray = jsonData[n].userInterface.btn;
-        for (m in btnArray){
-            HTML += '<span class="btn btn-default StudentAnswer">'+btnArray[m]+'</span>';
+        // for (m in btnArray){
+        for (m in TagArray){
+            // HTML += '<span class="btn btn-default StudentAnswer">'+btnArray[m]+'</span>';
+            HTML += '<span class="btn btn-default StudentAnswer">'+TagArray[m]+'</span>';
         }
             HTML += '</div>';
         HTML += '</div>';
@@ -129,7 +161,7 @@ function returnSourcelItem(questionNum, jsonData){
 
 function interfaceChanger(ActiveLinkNum){
     $( document ).on('click', ".PagerButton", function(event){
-        var PagerNum = $(this).text();
+        var PagerNum = $(this).text().replace("kilde","").trim();
         $("#header").html(jsonData[parseInt(PagerNum)-1].userInterface.header);   // Shows the initial heading.
         $("#subHeader").html(jsonData[parseInt(PagerNum)-1].userInterface.subHeader);    // Shows the initial subheading.
 
@@ -189,6 +221,62 @@ function countCorrectAnswers(jsonData){
     $(".ErrorCount").text(error_displayed_total);
     console.log("countCorrectAnswers - correct_total: " + correct_total + ", error_total: " + error_total + ", error_displayed_total: " + error_displayed_total);
 }
+
+
+function countCorrectAnswers_NEW(jsonData){
+    correct_total = 0;
+    error_total = 0;
+    var error_displayed_total = 0;
+    var numOfQuestions = 0;
+    for (k in jsonData){
+        var correct = 0; var error_missed = 0; var error_wrong = 0; var error_displayed = 0;
+        var answerArray = jsonData[k].quizData.correctAnswer;
+        var numOfSrudentAnswers = $("#btnContainer_"+k+" > .btnPressed").length;
+        var numOfCorrectAnswers = answerArray.length;
+        jsonData[k].StudentAnswers = {Correct : [], Wrong: []};
+        // for (var n in answerArray){
+        for (var n = 0; n < TagArray.length; n++) {
+            // if ($("#btnContainer_"+k+" > .StudentAnswer:eq("+answerArray[n]+")").hasClass("btnPressed")){
+            if ($("#btnContainer_"+k+" > .StudentAnswer:eq("+n+")").hasClass("btnPressed")){
+                if (elementInArray(jsonData[k].userInterface.btn, $("#btnContainer_"+k+" > .StudentAnswer:eq("+n+")").text())) {
+                    correct++;   // Counting correct answers.
+                    jsonData[k].StudentAnswers.Correct.push(n);
+                    // $("#btnContainer_"+k+" > .StudentAnswer:eq("+answerArray[n]+")").toggleClass("CorrectAnswer");
+                    $("#btnContainer_"+k+" > .StudentAnswer:eq("+n+")").addClass("CorrectAnswer");
+                }
+            } else {
+                error_missed++;  // Counting missed correct answers, eg. if there are two or more correct answers and the student does not answer all of the answers, then this counter counts the missed correct answers.
+            }
+            error_wrong += numOfSrudentAnswers - (correct + error_missed); // Counts all the wrong answers chosen by the student. 
+            error_wrong = (error_wrong < 0) ?  0 : error_wrong;
+
+            console.log("countCorrectAnswers - CurrentQuestionId: " + CurrentQuestionId + 
+            "\nnumOfSrudentAnswers: " + numOfSrudentAnswers + ", numOfCorrectAnswers: " + numOfCorrectAnswers + 
+            "\ncorrect: " + correct  + ", error_missed: " + error_missed  + ", error_wrong: " + error_wrong);
+        }
+
+        $("#btnContainer_"+k+" > .StudentAnswer").each(function( index, element ) {
+            if (($(element).hasClass("btnPressed")) && !(elementInArray(jsonData[k].userInterface.btn, $(element).text() ))) {
+                ++error_displayed;
+                jsonData[k].StudentAnswers.Wrong.push(index);
+                // $(element).toggleClass("WrongAnswer");
+                $(element).addClass("WrongAnswer");
+            }
+        });
+
+        // correct_total += (correct  // <-------------------------   IMPORTANT: THIS WILL GIVE TWO POINTS IF TWO CORRECT ANSWERS ARE GIVEN IN ONE QUESTION!!!
+        correct_total += (correct >= 1)? 1 : 0;   // <-------------------------   IMPORTANT: THIS ENFORCES _ONE_ POINT IF THERE ARE TWO OR MORE CORRECT ANSWERS!!!!!
+        error_total += error_wrong + error_missed - correct;
+        error_displayed_total += error_displayed;
+
+        ++numOfQuestions;
+    }
+
+    $(".QuestionCounter").text(correct_total+'/'+numOfQuestions);
+    $(".ErrorCount").text(error_displayed_total);
+    console.log("countCorrectAnswers - correct_total: " + correct_total + ", error_total: " + error_total + ", error_displayed_total: " + error_displayed_total);
+}
+
 
 function ShuffelArray(ItemArray){
     var NumOfItems = ItemArray.length;
@@ -356,6 +444,42 @@ console.log("matrixTranspose 1: " + JSON.stringify(matrixTranspose([["B11", "B12
 console.log("matrixTranspose 2: " + JSON.stringify(matrixTranspose([["B11","B21","B31","B41"],["B12","B22","B32","B42"],["B13","B23","B33","B43"]])));
 
 
+function ShiftToLowerColorClass(){
+    var Count = 0;
+    for (var n in TagArray){
+        var Found = false;
+        $(".CorrectAnswer").each(function( index, element ) {
+            // if ($(element).hasClass("TColorClass_"+n)){
+            if ( ($(element).hasClass("TColorClass_"+n)) && ($(".TColorClass_"+n).length > 1) ) {
+                Found = true;
+                $(element).addClass("ColorClass_"+Count);
+                // $(element).removeClass("TColorClass_"+n);
+            }
+        });
+        if (Found) ++Count;
+
+        $(".CorrectAnswer").removeClass("TColorClass_"+n);
+    }
+}
+
+
+function AutoAddColorsToColorClasses(){
+    var CssProp = ["background-color", "border-top-color", "border-right-color", "border-bottom-color", "border-left-color"];
+    var cssObj = {};
+    var HexStr1, HexStr2, HexStr3;
+    for (var x = 0; x < NumOfUniqueTags; x++) {
+        HexStr1 = (Math.round(Math.random()*150)+55).toString(16);
+        HexStr2 = (Math.round(Math.random()*150)+55).toString(16);
+        HexStr3 = (Math.round(Math.random()*150)+55).toString(16);
+        for (var n in CssProp){
+            cssObj[CssProp[n]] = "#"+HexStr1+HexStr2+HexStr3;
+        }
+        $(".ColorClass_"+x).css(cssObj);
+    };
+}
+
+
+
 // MARK 5
 
 function makeEndGameSenario_2(jsonData){
@@ -472,6 +596,62 @@ function makeEndGameSenario_3(jsonData){
 }
 
 
+function makeEndGameSenario_4(jsonData){
+    var sourceArray = [];
+    var correctAnswerMatrix = [];  // 2 dimensional array!
+    var MaxLength = 0; var Length;
+    for (n in jsonData) {
+        Length = jsonData[n].userInterface.btn.length;
+        if (Length > MaxLength) MaxLength = Length;
+    }
+    console.log("makeEndGameSenario - MaxLength: " + MaxLength);
+    for (n in jsonData) {
+        sourceArray.push(returnSourcelItem(n, jsonData));
+        var rowArray = [];
+        // correctAnswerMatrix.push(jsonData[n].userInterface.btn);  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
+        
+        // for (k in jsonData[n].userInterface.btn){
+        //     rowArray.push('<div class="'+((elementInArray(jsonData[n].quizData.correctAnswer, k))?'CorrectAnswer ':'')+
+        //                                  ((elementInArray(jsonData[n].StudentAnswers.Correct, k))?'StudentCorrect ':'')+
+        //                                  ((elementInArray(jsonData[n].StudentAnswers.Wrong, k))?'StudentWrong ':'')+'">'
+        //                                  +jsonData[n].userInterface.btn[k]+
+        //                   '</div>');  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
+        // }
+
+        // for (var k = 0; k < MaxLength; k++) {
+        for (var k = 0; k < TagArray.length; k++) {
+            // if (typeof(jsonData[n].userInterface.btn[k]) !== "undefined"){     // elementInArray(jsonData[k].userInterface.btn, $(element).text() )
+                rowArray.push('<div class="btn btn-default '+((elementInArray(jsonData[n].userInterface.btn, TagArray[k]))?'CorrectAnswer ':'')+
+                                             ((elementInArray(jsonData[n].StudentAnswers.Correct, k))?'XXX_StudentCorrect ':'')+
+                                             ((elementInArray(jsonData[n].StudentAnswers.Wrong, k))?'XXX_StudentWrong ':'')+
+                                             ((elementInArray(jsonData[n].userInterface.btn, TagArray[k]))?'TColorClass_'+k:'')+'">'
+                                             +TagArray[k]+
+                              '</div>');  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
+            // } else {
+            //     rowArray.push('<div class="Empty">&nbsp;</div>');
+            // }
+        }
+        correctAnswerMatrix.push(rowArray);
+    }
+    console.log("makeEndGameSenario - jsonData: " + JSON.stringify(jsonData));  // '<div class="">'
+    console.log("makeEndGameSenario - correctAnswerMatrix: " + JSON.stringify(correctAnswerMatrix));  // '<div class="">'
+
+    // DETTE ER EN TEST:
+    var HTML = '<div id="EndGameSenario">' + returnDivTable_MAM('.resultTable', sourceArray, correctAnswerMatrix) + '</div>';
+
+    // DETTE VIRKER OK:
+    // var TcorrectAnswerMatrix = matrixTranspose(correctAnswerMatrix);
+    // console.log("makeEndGameSenario - TcorrectAnswerMatrix: " + JSON.stringify(TcorrectAnswerMatrix));
+    // var HTML = '<div id="EndGameSenario">' + returnDivTable('.resultTable', sourceArray, TcorrectAnswerMatrix) + '</div>';
+
+
+    // UserMsgBox("body", HTML);
+    // $("#EndGameSenario .ttd").css("width", String(Math.floor(100/jsonData.length)-0.1)+'%');
+
+    return HTML;
+}
+
+
 
 $(document).on('click', ".StudentAnswer", function(event) {
     // event.preventDefault(); // Prevents sending the user to "href". 
@@ -501,7 +681,8 @@ $(document).on('click', ".checkAnswer", function(event) {
         UserMsgBox("body", "Du har allerede svaret på denne opgave, og kan derfor ikke lave en ny besvarelse. Vælg en ny kilde og lav en ny besvarelse.");
         UserMsgBox_SetWidth(".container-fluid", 0.7);
     } else {
-        countCorrectAnswers(jsonData);
+        // countCorrectAnswers(jsonData);
+        countCorrectAnswers_NEW(jsonData);
 
         // Gives the right answer a green color, and display a list of feedback:
         $("#btnContainer_"+String(parseInt(ActiveLinkNum)-1)+" > .StudentAnswer").each(function( index, element ) {
@@ -522,15 +703,20 @@ $(document).on('click', ".checkAnswer", function(event) {
 });
 
 // Functionality that displays the results for the student.
-$(document).on('click', ".checkAllAnswers", function(event) {
-    countCorrectAnswers(jsonData);
-    AddColorToPagerButtons(jsonData);
+$(document).on('click', ".checkAllAnswers", function(event) { 
+    // countCorrectAnswers(jsonData);
+    countCorrectAnswers_NEW(jsonData);
+    // AddColorToPagerButtons(jsonData);   // TLY does nor want correct/wrong colors on pagerbuttons.
+    $(".PagerButton").removeClass("btn-primary").addClass("btn-default");  // Remove the "choosen" pagerbutton.
 
-    $("#AnswerOverview").html(makeEndGameSenario_3(jsonData));
+    // $("#AnswerOverview").html(makeEndGameSenario_3(jsonData));
+    $("#AnswerOverview").html(makeEndGameSenario_4(jsonData));
     $("#header").text("Svaroversigt");
     $("#DataInput").hide();
     $(".checkAllAnswers").hide();
     $(".TextHolder p").hide();
+    ShiftToLowerColorClass();
+    AutoAddColorsToColorClasses();
     // $("#AnswerOverview").html(makeEndGameSenario_3(jsonData));
 }); 
 
@@ -544,6 +730,22 @@ $(document).on('click', ".PagerButton", function(event) {
         $("#AnswerOverview").html(""); // "Hide"/overwrite the content in AnswerOverview.
     } 
 }); 
+
+
+$(document).on('click', ".resultTable .LeftContent", function(event) {
+    ActiveLinkNum = $(this).parent().prevAll().length + 1;  // Find the sibling number.
+    console.log("ActiveLinkNum: " + ActiveLinkNum);
+
+    $("#DataInput").show();        // Show the requested source (requestedby pressing the pager).
+    $(".checkAllAnswers").show();
+    $(".TextHolder p").show();
+    $("#AnswerOverview").html(""); // "Hide"/overwrite the content in AnswerOverview.
+
+    Pager("#PagerContainer", "#DataInput > div", "Pager");
+
+    $("#header").html(jsonData[ActiveLinkNum-1].userInterface.header);   // Shows the heading.
+    $("#subHeader").html(jsonData[ActiveLinkNum-1].userInterface.subHeader);    // Shows the subheading.
+});
 
 
 
@@ -668,6 +870,11 @@ $(document).ready(function() {
 
     ReturnAjaxData("GET", "json/QuizData"+String(UlrVarObj.file)+".json", false, "json");
     // ReturnAjaxData("GET", "json/QuizData100.json", false, "json");
+
+    TagArray = GetAllUniqueTags(jsonData);
+
+    TagArray = ShuffelArray(TagArray);
+
 
  //        	// returnQuizlHtml(0, jsonData);  // TEST
 

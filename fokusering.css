@@ -75,12 +75,6 @@ h4 {
 }
 
 /*
-.MarkedAnswer{
-	background-color: #1da6db;
-	color: #FFF;
-}
-*/
-
 .CorrectAnswer{
 	background-color: #0dcea0;
 	border: 1px solid #0dcea0;
@@ -91,7 +85,7 @@ h4 {
 	border: 1px solid #2deec0;
 	color: #FFF;
 }
-
+*/
 
 .WrongAnswer{
 	background-color: #ed3e3a;
@@ -105,7 +99,7 @@ h4 {
 }
 
 
-.StudentCorrect{
+.StudentCorrect{ 
 	background-color: #00cb60;
 	border: 1px solid #00cb60;
 	color: #FFF;

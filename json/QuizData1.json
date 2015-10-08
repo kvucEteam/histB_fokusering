@@ -1,9 +1,10 @@
 [
 	{ 
-		"userInterface" : {
+		"userInterface" : { 
 			"header" : "Kilde 1. Thylejren i Frøstrup",
 			"subHeader" : "Du skal angive hvilket svar/tags der bedst passet til kilden. Vælg mellem kilderne ved tryk på pageren.",
-			"btn" : ["Ungdomsoprør", "Politik", "Hippie", "Rumfart", "Samfund", "Atomkraft", "Individ"]
+			"btn" : ["Ungdomsoprør", "Hippie", "Samfund", "Individ"],
+			"btnWrong" : ["Atomkraft", "Rumfart", "Politik", "Bandekrig"]
 		},
 		"quizData" : {
 			"taskText" : "Opgaveforklaring til kursist - 0",
@@ -16,7 +17,8 @@
 		"userInterface" : {
 			"header" : "Kilde 2. The Beatles ankommer til JFK lufthavnen",
 			"subHeader" : "Du skal angive hvilket svar/tags der bedst passet til kilden. Vælg mellem kilderne ved tryk på pageren.",
-			"btn" : ["Atomkraft", "Ungdomsoprør", "Ungdomskultur", "Subkultur", "Individ", "Musik", "Heavy metal"]
+			"btn" : ["Ungdomsoprør", "Ungdomskultur", "Individ", "Musik"],
+			"btnWrong" : ["Atomkraft", "Rumfart", "Politik", "Bandekrig"]
 		},
 		"quizData" : {
 			"taskText" : "Opgaveforklaring til kursist - 1",
@@ -29,7 +31,8 @@
 		"userInterface" : { 
 			"header" : "Kilde 3. &quot;En rødstrømpehistorie&quot;",
 			"subHeader" : "Du skal angive hvilket svar/tags der bedst passet til kilden. Vælg mellem kilderne ved tryk på pageren.",
-			"btn" : ["Atomkraft", "Ungdomsoprør", "Heavy metal", "Kvindebevægelsen", "Rødstrømper", "Kønsroller", "Individ", "Familie"]
+			"btn" : ["Ungdomsoprør", "Kvindebevægelsen", "Rødstrømper", "Kønsroller", "Individ", "Familie"],
+			"btnWrong" : ["Atomkraft", "Rumfart", "Politik", "Bandekrig"]
 		},
 		"quizData" : {
 			"taskText" : "Opgaveforklaring til kursist - 2",
@@ -42,7 +45,8 @@
 		"userInterface" : {
 			"header" : "Kilde 4. Stig Møller - Thylejren 1970",
 			"subHeader" : "Du skal angive hvilket svar/tags der bedst passet til kilden. Vælg mellem kilderne ved tryk på pageren.",
-			"btn" : ["Atomkraft", "Subkultur", "Ungdomsoprør", "Samfund", "Familie", "Individ", "Hippie", "Kønsroller"]
+			"btn" : ["Ungdomsoprør", "Samfund", "Familie", "Individ", "Hippie", "Kønsroller"],
+			"btnWrong" : ["Atomkraft", "Rumfart", "Politik", "Bandekrig"]
 		},
 		"quizData" : {
 			"taskText" : "Opgaveforklaring til kursist - 3",
