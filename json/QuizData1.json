@@ -1,8 +1,9 @@
 [
 	{ 
 		"userInterface" : { 
-			"header" : "Kilde 1. Thylejren i Frøstrup",
-			"subHeader" : "Du skal angive hvilket svar/tags der bedst passet til kilden. Vælg mellem kilderne ved tryk på pageren.",
+			"header" : "Få overblik over emnerne",
+			"subHeader" : "Har kilderne et fælles centralt indhold eller fokus?<br/>Klik på temaordene for hver kilde og sammenlign dem til sidst.",
+			"AnswerOverViewText" : "Kilde 1. Thylejren i Frøstrup",
 			"btn" : ["Ungdomsoprør", "Hippie", "Samfund", "Individ"],
 			"btnWrong" : ["Atomkraft", "Rumfart", "Politik", "Bandekrig"]
 		},
@@ -15,8 +16,9 @@
 	},
 	{ 
 		"userInterface" : {
-			"header" : "Kilde 2. The Beatles ankommer til JFK lufthavnen",
-			"subHeader" : "Du skal angive hvilket svar/tags der bedst passet til kilden. Vælg mellem kilderne ved tryk på pageren.",
+			"header" : "Få overblik over emnerne",
+			"subHeader" : "Har kilderne et fælles centralt indhold eller fokus?<br/>Klik på temaordene for hver kilde og sammenlign dem til sidst.",
+			"AnswerOverViewText" : "Kilde 2. The Beatles ankommer til JFK lufthavnen",
 			"btn" : ["Ungdomsoprør", "Ungdomskultur", "Individ", "Musik"],
 			"btnWrong" : ["Atomkraft", "Rumfart", "Politik", "Bandekrig"]
 		},
@@ -29,8 +31,9 @@
 	},
 	{ 
 		"userInterface" : { 
-			"header" : "Kilde 3. &quot;En rødstrømpehistorie&quot;",
-			"subHeader" : "Du skal angive hvilket svar/tags der bedst passet til kilden. Vælg mellem kilderne ved tryk på pageren.",
+			"header" : "Få overblik over emnerne",
+			"subHeader" : "Har kilderne et fælles centralt indhold eller fokus?<br/>Klik på temaordene for hver kilde og sammenlign dem til sidst.",
+			"AnswerOverViewText" : "Kilde 3. &quot;En rødstrømpehistorie&quot;",
 			"btn" : ["Ungdomsoprør", "Kvindebevægelsen", "Rødstrømper", "Kønsroller", "Individ", "Familie"],
 			"btnWrong" : ["Atomkraft", "Rumfart", "Politik", "Bandekrig"]
 		},
@@ -43,8 +46,9 @@
 	},
 	{ 
 		"userInterface" : {
-			"header" : "Kilde 4. Stig Møller - Thylejren 1970",
-			"subHeader" : "Du skal angive hvilket svar/tags der bedst passet til kilden. Vælg mellem kilderne ved tryk på pageren.",
+			"header" : "Få overblik over emnerne",
+			"subHeader" : "Har kilderne et fælles centralt indhold eller fokus?<br/>Klik på temaordene for hver kilde og sammenlign dem til sidst.",
+			"AnswerOverViewText" : "Kilde 4. Stig Møller - Thylejren 1970",
 			"btn" : ["Ungdomsoprør", "Samfund", "Familie", "Individ", "Hippie", "Kønsroller"],
 			"btnWrong" : ["Atomkraft", "Rumfart", "Politik", "Bandekrig"]
 		},

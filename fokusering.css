@@ -4,7 +4,7 @@
 }
 
 h1 {
-	margin: 40px 0px; 
+	margin: 20px 0px 15px 0px;
 	line-height: 1em;
 }
 h2 {
@@ -33,10 +33,9 @@ h4 {
 
 .DivRow{
 	margin-bottom: 10px; 
-	padding: 10px;
+	padding: 10px 10px 0px 10px;
 	border: 1px solid #C0C0C0;
 }
-
 
 .QuestionTask{
 	color: #000;
@@ -49,8 +48,22 @@ h4 {
 	color: #000;
 }
 
-.btn{margin-bottom: 10px;}
+.RightContent .btn-default:hover, .RightContent .btn-default:active, .RightContent .btn-default.active:focus, .RightContent .btn-default.focus:active {
+	background-color: #e7e6e2;
+    border: 1px solid #e7e6e2;
+    color: #000;
+    cursor: auto;
+}
 
+
+
+.btn{
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+
+
+/*
 .btn-primary{
 	background-color: #666666;
     border: 1px solid #666666;
@@ -60,6 +73,17 @@ h4 {
 	background-color: #969696;
     border: 1px solid #969696;
     color: #FFF;
+}
+*/
+.btn-primary{
+	background-color: #717272;
+	border: 1px solid #717272;
+	color: #FFF;
+}
+.btn-primary:hover{
+	background-color: #515252;
+	border: 1px solid #515252;
+	color: #FFF;
 }
 
 
@@ -98,7 +122,7 @@ h4 {
 	color: #FFF;
 }
 
-
+/*
 .StudentCorrect{ 
 	background-color: #00cb60;
 	border: 1px solid #00cb60;
@@ -107,15 +131,17 @@ h4 {
 .StudentCorrect:hover{
 
 }
-
+*/
 
 .StudentWrong{
-	background-color: #ea3b36;
-	border: 1px solid #ea3b36;
+	background-color: #717272;
+	border: 1px solid #717272;
 	color: #FFF;
 }
 .StudentWrong:hover{
-
+	background-color: #515252;
+	border: 1px solid #515252;
+	color: #FFF;
 }
 
 
@@ -141,8 +167,23 @@ h4 {
     color: #FFF;
 }
 
-.RightContent{float: right; width: 80%; padding-left: 10px;}
-.LeftContent{float: left; width: 20%;}
+.RightContent{
+	/*float: right; 
+	width: 80%; */
+	/*margin-top: 10px;*/
+}
+.RightContent .btn {
+	cursor: auto;
+}
+
+.LeftContent{
+	/*float: left; 
+	width: 20%;*/
+	cursor: pointer;
+	/*margin-right: 10px;*/
+
+	padding-right: 10px;
+}
 
 
 .Clear{clear: both;}
@@ -154,9 +195,12 @@ h4 {
 .col-sm-12{width: 100%; margin-top: 10px; margin-right: 0px;}
 */
 
-.BtnContainer{padding-top: 10px; clear: both;}
+.BtnContainer{
+	padding-top: 10px; 
+	clear: both;
+}
 
-.SourcePage{/*border: 1px solid #C0C0C0;*/ padding: 10px 10px 0px 10px; display: none;}
+.SourcePage{/*border: 1px solid #C0C0C0;*/ /*padding: 10px 10px 0px 10px;*/ display: none;}
 
 .PagerClass{display: inline-block;}
 #PagerContainer{display: inline-block;}
@@ -178,6 +222,69 @@ h4 {
     border-color: #0dcea0;
     color: #fff;
 }
+/*
+.col-sm-12 .btn{
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+*/
+.ColorClass_0{
+	background-color: #dcbdc8;
+    border-color: #dcbdc8;
+}
+
+.ColorClass_1{
+	background-color: #f9d703;
+    border-color: #f9d703;
+}
+
+.ColorClass_2{
+	background-color: #dfd2a6;
+    border-color: #dfd2a6;
+}
+
+.ColorClass_3{
+	background-color: #db9741;
+    border-color: #db9741;
+}
+
+.ColorClass_4{
+	background-color: #03727e;
+    border-color: #03727e;
+}
+
+.ColorClass_5{
+	background-color: #756e29;
+    border-color: #756e29;
+}
+
+.ColorClass_6{
+	background-color: #8158b7;
+    border-color: #8158b7;
+}
+
+
+/* ATOs stylig på 1 errorbar */
+/*
+.ProcessBar{
+	background-color: rgba(255, 255, 255, 0.8);
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+*/
+.ProcessBar{
+	background-color: rgba(255, 255, 255, 0.8);
+}
+.ProcessBarGauge_correct{
+	background-color: rgba(42, 187, 42, 0.7); /*#2abb2a;*/
+	text-align: right;
+}
+.ProcessBarGauge_wrong{
+	background-color: rgba(237, 62, 58, 0.7); /*#ed3e3a;*/
+	text-align: right;
+}
+
 
 
 /*****************************
