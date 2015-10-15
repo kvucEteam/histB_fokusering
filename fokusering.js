@@ -505,9 +505,11 @@ function MarkSomeCorrectAnswersAsWrong(){
     });
 }
 
-
+// MARK
 function InsetProcessBars(jsonData){
     $(".DivRow").each(function( index1, element1 ) {
+
+        $(".LeftContent", element1).append('<div class="ProcessBar"></div>');
 
         // var numOfCorrectAnswers = jsonData[index1].userInterface.btn.length; 
         var numOfCorrectAnswers = $(".ColorClass", element1).length; 
@@ -519,10 +521,10 @@ function InsetProcessBars(jsonData){
             }
         });
         var Percentage = String(Math.round((numOfCorrectStudentAnswers/numOfCorrectAnswers)*100));
-        var HTML = '<div id="ProcessBar_correct_'+index1+'" class="ProcessBar ProcessBar_correct">';
+        var HTML = '<div id="ProcessBar_correct_'+index1+'" class="ProcessBar_correct">';
         HTML += '<div class="ProcessBarGauge_correct">'+Percentage+'%</div>';
         HTML += '</div>';
-        $(".LeftContent", element1).append(HTML);
+        $(".ProcessBar", element1).append(HTML);
         $('#ProcessBar_correct_'+index1+'> .ProcessBarGauge_correct').css('width',Percentage+'%');
 
         // $(".StudentWrong", element1).each(function( index2, element2 ) {
@@ -536,10 +538,10 @@ function InsetProcessBars(jsonData){
         var numOfWrongAnswers = TagArray.length - $(".ColorClass", element1).length;  // jsonData[index1].userInterface.btn.length; 
         var numOfWrongStudentAnswers = $(".StudentWrong", element1).length;
         Percentage = String(Math.round((numOfWrongStudentAnswers/numOfWrongAnswers)*100));
-        var HTML = '<div id="ProcessBar_wrong_'+index1+'" class="ProcessBar ProcessBar_wrong">';
+        var HTML = '<div id="ProcessBar_wrong_'+index1+'" class="ProcessBar_wrong">';
         HTML += '<div class="ProcessBarGauge_wrong">'+Percentage+'%</div>';
         HTML += '</div>';
-        $(".LeftContent", element1).append(HTML);
+        $(".ProcessBar", element1).append(HTML);
         $('#ProcessBar_wrong_'+index1+'> .ProcessBarGauge_wrong').css('width',Percentage+'%');
     });
 }

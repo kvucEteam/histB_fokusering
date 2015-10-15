@@ -273,9 +273,11 @@ h4 {
     width: 100%;
 }
 */
+
 .ProcessBar{
 	background-color: rgba(255, 255, 255, 0.8);
 }
+
 .ProcessBarGauge_correct{
 	background-color: rgba(42, 187, 42, 0.7); /*#2abb2a;*/
 	text-align: right;
