@@ -141,7 +141,8 @@ function returnSourcelItem(questionNum, jsonData){
     var HTML = '';
     switch(itemData.kildeData.type) {
         case "img":
-            HTML += '<img class="img-responsive" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/>';
+            // HTML += '<img class="img-responsive" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/>';
+            HTML += '<div data-toggle="modal" data-target="#myModal"> <img class="img-responsive" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/> </div>';
             break;
         case "text":
             HTML += '<div class="TextHolder">'+itemData.kildeData.text+'</div>';
@@ -163,6 +164,7 @@ function interfaceChanger(ActiveLinkNum){
     $( document ).on('click', ".PagerButton", function(event){
         var PagerNum = $(this).text().replace("kilde","").trim();
         $("#header").html(jsonData[parseInt(PagerNum)-1].userInterface.header);   // Shows the initial heading.
+        $("#header_2").html(jsonData[parseInt(PagerNum)-1].userInterface.header_2);   // Shows the initial heading.
         $("#subHeader").html(jsonData[parseInt(PagerNum)-1].userInterface.subHeader);    // Shows the initial subheading.
 
         console.log("interfaceChanger - PagerNum: " + PagerNum); // + ' - ' + jsonData[parseInt(PagerNum)-1].userInterface.header);
@@ -768,7 +770,7 @@ $(document).on('click', ".checkAnswer", function(event) {
         $("#btnContainer_"+String(parseInt(ActiveLinkNum)-1)+" > .StudentAnswer").each(function( index, element ) {
 
             console.log("checkAnswer - index: " + index);
-            // if ($(element).hasClass("CorrectAnswer"))
+            // if ($(element).hasClass("CorrectAnswer")) 
             //     $(element).css(CSS_OBJECT.CorrectAnswer); // Sets the color to the style of .CorrectAnswer which is green...
     
             if ($(element).hasClass("btnPressed")){  // Only if the student has marked an answer as correct, do...
@@ -791,8 +793,9 @@ $(document).on('click', ".checkAllAnswers", function(event) {
 
     // $("#AnswerOverview").html(makeEndGameSenario_3(jsonData));
     $("#AnswerOverview").html(makeEndGameSenario_4(jsonData));
-    $("#header").text("Emneoversigt");
-    $("#subHeader").text("Her ser du hvilke fokus-ord, der er rigtige. Øvelsen hjælper dig med at finde sammenhænge mellem kilder.");
+    $("#header").text("Find den røde tråd i kilderne");
+    $("#header_2").text("Sammenlign temaerne i kilderne");
+    $("#subHeader").text("Farverne viser hvilke temaord der går på tværs af kilderne.");
     $("#DataInput").hide();
     $(".checkAllAnswers").hide();
     $(".TextHolder p").hide();
@@ -809,6 +812,7 @@ $(document).on('click', ".checkAllAnswers", function(event) {
 $(document).on('click', ".PagerButton", function(event) {
     if ($("#AnswerOverview").html()){  // If AnswerOverview has content (which is only when viewing the result of the quiz), do...
         // $("#header").show();
+        // $("#header_2").show();
         $("#DataInput").show();        // Show the requested source (requestedby pressing the pager).
         $(".checkAllAnswers").show();
         $(".TextHolder p").show();
@@ -832,6 +836,18 @@ $(document).on('click', ".resultTable .LeftContent", function(event) {
     $("#subHeader").html(jsonData[ActiveLinkNum-1].userInterface.subHeader);    // Shows the subheading.
 });
 
+
+$(document).on('click', ".Source img", function(event) {
+    console.log("Source - ActiveLinkNum: " + ActiveLinkNum-1 + ", jsonData[ActiveLinkNum].quizData.kildeData.src: " + jsonData[ActiveLinkNum-1].quizData.kildeData.src);
+    // $(".modal-body").html("<img class='pic' src='" + jsonData[ActiveLinkNum-1].quizData.kildeData.src + "'/>");
+
+    // $(".Source").append("<div data-toggle='modal' data-target='#myModal'><img class='pic' src='" + jsonData[ActiveLinkNum-1].quizData.kildeData.src + "'></div>");
+    var parent_height = $(".pic").parent().parent().height();
+    console.log("parent_height: " + parent_height);
+    $(".pic").css("height" , parent_height);
+    modal();
+    $(".modal-body").html("<img src='" + jsonData[ActiveLinkNum-1].quizData.kildeData.src + "'/>");
+});
 
 
 // ================================
@@ -972,6 +988,7 @@ $(document).ready(function() {
  //    console.log("jsonData: " + JSON.stringify(jsonData) );
 
     $("#header").html(jsonData[0].userInterface.header);   // Shows the initial heading.
+    $("#header_2").html(jsonData[0].userInterface.header_2);
     $("#subHeader").html(jsonData[0].userInterface.subHeader);    // Shows the initial subheading.
 
  //    $(".btnContainer").hide();      // Hides all button containers.
@@ -989,6 +1006,7 @@ $(document).ready(function() {
     // ==================================
 
     $("#DataInput").html(returnSourcePages(jsonData));
+    // modal();
 
     Pager("#PagerContainer", "#DataInput > div", "Pager");
 

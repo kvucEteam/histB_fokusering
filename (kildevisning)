@@ -1,0 +1,21 @@
+(kildevisning)
+<h1>Find den røde tråd i kilderne </h1>
+<h2>Find temaerne i kilde[kildenummer] :</h2>
+
+<h4>Klik på temaordene for hver enkelt kilde og sammenlign dem til sidst.</h4>
+
+__________________________________________________
+
+(Sammenligningsvisning)
+<h1>Find den røde tråd i kilderne </h1>
+
+<h2>Sammenlign temaerne i kilderne:</h2>
+<h4>Farverne viser hvilke temaord der går på tværs af kilderne. </h4>
+
+
+
+Ohøj Anders
+
+Jeg er ked af det sene svar.
+
+Jeg har har implementeret den CSS som du viste mht processbars - men har også sat en "good-old" CSS media-query ind der breaker på 992 px (samme som col-sm-12), og givet denne nogle regler der justere lidt på klassen "RightContent". (Skal vi lade være med at bruge media-querys)

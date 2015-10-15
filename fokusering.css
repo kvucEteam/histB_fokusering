@@ -171,6 +171,7 @@ h4 {
 	/*float: right; 
 	width: 80%; */
 	/*margin-top: 10px;*/
+	padding-left: 10px;
 }
 .RightContent .btn {
 	cursor: auto;
@@ -182,7 +183,7 @@ h4 {
 	cursor: pointer;
 	/*margin-right: 10px;*/
 
-	padding-right: 10px;
+	/*padding-right: 10px;*/
 }
 
 
@@ -265,19 +266,19 @@ h4 {
 
 
 /* ATOs stylig på 1 errorbar */
-/*
+
 .ProcessBar{
 	background-color: rgba(255, 255, 255, 0.8);
     bottom: 0;
     position: absolute;
     width: 100%;
 }
-*/
 
+/*
 .ProcessBar{
 	background-color: rgba(255, 255, 255, 0.8);
 }
-
+*/
 .ProcessBarGauge_correct{
 	background-color: rgba(42, 187, 42, 0.7); /*#2abb2a;*/
 	text-align: right;
@@ -299,7 +300,7 @@ h4 {
 }
 
 .tth{
-	display: inline-block;	/* TEST */
+	display: inline-block;	/* TEST */ 
 	width: 19%; 			/* TEST */
 	/*border: 1px solid #C0C0C0;*/
 }
@@ -311,6 +312,16 @@ h4 {
 	border: 1px solid #C0C0C0;
 }
 
+
+/*************************************************
+	992 px er samme breaking point som col-sm-12
+**************************************************/
+@media (max-width: 992px) {
+	.RightContent{
+		margin-top: 10px;
+		padding-left: 0px;
+	}
+}
 
 
 /*****************************
