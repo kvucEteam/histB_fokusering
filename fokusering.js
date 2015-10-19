@@ -134,8 +134,8 @@ function returnSourcelItem(questionNum, jsonData){
     var HTML = '';
     switch(itemData.kildeData.type) {
         case "img":
-            // HTML += '<img class="img-responsive" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/>';
-            HTML += '<div class="SourceWrapper" data-toggle="modal" data-target="#myModal"> <img class="img-responsive" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/> </div>';
+            // HTML += '<div class="SourceWrapper" data-toggle="modal" data-target="#myModal"> <img class="img-responsive SourceImg" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/> </div>';
+            HTML += '<div class="SourceWrapper" data-toggle="modal" data-target="#myModal"> <img class="img-responsive SourceImg" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/> </div>';
             break;
         case "text":
             HTML += '<div class="TextHolder SourceWrapper">'+itemData.kildeData.text+'</div>';
@@ -155,12 +155,17 @@ function returnSourcelItem(questionNum, jsonData){
 
 // OK
 function ScaleProcessBarUnderImagesInMobileView(){
-    $("span.SourceWrapper").each(function( index, element ) {
-        var ParentObj = $(element).parent();
+    $(".SourceImg").each(function( index, element ) {
+        // var ParentObj = $(element).parent();
+        var ParentObj = $(element).closest(".LeftContent");
         var Width = $(element).width();
         console.log("ScaleProcessBarUnderImagesInMobileView - Width: " + Width);
         $(".ProcessBar", ParentObj).width( Width );
         console.log("ScaleProcessBarUnderImagesInMobileView - html: " + $(".ProcessBar", ParentObj).html());
+
+        var ParentObj2 = $(element).closest(".SourceWrapper");
+        var Margin = Math.round(($(ParentObj2).width() - Width)/2);
+        $(".ProcessBar", ParentObj).css("margin-left", Margin+"px");
     });
 }
 
