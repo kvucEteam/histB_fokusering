@@ -18,8 +18,29 @@ h4 {
 
 #questionCarousel{margin-top: 20px; border-radius: 8px; background-color: #FFF;}
 
-
+/*
 .TextHolder{margin-left: auto; margin-right: auto; width: 80%; min-height: 200px;}
+*/
+
+/************************************    ATO's  modal styling   ***************************************/
+.TextHolder{margin-left: auto; margin-right: auto; width: 80%; min-height: 200px;overflow: auto;
+  border-radius: 8px;
+  padding: 20px;
+  height: auto;
+  box-shadow: 1px 2px 10px #888888; 
+  background-color: #fff;
+  margin-top:20px;
+}
+.LeftContent .TextHolder{
+  all: initial;
+  * {
+    all: unset;
+  }
+}
+.modal-dialog{width: 90%;}
+.modal-body img {width: 100%;}
+/*****************************************************************************************************/
+
 .resultTable  .TextHolder{min-height: 0px; width: 100%;}
 
 .indent{margin-left: 10px}

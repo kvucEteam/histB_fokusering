@@ -17,7 +17,7 @@ console.log("elementInArray - true: " + elementInArray([1,2,3,4,5], 3));
 console.log("elementInArray - false: " + elementInArray([1,2,3,4,5], 6));
 
 
-
+// OK
 function ReturnAjaxData(Type, Url, Async, DataType) {
     $.ajax({
         type: Type,
@@ -28,14 +28,14 @@ function ReturnAjaxData(Type, Url, Async, DataType) {
             console.log("ReturnAjaxData: " + JSON.stringify(Data));
             jsonData = JSON.parse(JSON.stringify(Data));
             // JsonExternalData = JSON.parse(JSON.stringify(Data));
-            // console.log("HowWhyData: " + HowWhyData);
+            // console.log("HowWhyData: " + HowWhyData); 
         }
     }).fail(function() {
         alert("Ajax failed to fetch data - the requested quizdata might not exist...");
     });
 }
 
-
+// OK
 function ReturnURLPerameters(UlrVarObj){
     var UrlVarStr = window.location.search.substring(1);
     console.log("ReturnURLPerameters - UrlVarStr: " + UrlVarStr);
@@ -52,6 +52,7 @@ function ReturnURLPerameters(UlrVarObj){
 }
 
 
+// OK
 // Controles til width of the UserMsgBox
 function UserMsgBox_SetWidth(TargetSelector, WidthPercent){
     var Width = $(TargetSelector).width();
@@ -77,6 +78,7 @@ console.log("hastagStrToArray: " + hastagStrToArray("#Ungdomsopr√∏r, #Kvindebev√
 console.log("hastagStrToArray: " + JSON.stringify( hastagStrToArray("#Tag1 a b, #Tag2 a b, #Tag3 a b") ) );
 
 
+// OK
 function GetAllUniqueTags(jsonData){
     var TagArray = [];
     var TagArrayWrong = [];
@@ -104,23 +106,13 @@ function GetAllUniqueTags(jsonData){
     return TagArray;
 }
 
-
+// OK
 function returnSourcePages(jsonData){
     var HTML = '';
     for (n in jsonData) {
         HTML += '<div class="SourcePage">';
         
         HTML +=     '<div class="Source">'+returnSourcelItem(n, jsonData)+'</div>';
-        // HTML +=     '<div class="NoteField">'+'Placer et felt til kursistens noter her? <br/> <i>Note '+String(parseInt(n)+1)+': Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam...</i></div>';
-        // HTML +=     '<div class="Clear"></div>';
-        
-
-        // // THIS IF-CLAUSE IS ONLY TEMPORARY CODE (THE CONTENT INSIDE THE IF-CLAUSE IS OK):
-        // if (jsonData[n].userInterface.hasOwnProperty("btnHastagStr")){
-        //     jsonData[n].userInterface.btn = [];
-        //     jsonData[n].userInterface.btn = hastagStrToArray(jsonData[n].userInterface.btnHastagStr);
-        //     console.log("returnSourcePages - hastagStrToArray: " + jsonData[n].userInterface.btn);
-        // }
 
         HTML +=     '<div '+'id="btnContainer_'+n+'" class="BtnContainer">';
         var btnArray = jsonData[n].userInterface.btn;
@@ -136,19 +128,20 @@ function returnSourcePages(jsonData){
 }
 
 
+// OK
 function returnSourcelItem(questionNum, jsonData){
     var itemData = jsonData[questionNum].quizData;
     var HTML = '';
     switch(itemData.kildeData.type) {
         case "img":
             // HTML += '<img class="img-responsive" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/>';
-            HTML += '<div data-toggle="modal" data-target="#myModal"> <img class="img-responsive" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/> </div>';
+            HTML += '<span class="SourceWrapper" data-toggle="modal" data-target="#myModal"> <img class="img-responsive" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/> </span>';
             break;
         case "text":
-            HTML += '<div class="TextHolder">'+itemData.kildeData.text+'</div>';
+            HTML += '<div class="TextHolder SourceWrapper">'+itemData.kildeData.text+'</div>';
             break;
         case "video":
-            HTML += '<div class="embed-responsive embed-responsive-16by9 col-xs-12 col-md-12">' + 
+            HTML += '<div class="SourceWrapper embed-responsive embed-responsive-16by9 col-xs-12 col-md-12">' + 
                         '<iframe class="embed-responsive-item" src="'+itemData.kildeData.src+'?rel=0" allowfullscreen="1"></iframe>' + 
                     '</div>';
             break;
@@ -160,6 +153,19 @@ function returnSourcelItem(questionNum, jsonData){
 }
 
 
+// OK
+function ScaleProcessBarUnderImagesInMobileView(){
+    $("span.SourceWrapper").each(function( index, element ) {
+        var ParentObj = $(element).parent();
+        var Width = $(element).width();
+        console.log("ScaleProcessBarUnderImagesInMobileView - Width: " + Width);
+        $(".ProcessBar", ParentObj).width( Width );
+        console.log("ScaleProcessBarUnderImagesInMobileView - html: " + $(".ProcessBar", ParentObj).html());
+    });
+}
+
+
+// OK
 function interfaceChanger(ActiveLinkNum){
     $( document ).on('click', ".PagerButton", function(event){
         var PagerNum = $(this).text().replace("kilde","").trim();
@@ -174,57 +180,7 @@ function interfaceChanger(ActiveLinkNum){
 }
 
 
-function countCorrectAnswers(jsonData){
-    correct_total = 0;
-    error_total = 0;
-    var error_displayed_total = 0;
-    var numOfQuestions = 0;
-    for (k in jsonData){
-        var correct = 0; var error_missed = 0; var error_wrong = 0; var error_displayed = 0;
-        var answerArray = jsonData[k].quizData.correctAnswer;
-        var numOfSrudentAnswers = $("#btnContainer_"+k+" > .btnPressed").length;
-        var numOfCorrectAnswers = answerArray.length;
-        jsonData[k].StudentAnswers = {Correct : [], Wrong: []};
-        for (var n in answerArray){
-            if ($("#btnContainer_"+k+" > .StudentAnswer:eq("+answerArray[n]+")").hasClass("btnPressed")){
-                correct++;   // Counting correct answers.
-                jsonData[k].StudentAnswers.Correct.push(answerArray[n]);
-                // $("#btnContainer_"+k+" > .StudentAnswer:eq("+answerArray[n]+")").toggleClass("CorrectAnswer");
-                $("#btnContainer_"+k+" > .StudentAnswer:eq("+answerArray[n]+")").addClass("CorrectAnswer");
-            } else {
-                error_missed++;  // Counting missed correct answers, eg. if there are two or more correct answers and the student does not answer all of the answers, then this counter counts the missed correct answers.
-            }
-            error_wrong += numOfSrudentAnswers - (correct + error_missed); // Counts all the wrong answers chosen by the student. 
-            error_wrong = (error_wrong < 0) ?  0 : error_wrong;
-
-            console.log("countCorrectAnswers - CurrentQuestionId: " + CurrentQuestionId + 
-            "\nnumOfSrudentAnswers: " + numOfSrudentAnswers + ", numOfCorrectAnswers: " + numOfCorrectAnswers + 
-            "\ncorrect: " + correct  + ", error_missed: " + error_missed  + ", error_wrong: " + error_wrong);
-        }
-
-        $("#btnContainer_"+k+" > .StudentAnswer").each(function( index, element ) {
-            if (($(element).hasClass("btnPressed")) && !(elementInArray(answerArray, index))){
-                ++error_displayed;
-                jsonData[k].StudentAnswers.Wrong.push(index);
-                // $(element).toggleClass("WrongAnswer");
-                $(element).addClass("WrongAnswer");
-            }
-        });
-
-        // correct_total += (correct  // <-------------------------   IMPORTANT: THIS WILL GIVE TWO POINTS IF TWO CORRECT ANSWERS ARE GIVEN IN ONE QUESTION!!!
-        correct_total += (correct >= 1)? 1 : 0;   // <-------------------------   IMPORTANT: THIS ENFORCES _ONE_ POINT IF THERE ARE TWO OR MORE CORRECT ANSWERS!!!!!
-        error_total += error_wrong + error_missed - correct;
-        error_displayed_total += error_displayed;
-
-        ++numOfQuestions;
-    }
-
-    $(".QuestionCounter").text(correct_total+'/'+numOfQuestions);
-    $(".ErrorCount").text(error_displayed_total);
-    console.log("countCorrectAnswers - correct_total: " + correct_total + ", error_total: " + error_total + ", error_displayed_total: " + error_displayed_total);
-}
-
-
+// OK
 function countCorrectAnswers_NEW(jsonData){
     correct_total = 0;
     error_total = 0;
@@ -279,7 +235,7 @@ function countCorrectAnswers_NEW(jsonData){
     console.log("countCorrectAnswers - correct_total: " + correct_total + ", error_total: " + error_total + ", error_displayed_total: " + error_displayed_total);
 }
 
-
+// OK
 function ShuffelArray(ItemArray){
     var NumOfItems = ItemArray.length;
     var NewArray = ItemArray.slice();  // Copy the array...
@@ -292,45 +248,6 @@ function ShuffelArray(ItemArray){
         NewArray[Item1] = TempItem2;
     }
     return NewArray;
-}
-
-function SwitchElements(TargetArray, TRanArray){
-    var TArray = TargetArray.slice();  // Copy the array...
-    var E1, E2;
-    for (n in TRanArray){
-        TArray[TRanArray[n]] = TargetArray[n];
-    }
-    console.log("SwitchElements - TArray: " + TArray);
-    return TArray;
-}
-SwitchElements(["a","b","c","d","e"],[0,1,2,3,4]);
-SwitchElements(["a","b","c","d","e"],[4,3,2,1,0]);
-
-
-function RemoveAbsentElements(TargetArray, ElementsToKeepArray){
-
-}
-
-
-function randomizeJsonData(jsonData){
-    for (n in jsonData){
-        var ArrayLength = jsonData[n].userInterface.btn.length;
-        var TRanArray = [];
-        for (var i = 0; i < ArrayLength; i++) {
-            TRanArray.push(i);
-        };
-        console.log("randomizeJsonData - TRanArray: " + TRanArray);
-        var RanTAnsArray = ShuffelArray(TRanArray);
-        console.log("randomizeJsonData - RanTAnsArray: " + RanTAnsArray);
-
-        console.log("randomizeJsonData - jsonData["+n+"] - btn 1: " + jsonData[n].userInterface.btn);
-        console.log("randomizeJsonData - jsonData["+n+"] - btn 2B: " + SwitchElements(jsonData[n].userInterface.btn, RanTAnsArray));
-        console.log("randomizeJsonData - jsonData["+n+"] - btn 2: " + jsonData[n].userInterface.btn);
-        // jsonData.userInterface.btn = SwitchElements(jsonData.userInterface.btn, RanTAnsArray);
-        console.log("randomizeJsonData - jsonData["+n+"] - feedbackData 1: " + jsonData[n].quizData.feedbackData);
-        jsonData[n].quizData.feedbackData = SwitchElements(jsonData[n].quizData.feedbackData, RanTAnsArray);
-        console.log("randomizeJsonData - jsonData["+n+"] - feedbackData 2: " + jsonData[n].quizData.feedbackData);
-    }
 }
 
 
@@ -351,37 +268,8 @@ function AddColorToPagerButtons(jsonData){
 }
 
 
-function returnDivTable(tableSelector, headerArray, bodyArray2D){
-    bodyArray2D = matrixTranspose(bodyArray2D);
-    var HTML = '<div '+((tableSelector.indexOf("#")!==-1)?'id="'+tableSelector.replace("#","")+'"':((tableSelector.indexOf(".")!==-1)?'class="'+tableSelector.replace(".","")+'"':''))+'>';
-    for (var y = 0; y < bodyArray2D.length; y++) {
-        HTML += '<div class="DivColumn">';
-        if (headerArray.length > 0){  // Content in headerArray is not required - just an empty array 
-            HTML += '<div class="tth">'+headerArray[y]+'</div>';
-        }
-        for (var x = 0; x < bodyArray2D[y].length; x++) {
-            HTML += '<div class="ttd">'+bodyArray2D[y][x]+'</div>'+((bodyArray2D[y].length-1 == x)?'</div>':'');
-        };
-    };
-    HTML += '</div>';
-    console.log("returnTable - HTML: " + HTML);
-    return HTML;
-}
-// $("body").append(returnDivTable(".resultTable", ["HHHHH 1", "HHHHH 2", "HHHHH 3"], [["B11", "B12", "B13"], ["B21", "B22", "B23"], ["B31", "B32", "B33"], ["B41", "B42", "B43"]]));
 
-
-function returnTextPart(objectText, Maxlength){
-    if (objectText.indexOf(" ", Maxlength) !== -1)
-        return objectText.substr(0,objectText.indexOf(" ", Maxlength), Maxlength)+"...";
-    else
-        return objectText;
-}
-console.log("returnTextPart: " + returnTextPart("a b c d", 10));
-console.log("returnTextPart: " + returnTextPart("a b c d e f g h i j k l", 10));
-
-
-
-
+// OK
 function returnDivTable_MAM(tableSelector, headerArray, subHeaderArray, bodyArray2D){
     // bodyArray2D = matrixTranspose(bodyArray2D);
     var HTML = '<div '+((tableSelector.indexOf("#")!==-1)?'id="'+tableSelector.replace("#","")+'"':((tableSelector.indexOf(".")!==-1)?'class="'+tableSelector.replace(".","")+'"':''))+'>';
@@ -407,32 +295,6 @@ function returnDivTable_MAM(tableSelector, headerArray, subHeaderArray, bodyArra
 // $("body").append(returnDivTable_MAM(".resultTable", ["HHHHH 1", "HHHHH 2", "HHHHH 3"], [["B11", "B12", "B13"], ["B21", "B22", "B23"], ["B31", "B32", "B33"], ["B41", "B42", "B43"]]));
 
 
-function returnDivTable_row(tableSelector, headerArray, bodyArray2D){
-    bodyArray2D = matrixTranspose(bodyArray2D);
-    var HTML = '<div '+((tableSelector.indexOf("#")!==-1)?'id="'+tableSelector.replace("#","")+'"':((tableSelector.indexOf(".")!==-1)?'class="'+tableSelector.replace(".","")+'"':''))+'>';
-    HTML += '<div class="DivRow">';
-    
-    if (headerArray.length > 0){  // Content in headerArray is not required - just an empty array 
-        for (var y = 0; y < headerArray.length; y++) {
-            HTML += '<div class="ttd">'+headerArray[y]+'</div>';
-        };
-    }
-    
-    HTML += '</div>';
-    for (var y = 0; y < bodyArray2D.length; y++) {
-        HTML += '<div class="DivRow">';
-        for (var x = 0; x < bodyArray2D[y].length; x++) {
-            HTML += '<div class="ttd">'+bodyArray2D[y][x]+'</div>'+((bodyArray2D[y].length-1 == x)?'</div>':'');
-        };
-    };
-    HTML += '</div>';
-    console.log("returnDivTable_row - HTML: " + HTML);
-    return HTML;
-}
-// $("body").append(returnDivTable_row(".resultTable", ["HHHHH 1", "HHHHH 2", "HHHHH 3"], [["B11", "B12", "B13"], ["B21", "B22", "B23"], ["B31", "B32", "B33"], ["B41", "B42", "B43"]]));
-
-
-
 // Function that "interchanges" rows and columns in a matrix (2 dimensional array):  
 function matrixTranspose(matrix) {
     var matrixTranspose = [];
@@ -450,13 +312,14 @@ console.log("matrixTranspose 1: " + JSON.stringify(matrixTranspose([["B11", "B12
 console.log("matrixTranspose 2: " + JSON.stringify(matrixTranspose([["B11","B21","B31","B41"],["B12","B22","B32","B42"],["B13","B23","B33","B43"]])));
 
 
+// OK
 function ShiftToLowerColorClass(){
     var Count = 0;
     for (var n in TagArray){
         var Found = false;
         $(".CorrectAnswer").each(function( index, element ) {
-            // if ($(element).hasClass("TColorClass_"+n)){
-            if ( ($(element).hasClass("TColorClass_"+n)) && ($(".TColorClass_"+n).length > 1) ) {
+            if ($(element).hasClass("TColorClass_"+n)){  // ONLY IF ONE OR MORE INSTANCES OF THE SAME THEME EXISTS...
+            // if ( ($(element).hasClass("TColorClass_"+n)) && ($(".TColorClass_"+n).length > 1) ) {  // ONLY IF TWO OR MORE INSTANCES OF THE SAME THEME EXISTS...
                 Found = true;
                 $(element).addClass("ColorClass_"+Count);
                 $(element).addClass("ColorClass");
@@ -485,7 +348,8 @@ function AutoAddColorsToColorClasses(){
     };
 }
 
-// Linje 727, 481
+
+// OK
 function DeactivateWrongAnswers(){
     for (var x = 0; x < NumOfUniqueTags; x++) {
         $(".ColorClass_"+x).each(function( index, element ) {
@@ -497,6 +361,8 @@ function DeactivateWrongAnswers(){
     }
 }
 
+
+// OK
 function MarkSomeCorrectAnswersAsWrong(){
     $(".StudentCorrect").each(function( index, element ) {
         if (!$(element).hasClass("ColorClass")){
@@ -507,7 +373,8 @@ function MarkSomeCorrectAnswersAsWrong(){
     });
 }
 
-// MARK
+
+// OK
 function InsetProcessBars(jsonData){
     $(".DivRow").each(function( index1, element1 ) {
 
@@ -549,125 +416,7 @@ function InsetProcessBars(jsonData){
 }
 
 
-
-// MARK 5
-
-function makeEndGameSenario_2(jsonData){
-    var sourceArray = [];
-    var correctAnswerMatrix = [];  // 2 dimensional array!
-    var MaxLength = 0; var Length;
-    for (n in jsonData) {
-        Length = jsonData[n].userInterface.btn.length;
-        if (Length > MaxLength) MaxLength = Length;
-    }
-    console.log("makeEndGameSenario - MaxLength: " + MaxLength);
-    for (n in jsonData) {
-        sourceArray.push(returnSourcelItem(n, jsonData));
-        var rowArray = [];
-        // correctAnswerMatrix.push(jsonData[n].userInterface.btn);  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
-        
-        // for (k in jsonData[n].userInterface.btn){
-        //     rowArray.push('<div class="'+((elementInArray(jsonData[n].quizData.correctAnswer, k))?'CorrectAnswer ':'')+
-        //                                  ((elementInArray(jsonData[n].StudentAnswers.Correct, k))?'StudentCorrect ':'')+
-        //                                  ((elementInArray(jsonData[n].StudentAnswers.Wrong, k))?'StudentWrong ':'')+'">'
-        //                                  +jsonData[n].userInterface.btn[k]+
-        //                   '</div>');  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
-        // }
-
-        for (var k = 0; k < MaxLength; k++) {
-        // for (k in jsonData[n].userInterface.btn){
-            if (typeof(jsonData[n].userInterface.btn[k]) !== "undefined"){
-                rowArray.push('<div class="'+((elementInArray(jsonData[n].quizData.correctAnswer, k))?'CorrectAnswer ':'')+
-                                             ((elementInArray(jsonData[n].StudentAnswers.Correct, k))?'StudentCorrect ':'')+
-                                             ((elementInArray(jsonData[n].StudentAnswers.Wrong, k))?'StudentWrong ':'')+'">'
-                                             +jsonData[n].userInterface.btn[k]+
-                              '</div>');  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
-            } else {
-                rowArray.push('<div class="Empty">&nbsp;</div>');
-            }
-        }
-        correctAnswerMatrix.push(rowArray);
-    }
-    console.log("makeEndGameSenario - jsonData: " + JSON.stringify(jsonData));  // '<div class="">'
-    console.log("makeEndGameSenario - correctAnswerMatrix: " + JSON.stringify(correctAnswerMatrix));  // '<div class="">'
-
-    // DETTE ER EN TEST:
-    var HTML = '<div id="EndGameSenario">' + returnDivTable_row('.resultTable', sourceArray, correctAnswerMatrix) + '</div>';
-
-    // DETTE VIRKER OK:
-    // var TcorrectAnswerMatrix = matrixTranspose(correctAnswerMatrix);
-    // console.log("makeEndGameSenario - TcorrectAnswerMatrix: " + JSON.stringify(TcorrectAnswerMatrix));
-    // var HTML = '<div id="EndGameSenario">' + returnDivTable('.resultTable', sourceArray, TcorrectAnswerMatrix) + '</div>';
-
-
-    UserMsgBox("body", HTML);
-    // UserMsgBox_SetWidth(".container-fluid", 0.7);
-
-    // $("#DataInput").append(HTML);
-
-    // $("#EndGameSenario th").css("width", String(100/sourceArray.length)+'%');
-    $("#EndGameSenario .ttd").css("width", String(Math.floor(100/jsonData.length)-0.1)+'%');
-
-}
-
-
-function makeEndGameSenario_3(jsonData){
-    var sourceArray = [];
-    var subHeaderArray = [];
-    var correctAnswerMatrix = [];  // 2 dimensional array!
-    var MaxLength = 0; var Length;
-    for (n in jsonData) {
-        Length = jsonData[n].userInterface.btn.length;
-        if (Length > MaxLength) MaxLength = Length;
-    }
-    console.log("makeEndGameSenario - MaxLength: " + MaxLength);
-    for (n in jsonData) {
-        sourceArray.push(returnSourcelItem(n, jsonData));
-        subHeaderArray.push(jsonData[n].userInterface.AnswerOverViewText);
-        var rowArray = [];
-        // correctAnswerMatrix.push(jsonData[n].userInterface.btn);  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
-        
-        // for (k in jsonData[n].userInterface.btn){
-        //     rowArray.push('<div class="'+((elementInArray(jsonData[n].quizData.correctAnswer, k))?'CorrectAnswer ':'')+
-        //                                  ((elementInArray(jsonData[n].StudentAnswers.Correct, k))?'StudentCorrect ':'')+
-        //                                  ((elementInArray(jsonData[n].StudentAnswers.Wrong, k))?'StudentWrong ':'')+'">'
-        //                                  +jsonData[n].userInterface.btn[k]+
-        //                   '</div>');  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
-        // }
-
-        for (var k = 0; k < MaxLength; k++) {
-        // for (k in jsonData[n].userInterface.btn){
-            if (typeof(jsonData[n].userInterface.btn[k]) !== "undefined"){
-                rowArray.push('<div class="btn btn-default '+((elementInArray(jsonData[n].quizData.correctAnswer, k))?'XXX_CorrectAnswer ':'')+
-                                             ((elementInArray(jsonData[n].StudentAnswers.Correct, k))?'XXX_StudentCorrect ':'')+
-                                             ((elementInArray(jsonData[n].StudentAnswers.Wrong, k))?'XXX_StudentWrong ':'')+'">'
-                                             +jsonData[n].userInterface.btn[k]+
-                              '</div>');  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
-            } else {
-                rowArray.push('<div class="Empty">&nbsp;</div>');
-            }
-        }
-        correctAnswerMatrix.push(rowArray);
-    }
-    console.log("makeEndGameSenario - jsonData: " + JSON.stringify(jsonData));  // '<div class="">'
-    console.log("makeEndGameSenario - correctAnswerMatrix: " + JSON.stringify(correctAnswerMatrix));  // '<div class="">'
-
-    // DETTE ER EN TEST:
-    var HTML = '<div id="EndGameSenario">' + returnDivTable_MAM('.resultTable', sourceArray, subHeaderArray,  correctAnswerMatrix) + '</div>';
-
-    // DETTE VIRKER OK:
-    // var TcorrectAnswerMatrix = matrixTranspose(correctAnswerMatrix);
-    // console.log("makeEndGameSenario - TcorrectAnswerMatrix: " + JSON.stringify(TcorrectAnswerMatrix));
-    // var HTML = '<div id="EndGameSenario">' + returnDivTable('.resultTable', sourceArray, TcorrectAnswerMatrix) + '</div>';
-
-
-    // UserMsgBox("body", HTML);
-    // $("#EndGameSenario .ttd").css("width", String(Math.floor(100/jsonData.length)-0.1)+'%');
-
-    return HTML;
-}
-
-
+// OK
 function makeEndGameSenario_4(jsonData){
     var sourceArray = [];
     var subHeaderArray = [];
@@ -683,24 +432,9 @@ function makeEndGameSenario_4(jsonData){
         subHeaderArray.push(jsonData[n].userInterface.AnswerOverViewText);
         var rowArray = [];
         // correctAnswerMatrix.push(jsonData[n].userInterface.btn);  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
-        
-        // for (k in jsonData[n].userInterface.btn){
-        //     rowArray.push('<div class="'+((elementInArray(jsonData[n].quizData.correctAnswer, k))?'CorrectAnswer ':'')+
-        //                                  ((elementInArray(jsonData[n].StudentAnswers.Correct, k))?'StudentCorrect ':'')+
-        //                                  ((elementInArray(jsonData[n].StudentAnswers.Wrong, k))?'StudentWrong ':'')+'">'
-        //                                  +jsonData[n].userInterface.btn[k]+
-        //                   '</div>');  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
-        // }
 
         // for (var k = 0; k < MaxLength; k++) {
         for (var k = 0; k < TagArray.length; k++) {
-            
-                // rowArray.push('<div class="btn btn-default '+((elementInArray(jsonData[n].userInterface.btn, TagArray[k]))?'CorrectAnswer ':'')+
-                //                              ((elementInArray(jsonData[n].StudentAnswers.Correct, k))?'XXX_StudentCorrect ':'')+
-                //                              ((elementInArray(jsonData[n].StudentAnswers.Wrong, k))?'StudentWrong ':'')+
-                //                              ((elementInArray(jsonData[n].userInterface.btn, TagArray[k]))?'TColorClass_'+k:'')+'">'
-                //                              +TagArray[k]+
-                //               '</div>');  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
 
                 rowArray.push('<div class="btn btn-default '+((elementInArray(jsonData[n].userInterface.btn, TagArray[k]))?'CorrectAnswer ':'')+
                                              ((elementInArray(jsonData[n].StudentAnswers.Correct, k))?'StudentCorrect ':'')+
@@ -708,27 +442,13 @@ function makeEndGameSenario_4(jsonData){
                                              ((elementInArray(jsonData[n].userInterface.btn, TagArray[k]))?'TColorClass_'+k:'')+'">'
                                              +TagArray[k]+
                               '</div>');  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
-
-            // } else {
-            //     rowArray.push('<div class="Empty">&nbsp;</div>');
-            // }
         }
         correctAnswerMatrix.push(rowArray);
     }
     console.log("makeEndGameSenario - jsonData: " + JSON.stringify(jsonData));  // '<div class="">'
     console.log("makeEndGameSenario - correctAnswerMatrix: " + JSON.stringify(correctAnswerMatrix));  // '<div class="">'
 
-    // DETTE ER EN TEST:
     var HTML = '<div id="EndGameSenario">' + returnDivTable_MAM('.resultTable', sourceArray, subHeaderArray, correctAnswerMatrix) + '</div>';
-
-    // DETTE VIRKER OK:
-    // var TcorrectAnswerMatrix = matrixTranspose(correctAnswerMatrix);
-    // console.log("makeEndGameSenario - TcorrectAnswerMatrix: " + JSON.stringify(TcorrectAnswerMatrix));
-    // var HTML = '<div id="EndGameSenario">' + returnDivTable('.resultTable', sourceArray, TcorrectAnswerMatrix) + '</div>';
-
-
-    // UserMsgBox("body", HTML);
-    // $("#EndGameSenario .ttd").css("width", String(Math.floor(100/jsonData.length)-0.1)+'%');
 
     return HTML;
 }
@@ -803,7 +523,8 @@ $(document).on('click', ".checkAllAnswers", function(event) {
     DeactivateWrongAnswers();
     MarkSomeCorrectAnswersAsWrong();
     InsetProcessBars(jsonData);
-    // AutoAddColorsToColorClasses();  // <---- 
+    ScaleProcessBarUnderImagesInMobileView();
+    AutoAddColorsToColorClasses();  // <---- 
 
     // $("#AnswerOverview").html(makeEndGameSenario_3(jsonData));
 }); 
@@ -839,14 +560,13 @@ $(document).on('click', ".resultTable .LeftContent", function(event) {
 
 $(document).on('click', ".Source img", function(event) {
     console.log("Source - ActiveLinkNum: " + ActiveLinkNum-1 + ", jsonData[ActiveLinkNum].quizData.kildeData.src: " + jsonData[ActiveLinkNum-1].quizData.kildeData.src);
-    // $(".modal-body").html("<img class='pic' src='" + jsonData[ActiveLinkNum-1].quizData.kildeData.src + "'/>");
-
+   
     // $(".Source").append("<div data-toggle='modal' data-target='#myModal'><img class='pic' src='" + jsonData[ActiveLinkNum-1].quizData.kildeData.src + "'></div>");
-    var parent_height = $(".pic").parent().parent().height();
-    console.log("parent_height: " + parent_height);
-    $(".pic").css("height" , parent_height);
+    // var parent_height = $(".pic").parent().parent().height();
+    // console.log("parent_height: " + parent_height);
+    // $(".pic").css("height" , parent_height);
     modal();
-    $(".modal-body").html("<img src='" + jsonData[ActiveLinkNum-1].quizData.kildeData.src + "'/>");
+    $(".modal-body").html('<h4>'+jsonData[ActiveLinkNum-1].userInterface.AnswerOverViewText+"</h4><img src='" + jsonData[ActiveLinkNum-1].quizData.kildeData.src + "'/>");
 });
 
 
@@ -960,10 +680,6 @@ function Pager(PagerSelector, TargetSelectorChild, CssId) {
 $(document).ready(function() {
 // $(window).load(function() {
 
- //    var CssProp = ["background-color", "border-top-color", "border-right-color", "border-bottom-color", "border-left-color", "color"];
- //    getCss([".StudentAnswer", ".CorrectAnswer", ".WrongAnswer", ".btnPressed", ".WrongAnswer_hover"], CssProp);
- //    console.log("CSS_OBJECT: " + CSS_OBJECT);
-
 
     var UlrVarObj = {"file" : ""};   // Define a default file-refrence (empty) ---> "QuizData.json"
     UlrVarObj = ReturnURLPerameters(UlrVarObj);  // Get URL file perameter.
@@ -976,32 +692,11 @@ $(document).ready(function() {
 
     TagArray = ShuffelArray(TagArray);
 
-
- //        	// returnQuizlHtml(0, jsonData);  // TEST
-
- //        	// returnCarouselItem(3, jsonData);  // TEST
-
- //        	// returnCarouseList(jsonData);      // TEST
-
- //    // $("#DataInput").html(returnQuizlHtml(0, jsonData));  // Insert carousel HTML
-
- //    console.log("jsonData: " + JSON.stringify(jsonData) );
-
     $("#header").html(jsonData[0].userInterface.header);   // Shows the initial heading.
     $("#header_2").html(jsonData[0].userInterface.header_2);
     $("#subHeader").html(jsonData[0].userInterface.subHeader);    // Shows the initial subheading.
 
- //    $(".btnContainer").hide();      // Hides all button containers.
- //    $("#btnContainer_"+0).show();   // Shows the first button container.
-
     $(".QuestionCounter").text(correct_total+'/'+jsonData.length);   // Counts the initial number of correctly answered questions and total number questions and displays them.
-
- //    // CheckStudentAnswers(jsonData);
-
-	// userInterfaceChanger(jsonData);
-
- //    hoverCss([".CorrectAnswer_hover", ".WrongAnswer_hover"]);
-
 
     // ==================================
 
@@ -1012,15 +707,12 @@ $(document).ready(function() {
 
     interfaceChanger(ActiveLinkNum);
 
-    // makeEndGameSenario(jsonData);
-    // makeEndGameSenario_2(jsonData);
-
     $(window).load(function () {
         // $(".NoteField").height($(".Source").height());
     });
 
     $(window).resize(function () {
-        // $(".NoteField").height($(".Source").height());
+        ScaleProcessBarUnderImagesInMobileView();
     });
 
     // ====================   TEST  ===================
