@@ -1,12 +1,12 @@
 [
 	{ 
 		"userInterface" : { 
-			"header" : "Find den røde tråd i kilderne",
-			"header_2" : "Find temaerne i kilde 1",
-			"subHeader" : "Klik på temaordene for hver enkelt kilde og sammenlign dem til sidst.",
+			"header" : "",
+			"header_2" : "",
+			"subHeader" : "",
 			"AnswerOverViewText" : "Kilde 1. Thylejren i Frøstrup",
 			"btn" : ["Ungdomsoprør", "Hippie", "Samfund", "Individ"],
-			"btnWrong" : ["Atomkraft", "Rumfart", "Politik", "Bandekrig"]
+			"btnWrong" : ["Atomkraft", "Rumfart", "Bandekrig"]
 		},
 		"quizData" : {
 			"taskText" : "Opgaveforklaring til kursist - 0",
@@ -17,12 +17,12 @@
 	},
 	{ 
 		"userInterface" : {
-			"header" : "Find den røde tråd i kilderne",
-			"header_2" : "Find temaerne i kilde 2",
-			"subHeader" : "Klik på temaordene for hver enkelt kilde og sammenlign dem til sidst.",
+			"header" : "",
+			"header_2" : "",
+			"subHeader" : "",
 			"AnswerOverViewText" : "Kilde 2. The Beatles ankommer til JFK lufthavnen",
 			"btn" : ["Ungdomsoprør", "Ungdomskultur", "Individ", "Musik"],
-			"btnWrong" : ["Atomkraft", "Rumfart", "Politik", "Bandekrig"]
+			"btnWrong" : ["Atomkraft", "Rumfart", "Bandekrig"]
 		},
 		"quizData" : {
 			"taskText" : "Opgaveforklaring til kursist - 1",
@@ -33,12 +33,12 @@
 	},
 	{ 
 		"userInterface" : { 
-			"header" : "Find den røde tråd i kilderne",
-			"header_2" : "Find temaerne i kilde 3",
-			"subHeader" : "Klik på temaordene for hver enkelt kilde og sammenlign dem til sidst.",
+			"header" : "",
+			"header_2" : "",
+			"subHeader" : "",
 			"AnswerOverViewText" : "Kilde 3. &quot;En rødstrømpehistorie&quot;",
 			"btn" : ["Ungdomsoprør", "Kvindebevægelsen", "Rødstrømper", "Kønsroller", "Individ", "Familie"],
-			"btnWrong" : ["Atomkraft", "Rumfart", "Politik", "Bandekrig"]
+			"btnWrong" : ["Atomkraft", "Rumfart", "Bandekrig"]
 		},
 		"quizData" : {
 			"taskText" : "Opgaveforklaring til kursist - 2",
@@ -49,12 +49,12 @@
 	},
 	{ 
 		"userInterface" : {
-			"header" : "Find den røde tråd i kilderne",
-			"header_2" : "Find temaerne i kilde 4",
-			"subHeader" : "Klik på temaordene for hver enkelt kilde og sammenlign dem til sidst.",
+			"header" : "",
+			"header_2" : "",
+			"subHeader" : "",
 			"AnswerOverViewText" : "Kilde 4. Stig Møller - Thylejren 1970",
 			"btn" : ["Ungdomsoprør", "Samfund", "Familie", "Individ", "Hippie", "Kønsroller"],
-			"btnWrong" : ["Atomkraft", "Rumfart", "Politik", "Bandekrig"]
+			"btnWrong" : ["Atomkraft", "Rumfart", "Bandekrig"]
 		},
 		"quizData" : {
 			"taskText" : "Opgaveforklaring til kursist - 3",

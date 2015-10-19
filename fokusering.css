@@ -58,6 +58,12 @@ h4 {
 	border: 1px solid #C0C0C0;
 }
 
+.DivRow_overlay{
+	display: absolute;
+	z-index: 10;
+	height: 100%
+}
+
 .QuestionTask{
 	color: #000;
 }

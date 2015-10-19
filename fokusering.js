@@ -135,7 +135,7 @@ function returnSourcelItem(questionNum, jsonData){
     switch(itemData.kildeData.type) {
         case "img":
             // HTML += '<img class="img-responsive" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/>';
-            HTML += '<span class="SourceWrapper" data-toggle="modal" data-target="#myModal"> <img class="img-responsive" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/> </span>';
+            HTML += '<div class="SourceWrapper" data-toggle="modal" data-target="#myModal"> <img class="img-responsive" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/> </div>';
             break;
         case "text":
             HTML += '<div class="TextHolder SourceWrapper">'+itemData.kildeData.text+'</div>';
@@ -169,9 +169,11 @@ function ScaleProcessBarUnderImagesInMobileView(){
 function interfaceChanger(ActiveLinkNum){
     $( document ).on('click', ".PagerButton", function(event){
         var PagerNum = $(this).text().replace("kilde","").trim();
-        $("#header").html(jsonData[parseInt(PagerNum)-1].userInterface.header);   // Shows the initial heading.
-        $("#header_2").html(jsonData[parseInt(PagerNum)-1].userInterface.header_2);   // Shows the initial heading.
-        $("#subHeader").html(jsonData[parseInt(PagerNum)-1].userInterface.subHeader);    // Shows the initial subheading.
+        // $("#header").html(jsonData[parseInt(PagerNum)-1].userInterface.header);   // Shows the initial heading.
+        $("#header").html("Find den røde tråd i kilderne");   // Shows the initial heading.
+        
+        // $("#subHeader").html(jsonData[parseInt(PagerNum)-1].userInterface.subHeader);    // Shows the initial subheading.
+        $("#subHeader").html('Find temaerne i <span class="QuestionTask">kilde '+String(PagerNum)+'</span>. Klik på temaordene for hver enkelt kilde og sammenlign dem til sidst.');    // Shows the initial subheading.
 
         console.log("interfaceChanger - PagerNum: " + PagerNum); // + ' - ' + jsonData[parseInt(PagerNum)-1].userInterface.header);
 
@@ -274,7 +276,7 @@ function returnDivTable_MAM(tableSelector, headerArray, subHeaderArray, bodyArra
     // bodyArray2D = matrixTranspose(bodyArray2D);
     var HTML = '<div '+((tableSelector.indexOf("#")!==-1)?'id="'+tableSelector.replace("#","")+'"':((tableSelector.indexOf(".")!==-1)?'class="'+tableSelector.replace(".","")+'"':''))+'>';
     for (var y = 0; y < bodyArray2D.length; y++) {
-        HTML += '<div class="DivRow">';
+        HTML += '<div class="DivRow"> <div class="DivRow_overlay"></div>';
         if (headerArray.length > 0){  // Content in headerArray is not required - just an empty array 
 
             // HTML += '<div class="LeftContent col-sm-12 col-md-3">'+'<h4 class="LeftContentHeader">'+subHeaderArray[y]+'</h4>'+headerArray[y]+'</div>';
@@ -514,8 +516,8 @@ $(document).on('click', ".checkAllAnswers", function(event) {
     // $("#AnswerOverview").html(makeEndGameSenario_3(jsonData));
     $("#AnswerOverview").html(makeEndGameSenario_4(jsonData));
     $("#header").text("Find den røde tråd i kilderne");
-    $("#header_2").text("Sammenlign temaerne i kilderne");
-    $("#subHeader").text("Farverne viser hvilke temaord der går på tværs af kilderne.");
+    // $("#header_2").text("Sammenlign temaerne i kilderne");
+    $("#subHeader").html('<span class="QuestionTask">Sammenlign temaerne</span> i kilderne. Farverne viser hvilke temaord der går på tværs af kilderne.');
     $("#DataInput").hide();
     $(".checkAllAnswers").hide();
     $(".TextHolder p").hide();
@@ -553,8 +555,11 @@ $(document).on('click', ".resultTable .LeftContent", function(event) {
 
     Pager("#PagerContainer", "#DataInput > div", "Pager");
 
-    $("#header").html(jsonData[ActiveLinkNum-1].userInterface.header);   // Shows the heading.
-    $("#subHeader").html(jsonData[ActiveLinkNum-1].userInterface.subHeader);    // Shows the subheading.
+    // $("#header").html(jsonData[ActiveLinkNum-1].userInterface.header);   // Shows the heading.
+    $("#header").html("Find den røde tråd i kilderne");   // Shows the initial heading.
+
+    // $("#subHeader").html(jsonData[ActiveLinkNum-1].userInterface.subHeader);    // Shows the subheading.
+    $("#subHeader").html('Find temaerne i <span class="QuestionTask">kilde '+String(ActiveLinkNum)+'</span>. Klik på temaordene for hver enkelt kilde og sammenlign dem til sidst.');    // Shows the initial subheading.
 });
 
 
@@ -568,6 +573,25 @@ $(document).on('click', ".Source img", function(event) {
     modal();
     $(".modal-body").html('<h4>'+jsonData[ActiveLinkNum-1].userInterface.AnswerOverViewText+"</h4><img src='" + jsonData[ActiveLinkNum-1].quizData.kildeData.src + "'/>");
 });
+
+
+$(document).on('click', ".DivRow", function(event) {
+    ActiveLinkNum = $(this).prevAll().length + 1;  // Find the sibling number.
+    console.log("ActiveLinkNum: " + ActiveLinkNum);
+
+    $("#DataInput").show();        // Show the requested source (requestedby pressing the pager).
+    $(".checkAllAnswers").show();
+    $(".TextHolder p").show();
+    $("#AnswerOverview").html(""); // "Hide"/overwrite the content in AnswerOverview.
+
+    Pager("#PagerContainer", "#DataInput > div", "Pager");
+
+    // $("#header").html(jsonData[ActiveLinkNum-1].userInterface.header);   // Shows the heading.
+    $("#header").html("Find den røde tråd i kilderne");   // Shows the initial heading.
+
+    // $("#subHeader").html(jsonData[ActiveLinkNum-1].userInterface.subHeader);    // Shows the subheading.
+    $("#subHeader").html('Find temaerne i <span class="QuestionTask">kilde '+String(ActiveLinkNum)+'</span>. Klik på temaordene for hver enkelt kilde og sammenlign dem til sidst.');    // Shows the initial subheading.
+})
 
 
 // ================================
@@ -692,9 +716,11 @@ $(document).ready(function() {
 
     TagArray = ShuffelArray(TagArray);
 
-    $("#header").html(jsonData[0].userInterface.header);   // Shows the initial heading.
-    $("#header_2").html(jsonData[0].userInterface.header_2);
-    $("#subHeader").html(jsonData[0].userInterface.subHeader);    // Shows the initial subheading.
+    // $("#header").html(jsonData[0].userInterface.header);   // Shows the initial heading.
+    $("#header").html("Find den røde tråd i kilderne");   // Shows the initial heading.
+
+    // $("#subHeader").html(jsonData[0].userInterface.subHeader);    // Shows the initial subheading.
+    $("#subHeader").html('Find temaerne i <span class="QuestionTask">kilde '+String(ActiveLinkNum)+'</span>. Klik på temaordene for hver enkelt kilde og sammenlign dem til sidst.');    // Shows the initial subheading.
 
     $(".QuestionCounter").text(correct_total+'/'+jsonData.length);   // Counts the initial number of correctly answered questions and total number questions and displays them.
 
