@@ -281,7 +281,7 @@ function returnDivTable_MAM(tableSelector, headerArray, subHeaderArray, bodyArra
     // bodyArray2D = matrixTranspose(bodyArray2D);
     var HTML = '<div '+((tableSelector.indexOf("#")!==-1)?'id="'+tableSelector.replace("#","")+'"':((tableSelector.indexOf(".")!==-1)?'class="'+tableSelector.replace(".","")+'"':''))+'>';
     for (var y = 0; y < bodyArray2D.length; y++) {
-        HTML += '<div class="DivRow"> <div class="DivRow_overlay"></div>';
+        HTML += '<div class="DivRow"> <div class="DivRow_overlay">';
         if (headerArray.length > 0){  // Content in headerArray is not required - just an empty array 
 
             // HTML += '<div class="LeftContent col-sm-12 col-md-3">'+'<h4 class="LeftContentHeader">'+subHeaderArray[y]+'</h4>'+headerArray[y]+'</div>';
@@ -293,7 +293,7 @@ function returnDivTable_MAM(tableSelector, headerArray, subHeaderArray, bodyArra
         HTML += '<div class="RightContent col-sm-12 col-md-9">';
         for (var x = 0; x < bodyArray2D[y].length; x++) {
             // HTML += '<div class="btn btn-default">'+bodyArray2D[y][x]+'</div>'+((bodyArray2D[y].length-1 == x)?'</div> <div class="Clear"></div> </div>':'');
-            HTML += bodyArray2D[y][x]+((bodyArray2D[y].length-1 == x)?'</div> <div class="Clear"></div> </div>':'');
+            HTML += bodyArray2D[y][x]+((bodyArray2D[y].length-1 == x)?'</div> <div class="Clear"></div> </div> </div>':'');
         };
     };
     console.log("returnDivTable_MAM - HTML: " + HTML);
