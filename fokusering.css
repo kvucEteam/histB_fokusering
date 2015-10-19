@@ -70,6 +70,7 @@ h4 {
 .DivRow_overlay{
 	display: absolute;
 	z-index: 10;
+	cursor: pointer;
 }
 
 .QuestionTask{

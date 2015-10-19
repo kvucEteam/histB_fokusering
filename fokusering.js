@@ -522,7 +522,7 @@ $(document).on('click', ".checkAllAnswers", function(event) {
     $("#AnswerOverview").html(makeEndGameSenario_4(jsonData));
     $("#header").text("Find den røde tråd i kilderne");
     // $("#header_2").text("Sammenlign temaerne i kilderne");
-    $("#subHeader").html('<span class="QuestionTask">Sammenlign temaerne</span> i kilderne. Farverne viser hvilke temaord der går på tværs af kilderne.');
+    $("#subHeader").html('<span class="QuestionTask">Sammenlign temaerne</span> i kilderne. Farverne viser hvilke temaord der går <span class="QuestionTask">på tværs</span> af kilderne.');
     $("#DataInput").hide();
     $(".checkAllAnswers").hide();
     $(".TextHolder p").hide();
@@ -622,12 +622,12 @@ function Pager(PagerSelector, TargetSelectorChild, CssId) {
     // MARK XXX
 
     if (NumOfPages == 1) {
-        HTML += '<li><a href="#" class="PagerButton btn btn-default"> kilde 1 </a></li>';
+        HTML += '<li><a href="#" class="PagerButton btn btn-default"> Kilde 1 </a></li>';
     }
 
     if ((1 < NumOfPages) && (NumOfPages <= Range + 1)) {
         for (var i = 1; i <= NumOfPages; i++) {
-            HTML += '<li><a href="#" class="PagerButton btn btn-default">kilde ' + i + '</a></li>';
+            HTML += '<li><a href="#" class="PagerButton btn btn-default">Kilde ' + i + '</a></li>';
         }
     }
 
@@ -641,18 +641,18 @@ function Pager(PagerSelector, TargetSelectorChild, CssId) {
 
 
         if (StartIndex == 2) { // Ugly special case...
-            HTML += '<li><a href="#" class="PagerButton btn btn-default"> kilde 1 </a></li>';
+            HTML += '<li><a href="#" class="PagerButton btn btn-default"> Kilde 1 </a></li>';
         }
         if (StartIndex > 2)
-            HTML += '<li><a href="#" class="PagerButton btn btn-default"> kilde 1 </a></li><li> ... </li>';
+            HTML += '<li><a href="#" class="PagerButton btn btn-default"> Kilde 1 </a></li><li> ... </li>';
         for (var j = StartIndex; j < Range + StartIndex; j++) {
-            HTML += '<li><a href="#" class="PagerButton btn btn-default">kilde ' + j + '</a></li>';
+            HTML += '<li><a href="#" class="PagerButton btn btn-default">Kilde ' + j + '</a></li>';
         }
         if (Range + StartIndex == NumOfPages)
             for (var k = Range + StartIndex; k <= NumOfPages; k++) {
-                HTML += '<li><a href="#" class="PagerButton btn btn-default">kilde ' + k + '</a></li>';
+                HTML += '<li><a href="#" class="PagerButton btn btn-default">Kilde ' + k + '</a></li>';
             } else
-                HTML += '<li> ... </li><li><a href="#" class="PagerButton btn btn-default">kilde ' + NumOfPages + '</a></li>';
+                HTML += '<li> ... </li><li><a href="#" class="PagerButton btn btn-default">Kilde ' + NumOfPages + '</a></li>';
 
     }
     HTML += '</ul>';
@@ -670,7 +670,7 @@ function Pager(PagerSelector, TargetSelectorChild, CssId) {
         $("#" + CssId + " .PagerButton").addClass("btn-default");
         $(this).toggleClass("btn-default btn-primary");
 
-        ActiveLinkNum = $(this).text().replace("kilde","").trim();
+        ActiveLinkNum = $(this).text().replace("Kilde","").trim();
         console.log("ActiveLinkNum 2: " + ActiveLinkNum);
 
         // TargetSelectorChildText = $(TargetSelectorChild).text();
@@ -684,7 +684,7 @@ function Pager(PagerSelector, TargetSelectorChild, CssId) {
 
     // Set the chosen color if the pager-button is showen:
     $(PagerSelector + " li a").each(function(index, element) {
-        if ($(element).text().replace("kilde","").trim() == ActiveLinkNum) {
+        if ($(element).text().replace("Kilde","").trim() == ActiveLinkNum) {
             $(element).toggleClass("btn-default btn-primary");
         }
         LastElement = element;
