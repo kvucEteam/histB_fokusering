@@ -427,7 +427,7 @@ function InsetProcessBars(jsonData){
 function makeEndGameSenario_4(jsonData){
     var sourceArray = [];
     var subHeaderArray = [];
-    var correctAnswerMatrix = [];  // 2 dimensional array!
+    var correctAnswerMatrix = [];  // 2 dimensional array! 
     var MaxLength = 0; var Length;
     for (n in jsonData) {
         Length = jsonData[n].userInterface.btn.length;
