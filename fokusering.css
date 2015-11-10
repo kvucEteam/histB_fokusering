@@ -4,29 +4,30 @@
 }
 
 h1 {
-	margin: 20px 0px 15px 0px;
-	line-height: 1em;
+    margin: 20px 0px 15px 0px;
+    line-height: 1em;
 }
 h2 {
-	margin: 30px 0px 20px 0px; 
-	line-height: 1em; 
+    margin: 30px 0px 20px 0px; 
+    line-height: 1em; 
 }
 h4 {
-	margin: 0px 0px 20px 0px; 
-	line-height: 1em;
+    margin: 0px 0px 20px 0px; 
+    line-height: 1em;
 }
 
 #questionCarousel{margin-top: 20px; border-radius: 8px; background-color: #FFF;}
 
 
 .SourceHeading{
-	margin-top: 20px;
+    margin-top: 20px;
 }
 
 
 .TextHolder{
-	min-height: 150px;
-	background-color: #FFF;
+    min-height: 150px;
+    background-color: #FFF;
+    padding: 20px;
 }
 
 
@@ -55,7 +56,11 @@ h4 {
 
 /*.SourceVid{max-height: 390px;}*/ /* DETTE FUNGERE IKKE */
 
+
+
 .SourceWrapper{max-height: 500px;}
+
+.LeftContent .SourceWrapper{max-height: 500px;max-width: 330px;min-height: 230px;}
 
 .embed-responsive{max-height: 500px;} /* Virker ikke */
 
@@ -74,77 +79,77 @@ h4 {
 
 
 .DivRow{
-	margin-bottom: 10px; 
-	/*padding: 10px 10px 0px 10px;*/
-	/*border: 1px solid #C0C0C0;*/
-	/*cursor: pointer;*/
+    margin-bottom: 10px; 
+    /*padding: 10px 10px 0px 10px;*/
+    /*border: 1px solid #C0C0C0;*/
+    /*cursor: pointer;*/
 }
 
 
 .QuestionTask{
-	color: #000;
+    color: #000;
 }
 
 
 .btn-default{
-	background-color: #e7e6e2;
-	border: 1px solid #e7e6e2;
-	color: #000;
+    background-color: #e7e6e2;
+    border: 1px solid #e7e6e2;
+    color: #000;
 }
 
 .btn{
-	margin-bottom: 10px;
-	margin-right: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 .label-default{
-	background-color: #e7e6e2;
-	border: 1px solid #e7e6e2;
-	color: #000;
+    background-color: #e7e6e2;
+    border: 1px solid #e7e6e2;
+    color: #000;
 }
 
 .MiddleContent .label, .RightContent .label{
-	margin-bottom: 10px;
-	margin-right: 10px;
-	display: inline-block;
-	font-size: 100%;
-	font-weight: inherit;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    font-size: 100%;
+    font-weight: inherit;
 }
 
 .dashed{
-	border-width:1px;
-	border-color: #000;
-	border-style:dashed;
-	background-color: #FFF;
+    border-width:1px;
+    border-color: #000;
+    border-style:dashed;
+    background-color: #FFF;
 }
 
 .NonCommon{
-	background-color: #717272;
+    background-color: #717272;
     border: 1px solid #717272;
     color: #fff;
 }
 
 
 .InnerScoreContainer{
-	margin-top: 10px;
-	/*margin-bottom: 10px;*/
-	/*position: absolute;
-	bottom: 10px;*/
+    margin-top: 10px;
+    /*margin-bottom: 10px;*/
+    /*position: absolute;
+    bottom: 10px;*/
 }
 
 .InnerScoreContainer h5 {
-	margin: 0px 5px 0px 0px;
-	display: inline-block;
+    margin: 0px 5px 0px 0px;
+    display: inline-block;
 }
 
 .BlackFont{
-	color: #000;
-	font-weight: 600;
+    color: #000;
+    font-weight: 600;
 }
 
 .ReturnToSource{
-	margin-top: 20px;
-	margin-bottom: 0px;
+    margin-top: 20px;
+    margin-bottom: 0px;
 }
 
 hr {
@@ -155,69 +160,69 @@ hr {
 
 /*
 .btn-primary{
-	background-color: #666666;
+    background-color: #666666;
     border: 1px solid #666666;
     color: #fff;
 }
 .btn-primary:hover{
-	background-color: #969696;
+    background-color: #969696;
     border: 1px solid #969696;
     color: #FFF;
 }
 */
 
 .btn-primary{
-	background-color: #717272;
-	border: 1px solid #717272;
-	color: #FFF;
+    background-color: #717272;
+    border: 1px solid #717272;
+    color: #FFF;
 }
 .btn-primary:hover{
-	background-color: #515252;
-	border: 1px solid #515252;
-	color: #FFF;
+    background-color: #515252;
+    border: 1px solid #515252;
+    color: #FFF;
 }
 
 
 .checkAnswer {
-	background-color: #0dcea0;
-	color: #FFF;
-	border-style: none;
+    background-color: #0dcea0;
+    color: #FFF;
+    border-style: none;
 }
 .checkAnswer:hover{
-	background-color: #2deec0;
-	color: #FFF;
-	border-style: none;
+    background-color: #2deec0;
+    color: #FFF;
+    border-style: none;
 }
 
 /*
 .CorrectAnswer{
-	background-color: #0dcea0;
-	border: 1px solid #0dcea0;
-	color: #FFF;
+    background-color: #0dcea0;
+    border: 1px solid #0dcea0;
+    color: #FFF;
 }
 .CorrectAnswer:hover{
-	background-color: #2deec0;
-	border: 1px solid #2deec0;
-	color: #FFF;
+    background-color: #2deec0;
+    border: 1px solid #2deec0;
+    color: #FFF;
 }
 */
 
 .WrongAnswer{
-	background-color: #ed3e3a;
-	border: 1px solid #ed3e3a;
-	color: #FFF;
+    background-color: #ed3e3a;
+    border: 1px solid #ed3e3a;
+    color: #FFF;
 }
 .WrongAnswer:hover{
-	background-color: #ff5e5a;
-	border: 1px solid #ff5e5a;
-	color: #FFF;
+    background-color: #ff5e5a;
+    border: 1px solid #ff5e5a;
+    color: #FFF;
 }
 
 /*
 .StudentCorrect{ 
-	background-color: #00cb60;
-	border: 1px solid #00cb60;
-	color: #FFF;
+    background-color: #00cb60;
+    border: 1px solid #00cb60;
+    color: #FFF;
 }
 .StudentCorrect:hover{
 
@@ -225,66 +230,66 @@ hr {
 */
 
 .StudentWrong{
-	background-color: #717272;
-	border: 1px solid #717272;
-	color: #FFF;
+    background-color: #717272;
+    border: 1px solid #717272;
+    color: #FFF;
 }
 .StudentWrong:hover{
-	background-color: #515252;
-	border: 1px solid #515252;
-	color: #FFF;
+    background-color: #515252;
+    border: 1px solid #515252;
+    color: #FFF;
 }
 
 
 .checkAllAnswers{
-	background-color: #05a0a8;
+    background-color: #05a0a8;
     border-color: #05a0a8;
     color: #fff;
 }
 .checkAllAnswers:hover{
-	background-color: #047176;
+    background-color: #047176;
     border-color: #047176;
     color: #fff;
 }
 
 .RightContent{
-	/*border: 1px solid #C0C0C0;*/
-	margin-right: 0%;
+    /*border: 1px solid #C0C0C0;*/
+    margin-right: 0%;
 }
 
 .MiddleContent{
-	/*border: 1px solid #C0C0C0;*/
+    /*border: 1px solid #C0C0C0;*/
 }
 
 .LeftContent{
-	/*float: left; 
-	width: 20%;*/
-	cursor: pointer;
-	/*margin-right: 10px;*/
-	/*padding-right: 10px;*/
-	margin-top: 10px;
+    /*float: left; 
+    width: 20%;*/
+    cursor: pointer;
+    /*margin-right: 10px;*/
+    /*padding-right: 10px;*/
+    margin-top: 10px;
 }
 
 .InnerContainer{
-	min-height: 230px;
-	/*border: 1px solid #C0C0C0;*/
-	background-color: #FFF;
-	padding: 20px;
-	margin: 10px 20px 0px 0px;
+    min-height: 230px;
+    /*border: 1px solid #C0C0C0;*/
+    background-color: #FFF;
+    padding: 20px;
+    margin: 10px 20px 0px 0px;
 }
 
 .MiddleContent .InnerContainer{
-	/* margin: 0px 15px 0px 30px; */
+    /* margin: 0px 15px 0px 30px; */
 }
 
 .RightContent .InnerContainer{
-	/* margin: 0px 20px 0px 15px; */
+    /* margin: 0px 20px 0px 15px; */
 }
 
 .ThemeHeader{
-	margin-top: 0px;
-	color: #000;
-	font-weight: 600;
+    margin-top: 0px;
+    color: #000;
+    font-weight: 600;
 }
 
 
@@ -298,12 +303,12 @@ hr {
 */
 
 .BtnContainer{
-	padding-top: 10px; 
-	clear: both;
+    padding-top: 10px; 
+    clear: both;
 }
 
 .SourcePage{
-	display: none;
+    display: none;
 }
 
 .PagerClass{display: inline-block; margin-bottom: 0px;}
@@ -329,62 +334,62 @@ hr {
 }
 /*
 .col-sm-12 .btn{
-	margin-top: 10px;
-	margin-bottom: 0px;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
 */
 .ColorClass_0{
-	background-color: #f9f206;
+    background-color: #f9f206;
     border-color: #f9f206;
 }
 
 .ColorClass_1{
-	background-color: #e56ec9;
+    background-color: #e56ec9;
     border-color: #e56ec9;
 }
 
 .ColorClass_2{
-	background-color: #73f9a9;
+    background-color: #73f9a9;
     border-color: #73f9a9;
 }
 
 .ColorClass_3{
-	background-color: #e5c180;
+    background-color: #e5c180;
     border-color: #e5c180;
 }
 
 .ColorClass_4{
-	background-color: #9090d1;
+    background-color: #9090d1;
     border-color: #9090d1;
 }
 
 .ColorClass_5{
-	background-color: #e26060;
+    background-color: #e26060;
     border-color: #e26060;
 }
 
 .ColorClass_6{
-	background-color: #64e2dc;
+    background-color: #64e2dc;
     border-color: #64e2dc;
 }
 
 .ColorClass_7{
-	background-color: #ffff99;
+    background-color: #ffff99;
     border-color: #ffff99;
 }
 
 .ColorClass_8{
-	background-color: #f2b9e1;
+    background-color: #f2b9e1;
     border-color: #f2b9e1;
 }
 
 .ColorClass_9{
-	background-color: #b5f8d5;
+    background-color: #b5f8d5;
     border-color: #b5f8d5;
 }
 
 .ColorClass_10{
-	background-color: #f7e5cc;
+    background-color: #f7e5cc;
     border-color: #f7e5cc;
 }
 
@@ -395,7 +400,7 @@ hr {
     color: #fff;
 }
 .btnPressed:hover {
-	background-color: #969696;
+    background-color: #969696;
     border: 1px solid #969696;
     color: #FFF;
 }
@@ -404,7 +409,7 @@ hr {
 /* ATOs stylig på 1 errorbar */
 
 .ProcessBar{
-	background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
     bottom: 0;
     position: absolute;
     width: 100%;
@@ -412,81 +417,81 @@ hr {
 
 /*
 .ProcessBar{
-	background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 */
 .ProcessBarGauge_correct{
-	background-color: rgba(42, 187, 42, 0.7); /*#2abb2a;*/
-	text-align: right;
+    background-color: rgba(42, 187, 42, 0.7); /*#2abb2a;*/
+    text-align: right;
 }
 .ProcessBarGauge_wrong{
-	background-color: rgba(237, 62, 58, 0.7); /*#ed3e3a;*/
-	text-align: right;
+    background-color: rgba(237, 62, 58, 0.7); /*#ed3e3a;*/
+    text-align: right;
 }
 
 
 
 /*****************************
-		DIV TABLE STYLE 
+        DIV TABLE STYLE 
 *****************************/
 
 .DivColumn{
-	display: inline-block;
-	width: 19%;
+    display: inline-block;
+    width: 19%;
 }
 
 .tth{
-	display: inline-block;	/* TEST */ 
-	width: 19%; 			/* TEST */
-	/*border: 1px solid #C0C0C0;*/
+    display: inline-block;  /* TEST */ 
+    width: 19%;             /* TEST */
+    /*border: 1px solid #C0C0C0;*/
 }
 
 .ttd{
-	display: inline-block; 	/* TEST */
-	width: 19%; 			/* TEST */
-	text-align: center;
-	border: 1px solid #C0C0C0;
+    display: inline-block;  /* TEST */
+    width: 19%;             /* TEST */
+    text-align: center;
+    border: 1px solid #C0C0C0;
 }
 
 
 /*************************************************
-	992 px er samme breaking point som col-sm-12
+    992 px er samme breaking point som col-sm-12
 **************************************************/
 @media (max-width: 992px) {
-	.RightContent{
-		margin-top: 10px;
-		padding-left: 0px;
-	}
+    .RightContent{
+        /* margin-top: 10px; */
+        padding-left: 0px;
+    }
 }
 
 
 /*****************************
-		TABLE STYLE 
+        TABLE STYLE 
 *****************************/
 
 table.resultTable {
-	width: 100%;
-	border-width: 1px;
-	border-spacing: 0px;
-	border-style: none;
-	border-color: gray;
-	border-collapse: collapse;
-	background-color: white;
-	/*box-shadow: 10px 10px 5px #888888;*/
+    width: 100%;
+    border-width: 1px;
+    border-spacing: 0px;
+    border-style: none;
+    border-color: gray;
+    border-collapse: collapse;
+    background-color: white;
+    /*box-shadow: 10px 10px 5px #888888;*/
 }
 table.resultTable th {
-	width: 19%;
-	border-width: 1px;
-	padding: 3px;
-	border-style: solid;
-	border-color: gray;
-	background-color: white;
+    width: 19%;
+    border-width: 1px;
+    padding: 3px;
+    border-style: solid;
+    border-color: gray;
+    background-color: white;
 }
 table.resultTable td {
-	border-width: 1px;
-	padding: 3px;
-	border-style: solid;
-	border-color: gray;
-	background-color: white;
-	text-align: center;
+    border-width: 1px;
+    padding: 3px;
+    border-style: solid;
+    border-color: gray;
+    background-color: white;
+    text-align: center;
 }

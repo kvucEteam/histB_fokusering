@@ -595,8 +595,10 @@ function makeEndGameSenario_5(jsonData){
 
         HTML += '</div>';
         HTML += '<hr/>';
+    
     }
     return HTML;
+
 }
 
 
