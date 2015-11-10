@@ -541,10 +541,11 @@ function makeEndGameSenario_5(jsonData){
         var DQT = dataObj.questionObjArray[n].themeObjArray;
         HTML += '<div class="DivRow">';
             HTML += '<h4 class="LeftContentHeader"><span class="scoreText">Kilde '+String(parseInt(n)+1)+':</span> '+jsonData[n].userInterface.AnswerOverViewText+'</h4>';
-            HTML += '<div class="LeftContent col-sm-12 col-md-4">';  // col-sm-12 col-md-4
+            HTML += '<div class="LeftContent col-xs-12 col-md-4">';  // col-sm-12 col-md-4
                 HTML += returnSourcelItem(n, jsonData);
+                HTML += '<div id="ReturnToSource_'+n+'" class="btn btn-primary ReturnToSource">Tilbage til kilden</div>';
             HTML += '</div>';
-            HTML += '<div class="MiddleContent col-sm-12 col-md-4">';
+            HTML += '<div class="MiddleContent col-xs-6 col-md-4">';
             HTML +=     '<div class="InnerContainer">';
             HTML +=         '<h5 class="ThemeHeader">Emner på tværs af kilderne:</h5>';
             
@@ -566,7 +567,7 @@ function makeEndGameSenario_5(jsonData){
             HTML +=         '<div class="InnerScoreContainer"><h5><span class="BlackFont">Dine korrekte svar: </span></h5>'+Score+' ud af '+TotScore+'</div>';
             HTML +=     '</div>';
             HTML += '</div>';
-            HTML += '<div class="RightContent col-sm-12 col-md-4">';
+            HTML += '<div class="RightContent col-xs-6 col-md-4">';
             HTML +=     '<div class="InnerContainer">';
             HTML +=         '<h5 class="ThemeHeader">Emner kun denne kilde:</h5>';
 
@@ -590,7 +591,7 @@ function makeEndGameSenario_5(jsonData){
             HTML += '</div>';
             HTML += '<div class="Clear"></div>';
 
-            HTML += '<div id="ReturnToSource_'+n+'" class="btn btn-primary ReturnToSource">Tilbage til kilden</div>';
+            
 
         HTML += '</div>';
         HTML += '<hr/>';
