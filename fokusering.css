@@ -18,12 +18,20 @@ h4 {
 
 #questionCarousel{margin-top: 20px; border-radius: 8px; background-color: #FFF;}
 
-/*
-.TextHolder{margin-left: auto; margin-right: auto; width: 80%; min-height: 200px;}
-*/
+
+.SourceHeading{
+	margin-top: 20px;
+}
+
+
+.TextHolder{
+	min-height: 150px;
+	background-color: #FFF;
+}
+
 
 /************************************    ATO's  modal styling   ***************************************/
-.TextHolder{margin-left: auto; margin-right: auto; width: 80%; min-height: 200px;overflow: auto;
+/*.TextHolder{margin-left: auto; margin-right: auto; width: 80%; min-height: 200px;overflow: auto;
   border-radius: 8px;
   padding: 20px;
   height: auto;
@@ -38,10 +46,14 @@ h4 {
   }
 }
 .modal-dialog{width: 90%;}
-.modal-body img {width: 100%;}
+.modal-body img {width: 100%;}*/
 /*****************************************************************************************************/
 
-.SourceImg{margin-left: auto; margin-right: auto; max-height: 500px;}  
+.LeftContent .SourceImg{max-height: 230px;}  
+
+.SourceImg{max-height: 390px;} 
+
+/*.SourceVid{max-height: 390px;}*/ /* DETTE FUNGERE IKKE */
 
 .SourceWrapper{max-height: 500px;}
 
@@ -49,7 +61,7 @@ h4 {
 
 
 
-.resultTable  .TextHolder{min-height: 0px; width: 100%;}
+/*.resultTable  .TextHolder{min-height: 0px; width: 100%;}*/
 
 .indent{margin-left: 10px}
 
@@ -60,44 +72,86 @@ h4 {
     margin: auto;
 }
 
+
 .DivRow{
 	margin-bottom: 10px; 
-	padding: 10px 10px 0px 10px;
-	border: 1px solid #C0C0C0;
-	cursor: pointer;
+	/*padding: 10px 10px 0px 10px;*/
+	/*border: 1px solid #C0C0C0;*/
+	/*cursor: pointer;*/
 }
 
-.DivRow_overlay{
-	display: absolute;
-	z-index: 10;
-	cursor: pointer;
-}
 
 .QuestionTask{
 	color: #000;
 }
 
-/* e7e6e2 */
+
 .btn-default{
 	background-color: #e7e6e2;
 	border: 1px solid #e7e6e2;
 	color: #000;
 }
 
-.RightContent .btn-default:hover, .RightContent .btn-default:active, .RightContent .btn-default.active:focus, .RightContent .btn-default.focus:active {
-	background-color: #e7e6e2;
-    border: 1px solid #e7e6e2;
-    color: #000;
-    cursor: auto;
-}
-
-
-
 .btn{
 	margin-bottom: 10px;
 	margin-right: 10px;
 }
 
+.label-default{
+	background-color: #e7e6e2;
+	border: 1px solid #e7e6e2;
+	color: #000;
+}
+
+.MiddleContent .label, .RightContent .label{
+	margin-bottom: 10px;
+	margin-right: 10px;
+	display: inline-block;
+	font-size: 100%;
+	font-weight: inherit;
+}
+
+.dashed{
+	border-width:1px;
+	border-color: #000;
+	border-style:dashed;
+	background-color: #FFF;
+}
+
+.NonCommon{
+	background-color: #717272;
+    border: 1px solid #717272;
+    color: #fff;
+}
+
+
+.InnerScoreContainer{
+	margin-top: 10px;
+	/*margin-bottom: 10px;*/
+	/*position: absolute;
+	bottom: 10px;*/
+}
+
+.InnerScoreContainer h5 {
+	margin: 0px 5px 0px 0px;
+	display: inline-block;
+}
+
+.BlackFont{
+	color: #000;
+	font-weight: 600;
+}
+
+.ReturnToSource{
+	margin-top: 20px;
+	margin-bottom: 0px;
+}
+
+hr {
+    border-top: 1px solid #000;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
 
 /*
 .btn-primary{
@@ -111,6 +165,7 @@ h4 {
     color: #FFF;
 }
 */
+
 .btn-primary{
 	background-color: #717272;
 	border: 1px solid #717272;
@@ -192,40 +247,48 @@ h4 {
     color: #fff;
 }
 
-.btnPressed{
-    background-color: #666666;
-    border: 1px solid #666666;
-    color: #fff;
-}
-.btnPressed:hover {
-	background-color: #969696;
-    border: 1px solid #969696;
-    color: #FFF;
+.RightContent{
+	/*border: 1px solid #C0C0C0;*/
 }
 
-.RightContent{
-	/*float: right; 
-	width: 80%; */
-	/*margin-top: 10px;*/
-	padding-left: 10px;
-}
-.RightContent .btn {
-	cursor: auto;
+.MiddleContent{
+	/*border: 1px solid #C0C0C0;*/
 }
 
 .LeftContent{
 	/*float: left; 
 	width: 20%;*/
-	/*cursor: pointer;*/
+	cursor: pointer;
 	/*margin-right: 10px;*/
 
 	/*padding-right: 10px;*/
 }
 
+.InnerContainer{
+	height: 100%;
+	/*border: 1px solid #C0C0C0;*/
+	background-color: #FFF;
+	padding: 20px;
+}
+
+.MiddleContent .InnerContainer{
+	margin: 0px 15px 0px 30px;
+}
+
+.RightContent .InnerContainer{
+	margin: 0px 20px 0px 15px;
+}
+
+.ThemeHeader{
+	margin-top: 0px;
+	color: #000;
+	font-weight: 600;
+}
+
 
 .Clear{clear: both;}
 
-.Source{/*border: 1px solid #C0C0C0;*/}
+.Source{margin-top: 10px;}
 
 /*
 .col-md-8{margin-left: 10px; width: 65.5%;}
@@ -237,12 +300,15 @@ h4 {
 	clear: both;
 }
 
-.SourcePage{/*border: 1px solid #C0C0C0;*/ /*padding: 10px 10px 0px 10px;*/ display: none;}
+.SourcePage{
+	display: none;
+}
 
-.PagerClass{display: inline-block;}
+.PagerClass{display: inline-block; margin-bottom: 0px;}
 #PagerContainer{display: inline-block;}
 #PagerContainer ul {padding: 0px;}
 #PagerContainer ul li {display: inline;}
+
 
 .dshow{display: block}
 
@@ -266,38 +332,70 @@ h4 {
 }
 */
 .ColorClass_0{
-	background-color: #dcbdc8;
-    border-color: #dcbdc8;
+	background-color: #f9f206;
+    border-color: #f9f206;
 }
 
 .ColorClass_1{
-	background-color: #f9d703;
-    border-color: #f9d703;
+	background-color: #e56ec9;
+    border-color: #e56ec9;
 }
 
 .ColorClass_2{
-	background-color: #dfd2a6;
-    border-color: #dfd2a6;
+	background-color: #73f9a9;
+    border-color: #73f9a9;
 }
 
 .ColorClass_3{
-	background-color: #db9741;
-    border-color: #db9741;
+	background-color: #e5c180;
+    border-color: #e5c180;
 }
 
 .ColorClass_4{
-	background-color: #03727e;
-    border-color: #03727e;
+	background-color: #9090d1;
+    border-color: #9090d1;
 }
 
 .ColorClass_5{
-	background-color: #756e29;
-    border-color: #756e29;
+	background-color: #e26060;
+    border-color: #e26060;
 }
 
 .ColorClass_6{
-	background-color: #8158b7;
-    border-color: #8158b7;
+	background-color: #64e2dc;
+    border-color: #64e2dc;
+}
+
+.ColorClass_7{
+	background-color: #ffff99;
+    border-color: #ffff99;
+}
+
+.ColorClass_8{
+	background-color: #f2b9e1;
+    border-color: #f2b9e1;
+}
+
+.ColorClass_9{
+	background-color: #b5f8d5;
+    border-color: #b5f8d5;
+}
+
+.ColorClass_10{
+	background-color: #f7e5cc;
+    border-color: #f7e5cc;
+}
+
+
+.btnPressed{
+    background-color: #666666;
+    border: 1px solid #666666;
+    color: #fff;
+}
+.btnPressed:hover {
+	background-color: #969696;
+    border: 1px solid #969696;
+    color: #FFF;
 }
 
 

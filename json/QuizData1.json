@@ -1,10 +1,10 @@
 [
 	{ 
 		"userInterface" : { 
-			"header" : "",
+			"header" : "Find sammenhæng mellem kilderne",
 			"header_2" : "",
-			"subHeader" : "",
-			"AnswerOverViewText" : "Kilde 1. Thylejren i Frøstrup",
+			"subHeader" : "Klik på de temaord du mener hver enkelt kilde handler om. Hvilke emner går igen i alle kilder?",
+			"AnswerOverViewText" : "Thylejren i Frøstrup",
 			"btn" : ["Ungdomsoprør", "Hippie", "Samfund", "Individ"],
 			"btnWrong" : ["Atomkraft", "Rumfart", "Bandekrig"]
 		},
@@ -17,10 +17,10 @@
 	},
 	{ 
 		"userInterface" : {
-			"header" : "",
+			"header" : "Find sammenhæng mellem kilderne",
 			"header_2" : "",
-			"subHeader" : "",
-			"AnswerOverViewText" : "Kilde 2. The Beatles ankommer til JFK lufthavnen",
+			"subHeader" : "Klik på de temaord du mener hver enkelt kilde handler om. Hvilke emner går igen i alle kilder?",
+			"AnswerOverViewText" : "The Beatles ankommer til JFK lufthavnen",
 			"btn" : ["Ungdomsoprør", "Ungdomskultur", "Individ", "Musik"],
 			"btnWrong" : ["Atomkraft", "Rumfart", "Bandekrig"]
 		},
@@ -33,10 +33,10 @@
 	},
 	{ 
 		"userInterface" : { 
-			"header" : "",
+			"header" : "Find sammenhæng mellem kilderne",
 			"header_2" : "",
-			"subHeader" : "",
-			"AnswerOverViewText" : "Kilde 3. &quot;En rødstrømpehistorie&quot;",
+			"subHeader" : "Klik på de temaord du mener hver enkelt kilde handler om. Hvilke emner går igen i alle kilder?",
+			"AnswerOverViewText" : "&quot;En rødstrømpehistorie&quot;",
 			"btn" : ["Ungdomsoprør", "Kvindebevægelsen", "Rødstrømper", "Kønsroller", "Individ", "Familie"],
 			"btnWrong" : ["Atomkraft", "Rumfart", "Bandekrig"]
 		},
@@ -49,10 +49,10 @@
 	},
 	{ 
 		"userInterface" : {
-			"header" : "",
+			"header" : "Find sammenhæng mellem kilderne",
 			"header_2" : "",
-			"subHeader" : "",
-			"AnswerOverViewText" : "Kilde 4. Stig Møller - Thylejren 1970",
+			"subHeader" : "Klik på de temaord du mener hver enkelt kilde handler om. Hvilke emner går igen i alle kilder?",
+			"AnswerOverViewText" : "Stig Møller - Thylejren 1970",
 			"btn" : ["Ungdomsoprør", "Samfund", "Familie", "Individ", "Hippie", "Kønsroller"],
 			"btnWrong" : ["Atomkraft", "Rumfart", "Bandekrig"]
 		},
