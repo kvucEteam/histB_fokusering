@@ -155,7 +155,7 @@ function returnSourcelItem(questionNum, jsonData, ShowThumb){
                     HTML += '<div class="TextHolder SourceWrapper">'+itemData.kildeData.text+'</div>';
                 }
             } else {
-                HTML += '<div class="TextHolder SourceWrapper">'+itemData.kildeData.text+'</div>';
+                HTML += '<div class="TextHolder SourceWrapper col-xs-12 col-md-8">'+itemData.kildeData.text+'</div>';
             }
             break;
         case "video":
