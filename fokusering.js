@@ -124,7 +124,9 @@ function returnSourcePages(jsonData){
         }
             HTML += '</div>';
         
-        HTML +=     '<div class="Source">'+returnSourcelItem(n, jsonData)+'</div>';
+        HTML +=     '<div class="Source">'+returnSourcelItem(n, jsonData, false)+'</div>';
+
+        HTML += returnSourceInfo(n, jsonData);
 
         HTML += '</div>';
     }
@@ -133,21 +135,29 @@ function returnSourcePages(jsonData){
 
 
 // OK
-function returnSourcelItem(questionNum, jsonData){
+function returnSourcelItem(questionNum, jsonData, ShowThumb){
     var itemData = jsonData[questionNum].quizData;
     var HTML = '';
     switch(itemData.kildeData.type) {
         case "img":
             // HTML += '<div class="SourceWrapper" data-toggle="modal" data-target="#myModal"> <img class="img-responsive SourceImg" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/> </div>';
-            HTML += '<div class="SourceWrapper" data-toggle="modal" data-target="#myModal"> <img class="img-responsive SourceImg" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/> </div>';
+            if (ShowThumb){
+                HTML += '<div class="SourceWrapper"> <img class="img-responsive SourceImg" src="'+itemData.kildeData.srcThumb+'" alt="'+itemData.kildeData.alt+'"/> </div>';
+            } else {
+                HTML += '<div class="SourceWrapper"> <img class="img-responsive SourceImg" src="'+itemData.kildeData.src+'" alt="'+itemData.kildeData.alt+'"/> </div>';
+            }
             break;
         case "text":
             HTML += '<div class="TextHolder SourceWrapper">'+itemData.kildeData.text+'</div>';
             break;
         case "video":
-            HTML += '<div class="SourceWrapper embed-responsive embed-responsive-16by9 col-xs-12 col-md-12">' + 
+            if (ShowThumb){
+                HTML += '<div class="SourceWrapper"> <img class="img-responsive SourceImg" src="'+itemData.kildeData.srcThumb+'" alt="Thumbnail img"/> </div>';
+            } else {
+                HTML += '<div class="SourceWrapper embed-responsive embed-responsive-16by9 col-xs-12 col-md-12">' + 
                         '<iframe class="SourceVid embed-responsive-item" src="'+itemData.kildeData.src+'?rel=0" allowfullscreen="1"></iframe>' + 
                     '</div>';
+            }
             break;
         default:
             alert('Invalid "type"');
@@ -542,7 +552,7 @@ function makeEndGameSenario_5(jsonData){
         HTML += '<div class="DivRow">';
             HTML += '<h4 class="LeftContentHeader"><span class="scoreText">Kilde '+String(parseInt(n)+1)+':</span> '+jsonData[n].userInterface.AnswerOverViewText+'</h4>';
             HTML += '<div class="LeftContent col-xs-12 col-md-4">';  // col-sm-12 col-md-4
-                HTML += returnSourcelItem(n, jsonData);
+                HTML += returnSourcelItem(n, jsonData, true);
                 HTML += '<div id="ReturnToSource_'+n+'" class="btn btn-primary ReturnToSource">Tilbage til kilden</div>';
             HTML += '</div>';
             HTML += '<div class="MiddleContent col-xs-6 col-md-4">';
@@ -558,7 +568,7 @@ function makeEndGameSenario_5(jsonData){
                         ++Score;
                     } else {
                         // HTML += '<span class="label label-default dashed">'+DQT[p].val+'</span>';
-                        HTML += '<span class="label label-default dashed">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>';
+                        HTML += '<span class="label label-default dotted">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>';
                     }
                     ++TotScore;
                 }
@@ -580,7 +590,7 @@ function makeEndGameSenario_5(jsonData){
                         ++Score;
                     } else {
                         // HTML += '<span class="label label-default dashed">'+DQT[p].val+'</span>';
-                        HTML += '<span class="label label-default dashed">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>';
+                        HTML += '<span class="label label-default dotted">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>';
                     }
                     ++TotScore;
                 }
@@ -612,6 +622,8 @@ function SetColorClassesOnSourcePages(){  // SourcePage
                         if (DQT[p].common == true) {
                             $(element2).removeClass("btnPressed CorrectAnswer");
                             $(element2).addClass('ColorClass_'+ReturnArrayElementNum(dataObj.commonThemes, DQT[p].val));
+                            $(element2).addClass('ColorClass');
+                            // $(element2).removeClass('StudentAnswer'); // TLY wants the choise to be locked once made...
                             
                         } else {
                             $(element2).removeClass("btn-default btnPressed CorrectAnswer");
@@ -650,13 +662,26 @@ function RemoveBtnPressedAndWrongAnswer(){
 }
 
 
+function returnSourceInfo(n, jsonData){
+    var HTML = '';
+
+    // var JQS = jsonData.quizData[n].slideData; 
+    var JQK = jsonData[n].quizData.kildeData;
+
+    console.log("returnSourceInfo - JQS: " + JSON.stringify(JQK));
+    if (JQK.hasOwnProperty("sourceRef")){
+        var JQKS = JQK.sourceRef;
+        console.log("returnSourceInfo - OK -");
+        HTML +=     '<div class="kilde_henvisning col-xs-12 col-sm-12"><h6>';
+        HTML +=     (JQKS.hasOwnProperty("sourceInfo") && (JQKS.sourceInfo != ""))?'<div class="sourceInfo">'+JQKS.sourceInfo+'</div>' : ''; 
+        HTML +=     (JQKS.hasOwnProperty("showSrc") && (JQKS.showSrc == true))?'<div class="showSrc"><a href="'+JQK.src+'">'+JQK.src+'</a></div>' : ''; 
+        HTML +=     '</h6></div>'; 
+    }
+    return HTML;
+}
+
+
 $(document).on('click', ".ReturnToSource", function(event) {
-    RemoveBtnPressedAndWrongAnswer();
-    // $("#PagerHeading").show();
-    // $("#PagerContainer").show();
-    // ActiveLinkNum = parseInt($(this).prop("id").replace("ReturnToSource_","")) + 1;  // Find the sibling number.
-    ActiveLinkNum = $(this).closest(".DivRow").prevAll(".DivRow").length + 1;  // Find the sibling number.
-    console.log("ReturnToSource - ActiveLinkNum: " + ActiveLinkNum);
 
     $("#DataInput").show();        // Show the requested source (requestedby pressing the pager).
     $(".checkAllAnswers").show();
@@ -664,6 +689,13 @@ $(document).on('click', ".ReturnToSource", function(event) {
     $("#PagerContainer").show();
     $(".TextHolder p").show();
     $("#AnswerOverview").html(""); // "Hide"/overwrite the content in AnswerOverview.
+
+    RemoveBtnPressedAndWrongAnswer(); 
+    // $("#PagerHeading").show();
+    // $("#PagerContainer").show();
+    ActiveLinkNum = parseInt($(this).prop("id").replace("ReturnToSource_","")) + 1;  // Find the sibling number.
+    // ActiveLinkNum = $(this).closest(".DivRow").prevAll(".DivRow").length + 1;  // Find the sibling number.
+    console.log("ReturnToSource - ActiveLinkNum: " + ActiveLinkNum);
 
     Pager("#PagerContainer", "#DataInput > div", "Pager");
 })
@@ -676,10 +708,12 @@ $(document).on('click', ".StudentAnswer", function(event) {
         UserMsgBox("body", "Du har allerede svaret på denne opgave, og kan derfor ikke lave en ny besvarelse. Vælg en ny kilde og lav en ny besvarelse.");
         // UserMsgBox_SetWidth(".container-fluid", 0.7);
     } else {
-        if ($(this).hasClass("btnPressed")){
-            $(this).removeClass("btnPressed CorrectAnswer WrongAnswer");
-        } else {
-            $(this).toggleClass("btnPressed");
+        if (!$(this).hasClass('ColorClass')){  // TLY does not want the student NOT to be able to re-select a correct button/tag.
+            if ($(this).hasClass("btnPressed")){
+                $(this).removeClass("btnPressed CorrectAnswer WrongAnswer");
+            } else {
+                $(this).toggleClass("btnPressed");
+            }
         }
 
         // if ($(this).hasClass("btnPressed"))
@@ -761,27 +795,28 @@ $(document).on('click', ".PagerButton", function(event) {
 }); 
 
 
-$(document).on('click', ".LeftContent", function(event) {
-    RemoveBtnPressedAndWrongAnswer();
+// $(document).on('click', ".LeftContent .SourceWrapper", function(event) {
 
-    ActiveLinkNum = $(this).closest(".DivRow").prevAll(".DivRow").length + 1;  // Find the sibling number.
-    console.log("ActiveLinkNum: " + ActiveLinkNum);
+//     $("#DataInput").show();        // Show the requested source (requestedby pressing the pager).
+//     $(".checkAllAnswers").show();
+//     $("#PagerHeading").show();
+//     $("#PagerContainer").show();
+//     $(".TextHolder p").show();
+//     $("#AnswerOverview").html(""); // "Hide"/overwrite the content in AnswerOverview.
 
-    $("#DataInput").show();        // Show the requested source (requestedby pressing the pager).
-    $(".checkAllAnswers").show();
-    $("#PagerHeading").show();
-    $("#PagerContainer").show();
-    $(".TextHolder p").show();
-    $("#AnswerOverview").html(""); // "Hide"/overwrite the content in AnswerOverview.
+//     RemoveBtnPressedAndWrongAnswer();
 
-    Pager("#PagerContainer", "#DataInput > div", "Pager");
+//     ActiveLinkNum = $(this).closest(".DivRow").prevAll(".DivRow").length + 1;  // Find the sibling number.
+//     console.log("LeftContent - ActiveLinkNum: " + ActiveLinkNum);
 
-    $("#header").html(jsonData[ActiveLinkNum-1].userInterface.header);   // Shows the heading.
-    // $("#header").html("Find den røde tråd i kilderne");   // Shows the initial heading.
+//     Pager("#PagerContainer", "#DataInput > div", "Pager");
 
-    $("#subHeader").html(jsonData[ActiveLinkNum-1].userInterface.subHeader);    // Shows the subheading.
-    // $("#subHeader").html('Find temaerne i <span class="QuestionTask">kilde '+String(ActiveLinkNum)+'</span>. Klik på temaordene for hver enkelt kilde og sammenlign dem til sidst.');    // Shows the initial subheading.
-});
+//     $("#header").html(jsonData[ActiveLinkNum-1].userInterface.header);   // Shows the heading.
+//     // $("#header").html("Find den røde tråd i kilderne");   // Shows the initial heading.
+
+//     $("#subHeader").html(jsonData[ActiveLinkNum-1].userInterface.subHeader);    // Shows the subheading.
+//     // $("#subHeader").html('Find temaerne i <span class="QuestionTask">kilde '+String(ActiveLinkNum)+'</span>. Klik på temaordene for hver enkelt kilde og sammenlign dem til sidst.');    // Shows the initial subheading.
+// });
 
 
 $(document).on('click', ".Source img", function(event) {
@@ -825,6 +860,8 @@ var ActiveLinkNum = 1;
 
 // Pager("#PagerContainer", "#FormsContainer > div", "Pager");
 function Pager(PagerSelector, TargetSelectorChild, CssId) {
+
+    console.log("Pager - START - ActiveLinkNum: " + ActiveLinkNum);
 
     var NumOfPages = 0;
     $(TargetSelectorChild).each(function(index, element) {

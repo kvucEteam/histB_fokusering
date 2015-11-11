@@ -19,6 +19,10 @@ h4 {
 #questionCarousel{margin-top: 20px; border-radius: 8px; background-color: #FFF;}
 
 
+.kilde_henvisning h6 {
+	margin: 0px;
+}
+
 .SourceHeading{
     margin-top: 20px;
 }
@@ -30,6 +34,9 @@ h4 {
     padding: 20px;
 }
 
+.LeftContent .TextHolder{
+	max-width: 350px;
+}
 
 /************************************    ATO's  modal styling   ***************************************/
 /*.TextHolder{margin-left: auto; margin-right: auto; width: 80%; min-height: 200px;overflow: auto;
@@ -50,7 +57,10 @@ h4 {
 .modal-body img {width: 100%;}*/
 /*****************************************************************************************************/
 
-.LeftContent .SourceImg{max-height: 230px;}  
+.LeftContent .SourceImg{
+	/*max-height: 230px;*/
+	width: 350px;
+}  
 
 .SourceImg{max-height: 390px;} 
 
@@ -60,7 +70,11 @@ h4 {
 
 .SourceWrapper{max-height: 500px;}
 
-.LeftContent .SourceWrapper{max-height: 500px;max-width: 330px;min-height: 230px;}
+.LeftContent .SourceWrapper{
+	max-height: 500px;
+	/*max-width: 330px;*/
+	min-height: 230px;
+}
 
 .embed-responsive{max-height: 500px;} /* Virker ikke */
 
@@ -116,10 +130,10 @@ h4 {
     font-weight: inherit;
 }
 
-.dashed{
+.dotted{
     border-width:1px;
-    border-color: #000;
-    border-style:dashed;
+    border-color: #717272;
+    border-style:dotted; 
     background-color: #FFF;
 }
 
@@ -147,10 +161,6 @@ h4 {
     font-weight: 600;
 }
 
-.ReturnToSource{
-    margin-top: 20px;
-    margin-bottom: 0px;
-}
 
 hr {
     border-top: 1px solid #000;
@@ -180,6 +190,22 @@ hr {
     background-color: #515252;
     border: 1px solid #515252;
     color: #FFF;
+}
+
+.ReturnToSource{
+	background-color: #05a0a8;
+    border-color: #05a0a8;
+    color: #fff; 
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.ReturnToSource:hover{
+	background-color: #047176;;
+    border-color: #047176;;
+    color: #fff; 
+    margin-top: 20px;
+    margin-bottom: 0px;
 }
 
 
@@ -252,19 +278,20 @@ hr {
     color: #fff;
 }
 
-.RightContent{
+.RightContent{ 
     /*border: 1px solid #C0C0C0;*/
     margin-right: 0%;
 }
 
 .MiddleContent{
     /*border: 1px solid #C0C0C0;*/
+    padding-left: 12px;
 }
 
 .LeftContent{
     /*float: left; 
     width: 20%;*/
-    cursor: pointer;
+    /*cursor: pointer;*/
     /*margin-right: 10px;*/
     /*padding-right: 10px;*/
     margin-top: 10px;
@@ -274,8 +301,9 @@ hr {
     min-height: 230px;
     /*border: 1px solid #C0C0C0;*/
     background-color: #FFF;
-    padding: 20px;
+    padding: 20px 20px 20px 20px;
     margin: 10px 20px 0px 0px;
+    border-radius: 4px;
 }
 
 .MiddleContent .InnerContainer{
@@ -284,6 +312,7 @@ hr {
 
 .RightContent .InnerContainer{
     /* margin: 0px 20px 0px 15px; */
+    margin-left: 10px;
 }
 
 .ThemeHeader{
@@ -338,57 +367,62 @@ hr {
     margin-bottom: 0px;
 }
 */
-.ColorClass_0{
+
+.ColorClass{
+	cursor: auto;
+}
+
+.ColorClass_0, .ColorClass_0:hover{
     background-color: #f9f206;
     border-color: #f9f206;
 }
 
-.ColorClass_1{
+.ColorClass_1, .ColorClass_1:hover{
     background-color: #e56ec9;
     border-color: #e56ec9;
 }
 
-.ColorClass_2{
+.ColorClass_2, .ColorClass_2:hover{
     background-color: #73f9a9;
     border-color: #73f9a9;
 }
 
-.ColorClass_3{
+.ColorClass_3, .ColorClass_3:hover{
     background-color: #e5c180;
     border-color: #e5c180;
 }
 
-.ColorClass_4{
+.ColorClass_4, .ColorClass_4:hover{
     background-color: #9090d1;
     border-color: #9090d1;
 }
 
-.ColorClass_5{
+.ColorClass_5, .ColorClass_5:hover{
     background-color: #e26060;
     border-color: #e26060;
 }
 
-.ColorClass_6{
+.ColorClass_6, .ColorClass_6:hover{
     background-color: #64e2dc;
     border-color: #64e2dc;
 }
 
-.ColorClass_7{
+.ColorClass_7, .ColorClass_7:hover{
     background-color: #ffff99;
     border-color: #ffff99;
 }
 
-.ColorClass_8{
+.ColorClass_8, .ColorClass_8:hover{
     background-color: #f2b9e1;
     border-color: #f2b9e1;
 }
 
-.ColorClass_9{
+.ColorClass_9, .ColorClass_9:hover{
     background-color: #b5f8d5;
     border-color: #b5f8d5;
 }
 
-.ColorClass_10{
+.ColorClass_10, .ColorClass_10:hover{
     background-color: #f7e5cc;
     border-color: #f7e5cc;
 }
@@ -458,40 +492,9 @@ hr {
     992 px er samme breaking point som col-sm-12
 **************************************************/
 @media (max-width: 992px) {
-    .RightContent{
+    .MiddleContent{
         /* margin-top: 10px; */
         padding-left: 0px;
+
     }
-}
-
-
-/*****************************
-        TABLE STYLE 
-*****************************/
-
-table.resultTable {
-    width: 100%;
-    border-width: 1px;
-    border-spacing: 0px;
-    border-style: none;
-    border-color: gray;
-    border-collapse: collapse;
-    background-color: white;
-    /*box-shadow: 10px 10px 5px #888888;*/
-}
-table.resultTable th {
-    width: 19%;
-    border-width: 1px;
-    padding: 3px;
-    border-style: solid;
-    border-color: gray;
-    background-color: white;
-}
-table.resultTable td {
-    border-width: 1px;
-    padding: 3px;
-    border-style: solid;
-    border-color: gray;
-    background-color: white;
-    text-align: center;
 }
