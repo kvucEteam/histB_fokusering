@@ -148,7 +148,15 @@ function returnSourcelItem(questionNum, jsonData, ShowThumb){
             }
             break;
         case "text":
-            HTML += '<div class="TextHolder SourceWrapper">'+itemData.kildeData.text+'</div>';
+            if (ShowThumb){
+                if (itemData.kildeData.hasOwnProperty("srcThumb")){
+                    HTML += '<div class="SourceWrapper"> <img class="img-responsive SourceImg" src="'+itemData.kildeData.srcThumb+'" alt="Thumbnail img"/> </div>';
+                } else {
+                    HTML += '<div class="TextHolder SourceWrapper">'+itemData.kildeData.text+'</div>';
+                }
+            } else {
+                HTML += '<div class="TextHolder SourceWrapper">'+itemData.kildeData.text+'</div>';
+            }
             break;
         case "video":
             if (ShowThumb){
