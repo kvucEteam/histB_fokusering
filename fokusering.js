@@ -175,23 +175,6 @@ function returnSourcelItem(questionNum, jsonData, ShowThumb){
 }
 
 
-
-// function ScaleProcessBarUnderImagesInMobileView(){
-//     $(".SourceImg").each(function( index, element ) {
-//         // var ParentObj = $(element).parent();
-//         var ParentObj = $(element).closest(".LeftContent");
-//         var Width = $(element).width();
-//         console.log("ScaleProcessBarUnderImagesInMobileView - Width: " + Width);
-//         $(".ProcessBar", ParentObj).width( Width );
-//         console.log("ScaleProcessBarUnderImagesInMobileView - html: " + $(".ProcessBar", ParentObj).html());
-
-//         var ParentObj2 = $(element).closest(".SourceWrapper");
-//         var Margin = Math.round(($(ParentObj2).width() - Width)/2);
-//         $(".ProcessBar", ParentObj).css("margin-left", Margin+"px");
-//     });
-// }
-
-
 function ScaleHeightToHeighstSibling(TargetSelector){
     var Height; var MaxHeight = 0; var NumOfChildren; var NodeName; var ChildNode; var ChildNodeName;
     $(TargetSelector).each(function( index1, element1 ) {
@@ -330,51 +313,6 @@ function ShuffelArray(ItemArray){
 }
 
 
-// function AddColorToPagerButtons(jsonData){
-//     $(".PagerButton").removeClass("btn-primary").addClass("btn-default");  // Removes the color of the selected btn
-//     for (k in jsonData){
-//         if (jsonData[k].StudentAnswers.Correct.length == jsonData[k].quizData.correctAnswer.length){
-//             // $(".PagerButton:eq("+k+")").addClass("btn-success");
-//             $(".PagerButton:eq("+k+")").addClass("CorrectAnswer");
-//         } 
-
-//         if (jsonData[k].StudentAnswers.Wrong.length > 0){
-//             // $(".PagerButton:eq("+k+")").removeClass("btn-success").addClass("btn-danger");
-//             $(".PagerButton:eq("+k+")").removeClass("CorrectAnswer").addClass("WrongAnswer");
-//         } 
-//         // btn-danger
-//     }
-// }
-
-
-
-// // OK
-// function returnDivTable_MAM(tableSelector, headerArray, subHeaderArray, bodyArray2D){
-//     // bodyArray2D = matrixTranspose(bodyArray2D);
-//     var HTML = '<div '+((tableSelector.indexOf("#")!==-1)?'id="'+tableSelector.replace("#","")+'"':((tableSelector.indexOf(".")!==-1)?'class="'+tableSelector.replace(".","")+'"':''))+'>';
-//     for (var y = 0; y < bodyArray2D.length; y++) {
-//         HTML += '<div class="DivRow"> <div class="DivRow_overlay">';
-//         if (headerArray.length > 0){  // Content in headerArray is not required - just an empty array 
-
-//             // HTML += '<div class="LeftContent col-sm-12 col-md-3">'+'<h4 class="LeftContentHeader">'+subHeaderArray[y]+'</h4>'+headerArray[y]+'</div>';
-
-//             HTML += '<h4 class="LeftContentHeader">'+subHeaderArray[y]+'</h4>';
-//             HTML += '<div class="LeftContent col-sm-12 col-md-3">'+headerArray[y]+'</div>';
-            
-//         }
-//         HTML += '<div class="RightContent col-sm-12 col-md-9">';
-//         for (var x = 0; x < bodyArray2D[y].length; x++) {
-//             // HTML += '<div class="btn btn-default">'+bodyArray2D[y][x]+'</div>'+((bodyArray2D[y].length-1 == x)?'</div> <div class="Clear"></div> </div>':'');
-//             HTML += bodyArray2D[y][x]+((bodyArray2D[y].length-1 == x)?'</div> <div class="Clear"></div> </div> </div>':'');
-//         };
-//     };
-//     console.log("returnDivTable_MAM - HTML: " + HTML);
-//     return HTML;
-// }
-// $("body").append(returnDivTable_MAM(".resultTable", ["HHHHH 1", "HHHHH 2", "HHHHH 3"], [["B11", "B12", "B13"], ["B21", "B22", "B23"], ["B31", "B32", "B33"], ["B41", "B42", "B43"]]));
-
-
-
 // Function that "interchanges" rows and columns in a matrix (2 dimensional array):  
 function matrixTranspose(matrix) {
     var matrixTranspose = [];
@@ -391,154 +329,6 @@ function matrixTranspose(matrix) {
 console.log("matrixTranspose 1: " + JSON.stringify(matrixTranspose([["B11", "B12", "B13"], ["B21", "B22", "B23"], ["B31", "B32", "B33"], ["B41", "B42", "B43"]])));
 console.log("matrixTranspose 2: " + JSON.stringify(matrixTranspose([["B11","B21","B31","B41"],["B12","B22","B32","B42"],["B13","B23","B33","B43"]])));
 
-
-// OK
-// function ShiftToLowerColorClass(){
-//     var Count = 0;
-//     for (var n in TagArray){
-//         var Found = false;
-//         $(".CorrectAnswer").each(function( index, element ) {
-//             if ($(element).hasClass("TColorClass_"+n)){  // ONLY IF ONE OR MORE INSTANCES OF THE SAME THEME EXISTS...
-//             // if ( ($(element).hasClass("TColorClass_"+n)) && ($(".TColorClass_"+n).length > 1) ) {  // ONLY IF TWO OR MORE INSTANCES OF THE SAME THEME EXISTS...
-//                 Found = true;
-//                 $(element).addClass("ColorClass_"+Count);
-//                 $(element).addClass("ColorClass");
-//                 // $(element).removeClass("TColorClass_"+n);
-//             }
-//         });
-//         if (Found) ++Count;
-
-//         $(".CorrectAnswer").removeClass("TColorClass_"+n);
-//     }
-// }
-
-
-// function AutoAddColorsToColorClasses(){
-//     var CssProp = ["background-color", "border-top-color", "border-right-color", "border-bottom-color", "border-left-color"];
-//     var cssObj = {};
-//     var HexStr1, HexStr2, HexStr3;
-//     for (var x = 0; x < NumOfUniqueTags; x++) {
-//         HexStr1 = (Math.round(Math.random()*150)+55).toString(16);
-//         HexStr2 = (Math.round(Math.random()*150)+55).toString(16);
-//         HexStr3 = (Math.round(Math.random()*150)+55).toString(16);
-//         for (var n in CssProp){
-//             cssObj[CssProp[n]] = "#"+HexStr1+HexStr2+HexStr3;
-//         }
-//         $(".ColorClass_"+x).css(cssObj);
-//     };
-// }
-
-
-// OK
-// function DeactivateWrongAnswers(){
-//     for (var x = 0; x < NumOfUniqueTags; x++) {
-//         $(".ColorClass_"+x).each(function( index, element ) {
-//             if (!$(element).hasClass("StudentCorrect")){  // If the student has NOT marked the answer as correct, then..
-//                 $(element).removeClass("ColorClass_"+x);  // ... remove the color-group / ColorClass
-//                 $(element).addClass("XXX_ColorClass_"+x);  // ... add a fake ColorClass. This is not neeeded, but nice to have for testing.
-//             }
-//         });
-//     }
-// }
-
-
-// OK
-// function MarkSomeCorrectAnswersAsWrong(){
-//     $(".StudentCorrect").each(function( index, element ) {
-//         if (!$(element).hasClass("ColorClass")){
-//             $(element).removeClass("StudentCorrect");
-//             $(element).addClass("XXX_StudentCorrect");
-//             $(element).addClass("StudentWrong");
-//         }
-//     });
-// }
-
-
-// OK
-// function InsetProcessBars(jsonData){
-//     $(".DivRow").each(function( index1, element1 ) {
-
-//         $(".LeftContent", element1).append('<div class="ProcessBar"></div>');
-
-//         // var numOfCorrectAnswers = jsonData[index1].userInterface.btn.length; 
-//         var numOfCorrectAnswers = $(".ColorClass", element1).length; 
-//         var numOfCorrectStudentAnswers = 0;
-//         $(".StudentCorrect", element1).each(function( index2, element2 ) {
-//             if ( (elementInArray(jsonData[index1].userInterface.btn, $(element2).text())) && ($(element2).hasClass("ColorClass")) ){
-//                 console.log("InsetProcessBars - btnArray: " + jsonData[index1].userInterface.btn + ", $(element2).text(): " + $(element2).text());
-//                 ++numOfCorrectStudentAnswers;
-//             }
-//         });
-//         var Percentage = String(Math.round((numOfCorrectStudentAnswers/numOfCorrectAnswers)*100));
-//         var HTML = '<div id="ProcessBar_correct_'+index1+'" class="ProcessBar_correct">';
-//         HTML += '<div class="ProcessBarGauge_correct">'+Percentage+'%</div>';
-//         HTML += '</div>';
-//         $(".ProcessBar", element1).append(HTML);
-//         $('#ProcessBar_correct_'+index1+'> .ProcessBarGauge_correct').css('width',Percentage+'%');
-
-//         // $(".StudentWrong", element1).each(function( index2, element2 ) {
-//         //     if ( elementInArray(jsonData[index1].userInterface.btn, $(element2).text()) ){
-//         //         console.log("InsetProcessBars - btnArray: " + jsonData[index1].userInterface.btn + ", $(element2).text(): " + $(element2).text());
-//         //         ++numOfCorrectStudentAnswers;
-//         //     }
-//         // });
-
-//         // var numOfWrongAnswers = NumOfUniqueTags - jsonData[index1].userInterface.btn.length; 
-//         var numOfWrongAnswers = TagArray.length - $(".ColorClass", element1).length;  // jsonData[index1].userInterface.btn.length; 
-//         var numOfWrongStudentAnswers = $(".StudentWrong", element1).length;
-//         Percentage = String(Math.round((numOfWrongStudentAnswers/numOfWrongAnswers)*100));
-//         var HTML = '<div id="ProcessBar_wrong_'+index1+'" class="ProcessBar_wrong">';
-//         HTML += '<div class="ProcessBarGauge_wrong">'+Percentage+'%</div>';
-//         HTML += '</div>';
-//         $(".ProcessBar", element1).append(HTML);
-//         $('#ProcessBar_wrong_'+index1+'> .ProcessBarGauge_wrong').css('width',Percentage+'%');
-//     });
-// }
-
-
-// OK
-// function makeEndGameSenario_4(jsonData){
-//     var sourceArray = [];
-//     var subHeaderArray = [];
-//     var correctAnswerMatrix = [];  // 2 dimensional array! 
-//     var MaxLength = 0; var Length;
-//     for (n in jsonData) {
-//         Length = jsonData[n].userInterface.btn.length;
-//         if (Length > MaxLength) MaxLength = Length;
-//     }
-//     console.log("makeEndGameSenario - MaxLength: " + MaxLength);
-//     for (n in jsonData) {
-//         sourceArray.push(returnSourcelItem(n, jsonData));
-//         subHeaderArray.push(jsonData[n].userInterface.AnswerOverViewText);
-//         var rowArray = [];
-//         // correctAnswerMatrix.push(jsonData[n].userInterface.btn);  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
-
-//         // for (var k = 0; k < MaxLength; k++) {
-//         for (var k = 0; k < TagArray.length; k++) {
-
-//                 // rowArray.push('<div class="btn btn-default '+((elementInArray(jsonData[n].userInterface.btn, TagArray[k]))?'CorrectAnswer ':'')+
-//                 //                              ((elementInArray(jsonData[n].StudentAnswers.Correct, k))?'StudentCorrect ':'')+
-//                 //                              ((elementInArray(jsonData[n].StudentAnswers.Wrong, k))?'StudentWrong ':'')+
-//                 //                              ((elementInArray(jsonData[n].userInterface.btn, TagArray[k]))?'TColorClass_'+k:'')+'">'
-//                 //                              +TagArray[k]+
-//                 //               '</div>');  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
-
-// rowArray.push('<span class="label label-default '+((elementInArray(jsonData[n].userInterface.btn, TagArray[k]))?'CorrectAnswer ':'')+
-//                                              ((elementInArray(jsonData[n].StudentAnswers.Correct, k))?'StudentCorrect ':'')+
-//                                              ((elementInArray(jsonData[n].StudentAnswers.Wrong, k))?'StudentWrong ':'')+
-//                                              ((elementInArray(jsonData[n].userInterface.btn, TagArray[k]))?'TColorClass_'+k:'')+'">'
-//                                              +TagArray[k]+
-//                               '</span>');  // Pushing array of correct answers into correctAnswerMatrix, which becomes 2 dimensional.
-//         }
-//         correctAnswerMatrix.push(rowArray);
-//     }
-//     console.log("makeEndGameSenario - jsonData: " + JSON.stringify(jsonData));  // '<div class="">'
-//     console.log("makeEndGameSenario - correctAnswerMatrix: " + JSON.stringify(correctAnswerMatrix));  // '<div class="">'
-
-//     var HTML = '<div id="EndGameSenario">' + returnDivTable_MAM('.resultTable', sourceArray, subHeaderArray, correctAnswerMatrix) + '</div>';
-
-//     return HTML;
-// }
 
 
 // OK
@@ -641,19 +431,6 @@ function SetColorClassesOnSourcePages(){  // SourcePage
                         break;
                     }
                 }
-
-                // var ElementNum = ReturnArrayElementNum(DQT, $(element2).text());
-                // console.log("SetColorClassesOnSourcePages - ElementNum: " + ElementNum);
-                // if (ElementNum !== null) {
-                //     if (DQT[ElementNum].common == true) {
-                //         $(element2).removeClass("btnPressed CorrectAnswer");
-                //         $(element2).addClass('ColorClass_'+ReturnArrayElementNum(dataObj.commonThemes, $(element2).text()));
-                        
-                //     } else {
-                //         $(element2).removeClass("btn-default btnPressed CorrectAnswer");
-                //         $(element2).addClass('btn-success');
-                //     }
-                // }
             }
         });
     });
@@ -699,8 +476,6 @@ $(document).on('click', ".ReturnToSource", function(event) {
     $("#AnswerOverview").html(""); // "Hide"/overwrite the content in AnswerOverview.
 
     RemoveBtnPressedAndWrongAnswer(); 
-    // $("#PagerHeading").show();
-    // $("#PagerContainer").show();
     ActiveLinkNum = parseInt($(this).prop("id").replace("ReturnToSource_","")) + 1;  // Find the sibling number.
     // ActiveLinkNum = $(this).closest(".DivRow").prevAll(".DivRow").length + 1;  // Find the sibling number.
     console.log("ReturnToSource - ActiveLinkNum: " + ActiveLinkNum);
@@ -723,11 +498,6 @@ $(document).on('click', ".StudentAnswer", function(event) {
                 $(this).toggleClass("btnPressed");
             }
         }
-
-        // if ($(this).hasClass("btnPressed"))
-        //     $(this).css(CSS_OBJECT.btnPressed);
-        // else
-        //     $(this).css(CSS_OBJECT.StudentAnswer);
     }
 
 });
@@ -747,13 +517,9 @@ $(document).on('click', ".checkAnswer", function(event) {
 
             console.log("checkAnswer - index: " + index);
             // if ($(element).hasClass("CorrectAnswer")) 
-            //     $(element).css(CSS_OBJECT.CorrectAnswer); // Sets the color to the style of .CorrectAnswer which is green...
     
             if ($(element).hasClass("btnPressed")){  // Only if the student has marked an answer as correct, do...
                 jsonData[parseInt(ActiveLinkNum)-1].answered = true; // Locks the student question for further answers/alterations to their first/initial answer.
-                // if (!$(element).hasClass("CorrectAnswer"))
-                //     $(element).css(CSS_OBJECT.WrongAnswer); // Sets the color to the style of .WrongtAnswer which is red...
-                // giveFeedback(jsonData, CurrentQuestionId);   // Give feedback
             }
         });
 
@@ -762,7 +528,7 @@ $(document).on('click', ".checkAnswer", function(event) {
 
 // Functionality that displays the results for the student.
 $(document).on('click', ".checkAllAnswers", function(event) { 
-    // countCorrectAnswers(jsonData);
+    
     countCorrectAnswers_NEW(jsonData);
     SetColorClassesOnSourcePages();
     // AddColorToPagerButtons(jsonData);   // TLY does nor want correct/wrong colors on pagerbuttons.
@@ -779,22 +545,12 @@ $(document).on('click', ".checkAllAnswers", function(event) {
     $("#DataInput").hide();
     $(".checkAllAnswers").hide();
     $(".TextHolder p").hide();
-    // ShiftToLowerColorClass();
-    // DeactivateWrongAnswers();
-    // MarkSomeCorrectAnswersAsWrong();
-    // InsetProcessBars(jsonData);
-    // ScaleProcessBarUnderImagesInMobileView();
-    // AutoAddColorsToColorClasses();  // <---- 
-    // ScaleHeightToHeighstSibling(".DivRow");
-
-    // $("#AnswerOverview").html(makeEndGameSenario_3(jsonData));
+    
 }); 
 
 // Returns "focus" to the quiz-mode once on of the pager buttons are pressed.
 $(document).on('click', ".PagerButton", function(event) {
     if ($("#AnswerOverview").html()){  // If AnswerOverview has content (which is only when viewing the result of the quiz), do...
-        // $("#header").show();
-        // $("#header_2").show();
         $("#DataInput").show();        // Show the requested source (requestedby pressing the pager).
         $(".checkAllAnswers").show();
         $(".TextHolder p").show();
@@ -803,59 +559,11 @@ $(document).on('click', ".PagerButton", function(event) {
 }); 
 
 
-// $(document).on('click', ".LeftContent .SourceWrapper", function(event) {
-
-//     $("#DataInput").show();        // Show the requested source (requestedby pressing the pager).
-//     $(".checkAllAnswers").show();
-//     $("#PagerHeading").show();
-//     $("#PagerContainer").show();
-//     $(".TextHolder p").show();
-//     $("#AnswerOverview").html(""); // "Hide"/overwrite the content in AnswerOverview.
-
-//     RemoveBtnPressedAndWrongAnswer();
-
-//     ActiveLinkNum = $(this).closest(".DivRow").prevAll(".DivRow").length + 1;  // Find the sibling number.
-//     console.log("LeftContent - ActiveLinkNum: " + ActiveLinkNum);
-
-//     Pager("#PagerContainer", "#DataInput > div", "Pager");
-
-//     $("#header").html(jsonData[ActiveLinkNum-1].userInterface.header);   // Shows the heading.
-//     // $("#header").html("Find den røde tråd i kilderne");   // Shows the initial heading.
-
-//     $("#subHeader").html(jsonData[ActiveLinkNum-1].userInterface.subHeader);    // Shows the subheading.
-//     // $("#subHeader").html('Find temaerne i <span class="QuestionTask">kilde '+String(ActiveLinkNum)+'</span>. Klik på temaordene for hver enkelt kilde og sammenlign dem til sidst.');    // Shows the initial subheading.
-// });
-
-
 $(document).on('click', ".Source img", function(event) {
     console.log("Source - ActiveLinkNum: " + ActiveLinkNum-1 + ", jsonData[ActiveLinkNum].quizData.kildeData.src: " + jsonData[ActiveLinkNum-1].quizData.kildeData.src);
-   
-    // $(".Source").append("<div data-toggle='modal' data-target='#myModal'><img class='pic' src='" + jsonData[ActiveLinkNum-1].quizData.kildeData.src + "'></div>");
-    // var parent_height = $(".pic").parent().parent().height();
-    // console.log("parent_height: " + parent_height);
-    // $(".pic").css("height" , parent_height);
     modal();
     $(".modal-body").html('<h4>'+jsonData[ActiveLinkNum-1].userInterface.AnswerOverViewText+"</h4><img src='" + jsonData[ActiveLinkNum-1].quizData.kildeData.src + "'/>");
 });
-
-
-// $(document).on('click', ".DivRow", function(event) {
-//     ActiveLinkNum = $(this).prevAll().length + 1;  // Find the sibling number.
-//     console.log("ActiveLinkNum: " + ActiveLinkNum);
-
-//     $("#DataInput").show();        // Show the requested source (requestedby pressing the pager).
-//     $(".checkAllAnswers").show();
-//     $(".TextHolder p").show();
-//     $("#AnswerOverview").html(""); // "Hide"/overwrite the content in AnswerOverview.
-
-//     Pager("#PagerContainer", "#DataInput > div", "Pager");
-
-//     // $("#header").html(jsonData[ActiveLinkNum-1].userInterface.header);   // Shows the heading.
-//     $("#header").html("Find den røde tråd i kilderne");   // Shows the initial heading.
-
-//     // $("#subHeader").html(jsonData[ActiveLinkNum-1].userInterface.subHeader);    // Shows the subheading.
-//     $("#subHeader").html('Find temaerne i <span class="QuestionTask">kilde '+String(ActiveLinkNum)+'</span>. Klik på temaordene for hver enkelt kilde og sammenlign dem til sidst.');    // Shows the initial subheading.
-// })
 
 
 // ================================
@@ -965,7 +673,7 @@ function Pager(PagerSelector, TargetSelectorChild, CssId) {
 //      NEW - FINAL CODE
 // ================================
 
-// OBJECT MODLE:
+// OBJECT MODEL:
 // var dataObj = {questionObjArray: [], commonThemes:[], totCorrect: 0, totWrong: 0}; // Each QuestionObj goes into the QuestionObjArray. totCorrect = sum(correct) and totWrong = sum(wrong).
 // var questionObj = {themeObjArray: [], correct: 0, wrong: 0}; // There is an QuestionObj for each slide/page in the quiz. Each themeObj goes into the themeObjArray.
 // var themeObj = {val: "", common: null, markedByStudent: false}; // EXAMPLES: val = kvindekamp, If more than one inatance of "kvindekamp" then common = "true" (and val is inserted into "commonThemes"), else "false".

@@ -105,7 +105,7 @@ h4 {
 }
 
 
-.btn-default{
+.btn-default{  /* MARKOUT */
     background-color: #e7e6e2;
     border: 1px solid #e7e6e2;
     color: #000;
@@ -181,12 +181,12 @@ hr {
 }
 */
 
-.btn-primary{
+#PagerContainer .btn-primary{   /* MARKOUT */
     background-color: #717272;
     border: 1px solid #717272;
     color: #FFF;
 }
-.btn-primary:hover{
+#PagerContainer .btn-primary:hover{   /* MARKOUT */
     background-color: #515252;
     border: 1px solid #515252;
     color: #FFF;
@@ -267,15 +267,15 @@ hr {
 }
 
 
-.checkAllAnswers{
-    background-color: #05a0a8;
+.checkAllAnswers{  /* MARKOUT */
+    /*background-color: #05a0a8;
     border-color: #05a0a8;
-    color: #fff;
+    color: #fff;*/
 }
-.checkAllAnswers:hover{
-    background-color: #047176;
+.checkAllAnswers:hover{   /* MARKOUT */
+    /*background-color: #047176;
     border-color: #047176;
-    color: #fff;
+    color: #fff;*/
 }
 
 .RightContent{ 
