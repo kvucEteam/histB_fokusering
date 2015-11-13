@@ -229,16 +229,16 @@ console.log("returnThemeObjNum: " + returnThemeObjNum([{"val":"Ungdomsoprør","c
 
 
 // OK
-function countCorrectAnswers_NEW(jsonData){
+function countCorrectAnswers_NEW(jsonData){   // MARK 13-11-2015
     correct_total = 0;
     error_total = 0;
     var error_displayed_total = 0;
     var numOfQuestions = 0;
     for (k in jsonData){
         var correct = 0; var error_missed = 0; var error_wrong = 0; var error_displayed = 0;
-        var answerArray = jsonData[k].quizData.correctAnswer;
+        // var answerArray = jsonData[k].quizData.correctAnswer;
         var numOfSrudentAnswers = $("#btnContainer_"+k+" > .btnPressed").length;
-        var numOfCorrectAnswers = answerArray.length;
+        // var numOfCorrectAnswers = answerArray.length;
         var themeArray = []; // This will contain all themes for the k'th slide/question.
         jsonData[k].StudentAnswers = {Correct : [], Wrong: []};
         for (var w in dataObj.questionObjArray[k].themeObjArray){
@@ -269,8 +269,7 @@ function countCorrectAnswers_NEW(jsonData){
             error_wrong = (error_wrong < 0) ?  0 : error_wrong;
 
             console.log("countCorrectAnswers - CurrentQuestionId: " + CurrentQuestionId + 
-            "\nnumOfSrudentAnswers: " + numOfSrudentAnswers + ", numOfCorrectAnswers: " + numOfCorrectAnswers + 
-            "\ncorrect: " + correct  + ", error_missed: " + error_missed  + ", error_wrong: " + error_wrong);
+            "\nnumOfSrudentAnswers: " + numOfSrudentAnswers + "\ncorrect: " + correct  + ", error_missed: " + error_missed  + ", error_wrong: " + error_wrong);
         }
 
         $("#btnContainer_"+k+" > .StudentAnswer").each(function( index, element ) {

@@ -1,0 +1,67 @@
+[
+	{ 
+		"userInterface" : {
+			"header" : "Kilde 1",
+			"subHeader" : "Du skal angive hvilket svar/tags der bedst passet til kilden. Vælg mellem kilderne ved tryk på pageren.",
+			"btn" : ["Ungdomsoprør", "Politik", "Hippie", "Rumfart", "Samfund", "Atomkraft", "Individ"]
+		},
+		"quizData" : {
+			"taskText" : "Opgaveforklaring til kursist - 0",
+			"kildeData" : {"type": "img", "src": "http://b.bimg.dk/node-images/82/5/620x/5082698-.jpg", "alt": "Thylejren i Frøstrup er så populær, at der ikke længere er plads til nye beboere."},
+			"correctAnswer" : ["0","2","4","6"],
+			"feedbackData" : ["Ungdomsoprør: rigtig da...", "Politik: forkert da...", "Hippie: rigtig da...", "Rumfart: forkert da...", "Samfund: rigtig da...", "Atomkraft: forkert da...", "Individ: rigtig da..."] 
+		}
+	},
+	{ 
+		"userInterface" : {
+			"header" : "Kilde 2",
+			"subHeader" : "Du skal angive hvilket svar/tags der bedst passet til kilden. Vælg mellem kilderne ved tryk på pageren.",
+			"btn" : ["Atomkraft", "Ungdomsoprør", "Ungdomskultur", "Subkultur" "Individ", "Musik", "Heavy metal"]
+		},
+		"quizData" : {
+			"taskText" : "Opgaveforklaring til kursist - 1",
+			"kildeData" : {"type": "img", "src": "https://da.wikipedia.org/wiki/The_Beatles#/media/File:The_Beatles_arrive_at_JFK_Airport.jpg", "alt": "The Beatles arrive at JFK Airport"},
+			"correctAnswer" : ["1","2","4","5"],
+			"feedbackData" : ["Atomkraft: forkert da...", "Ungdomsoprør: rigtig da...", "Ungdomskultur: rigtig da...", "Subkultur: forkert da..." "Individ: rigtig da...", "Musik: rigtig da...", "Heavy metal: forkert da..."] 
+		}
+	},
+	{ 
+		"userInterface" : { 
+			"header" : "Kilde 3",
+			"subHeader" : "Du skal angive hvilket svar/tags der bedst passet til kilden. Vælg mellem kilderne ved tryk på pageren.",
+			"btn" : ["Atomkraft", "Ungdomsoprør", "Heavy metal", "Kvindebevægelsen", "Rødstrømper", "Kønsroller", "Individ", "Familie"]
+		},
+		"quizData" : {
+			"taskText" : "Opgaveforklaring til kursist - 2",
+			"kildeData" : {"type": "text", "text": "<b>Lisbeth: &quot;En rødstrømpehistorie&quot;. I &quot;Kvinder og kvindebevægelse&quot;. 1974, s. 11-17</b><br/><p>Hvis jeg ikke tidligere havde oplevet det som nogen større belastning at være kvinde, så oplevede jeg det til gengæld for fuld udblæsning på universitetet. Der var næsten aldrig nogen piger, der sagde noget. Derimod stod munden ikke på mændene; de snakkede og snakkede om en hel masse indviklede og interessante ting. Ungdomsoprøret var under opsejling. Ned med de falske autoriteter. Make love not war. Beatmusikken drønede, chillumerne osede. Sindsoprivende gruppedynamikkurser. Marcuse på natbordet. Professorerne glippede en omgang med øjnene. Borgerskabets børn ønskede frihed, slog ud med arme og ben for at komme af med den forbandede fremmedgjorthed, blev mere og mere frustrerede af at bekæmpe symptomer i stedet for at gå til ondets rod: det økonomiske system i det kapitalistiske samfund. Jeg var mægtig med på alle ungdomsoprørets tanker, holdt ingen brandtaler i store forsamlinger, læste og snakkede i mere intimt regi med de mænd, der holdt brandtalerne; følte mig undertrykt som det evigt lyttende kvindelige indslag; følte mig snørret inde i et korset, som jeg kun ønskede at sprænge; kunne ikke klare at opleve modsigelsen mellem al den snak om frihed, antiautoritet og revolution på den ene side, og så den måde man disputerede om de sager på på den anden side.</p>"},
+			"correctAnswer" : ["1","3","4","5","6","7"],
+			"feedbackData" : ["Atomkraft: forkert da...", "Ungdomsoprør", "Heavy metal", "Kvindebevægelsen", "Rødstrømper", "Kønsroller", "Individ", "Familie"] 
+		}
+	},
+	{ 
+		"userInterface" : {
+			"header" : "Kilde 4",
+			"subHeader" : "Du skal angive hvilket svar/tags der bedst passet til kilden. Vælg mellem kilderne ved tryk på pageren.",
+			"btn" : ["Tag 1", "Tag 2 (rigtig)", "Tag 3", "Tag 4 (rigtig)", "Tag 5", "Tag 6 (rigtig)", "Tag 7", "Tag 8 (rigtig)", "Tag 9", "Tag 10 (rigtig)"]
+		},
+		"quizData" : {
+			"taskText" : "Opgaveforklaring til kursist - 3",
+			"kildeData" : {"type": "video", "src": "https://www.youtube.com/embed/QnDUiIRUSo8?rel=0"},
+			"correctAnswer" : ["1","3","5","7","9"],
+			"feedbackData" : ["(Tag 1) Forkert...", "(Tag 2) Korrekt...", "(Tag 3) Forkert...", "(Tag 4) Korrekt...", "(Tag 5) Forkert...", "(Tag 6) Korrekt...", "(Tag 7) Forkert...", "(Tag 8) Korrekt...", "(Tag 9) Forkert...", "(Tag 10) Korrekt..."] 
+		}
+	},
+	{ 
+		"userInterface" : {
+			"header" : "Kilde 5",
+			"subHeader" : "Du skal angive hvilket svar/tags der bedst passet til kilden. Vælg mellem kilderne ved tryk på pageren.",
+			"btn" : ["Tag 1", "Tag 2 (rigtig)", "Tag 3", "Tag 4 (rigtig)", "Tag 5", "Tag 6 (rigtig)", "Tag 7", "Tag 8 (rigtig)", "Tag 9", "Tag 10 (rigtig)"]
+		},
+		"quizData" : {
+			"taskText" : "Opgaveforklaring til kursist - 4: <span style='color: #0F0;'> der er mulighed for flere rigtige svar... </span> ",
+			"kildeData" : {"type": "img", "src": "http://www.historiefaget.dk/uploads/tx_cliopolaroidphotoflex/Lille_Jellingsten.jpg", "alt": "Eksternt billede..."},
+			"correctAnswer" : ["1","3","5","7","9"],
+			"feedbackData" : ["(Tag 1) Forkert...", "(Tag 2) Korrekt...", "(Tag 3) Forkert...", "(Tag 4) Korrekt...", "(Tag 5) Forkert...", "(Tag 6) Korrekt...", "(Tag 7) Forkert...", "(Tag 8) Korrekt...", "(Tag 9) Forkert...", "(Tag 10) Korrekt..."] 
+		}
+	}
+]
