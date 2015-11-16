@@ -175,28 +175,6 @@ function returnSourcelItem(questionNum, jsonData, ShowThumb){
 }
 
 
-function ScaleHeightToHeighstSibling(TargetSelector){
-    var Height; var MaxHeight = 0; var NumOfChildren; var NodeName; var ChildNode; var ChildNodeName;
-    $(TargetSelector).each(function( index1, element1 ) {
-        NumOfChildren = $(element1).children().length;
-        console.log("ScaleHeightToHeighstSibling - NumOfChildren: " + NumOfChildren);
-        MaxHeight = 0;
-        ChildNode = $(element1).children()[0];
-        ChildNodeName = $(ChildNode).prop('nodeName');
-        console.log("ScaleHeightToHeighstSibling - ChildNodeName: " + ChildNodeName);
-        $(element1).children().each(function( index2, element2 ) {
-            Height = $(element2).height();
-            console.log("ScaleHeightToHeighstSibling - Height: " + Height);
-            if (Height > MaxHeight) MaxHeight = Height;
-        });
-        $(element1).children().each(function( index2, element2 ) {
-            if (!$(element2).hasClass("Clear") && !$(element2).hasClass("btn") && !$(element2).hasClass("LeftContentHeader"))
-                $(element2).height(MaxHeight);
-        });
-    });
-}
-
-
 // OK
 function interfaceChanger(ActiveLinkNum){
     $( document ).on('click', ".PagerButton", function(event){
@@ -673,15 +651,15 @@ function Pager(PagerSelector, TargetSelectorChild, CssId) {
 // ================================
 
 // OBJECT MODEL:
-// var dataObj = {questionObjArray: [], commonThemes:[], totCorrect: 0, totWrong: 0}; // Each QuestionObj goes into the QuestionObjArray. totCorrect = sum(correct) and totWrong = sum(wrong).
-// var questionObj = {themeObjArray: [], correct: 0, wrong: 0}; // There is an QuestionObj for each slide/page in the quiz. Each themeObj goes into the themeObjArray.
+// var dataObj = {questionObjArray: [], commonThemes:[], totCorrect: 0, totWrong: 0}; // Each questionObj goes into the questionObjArray. totCorrect = sum(correct) and totWrong = sum(wrong).
+// var questionObj = {themeObjArray: [], correct: 0, wrong: 0}; // There is an questionObj for each slide/page in the quiz. Each themeObj goes into the themeObjArray.
 // var themeObj = {val: "", common: null, markedByStudent: false}; // EXAMPLES: val = kvindekamp, If more than one inatance of "kvindekamp" then common = "true" (and val is inserted into "commonThemes"), else "false".
 
 
 function populateDataObj(){
     var demilimter = "_";
     var themeStr = demilimter;
-    var TcommonThemes = [];
+    var TcommonThemes = [];  // Contains all common themes
     dataObj = {questionObjArray: [], commonThemes:[], totCorrect: 0, totWrong: 0};
     
     for (var n in jsonData){
@@ -729,6 +707,8 @@ function insertScoreIntoDataObj(){
             }
         }
         DQ[n].wrong = DQT.length - DQ[n].correct;
+        dataObj.totCorrect += DQ[n].correct;
+        dataObj.totWrong += DQ[n].wrong;
     }
     console.log("insertScoreIntoDataObj - dataObj 2: " + JSON.stringify(dataObj) );
 }
@@ -784,8 +764,7 @@ $(document).ready(function() {
     });
 
     $(window).resize(function () {
-        // ScaleProcessBarUnderImagesInMobileView();
-        // ScaleHeightToHeighstSibling(".DivRow");
+        
     });
 
     // ====================   TEST  ===================

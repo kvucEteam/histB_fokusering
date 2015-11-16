@@ -38,25 +38,6 @@ h4 {
 	max-width: 350px;
 }
 
-/************************************    ATO's  modal styling   ***************************************/
-/*.TextHolder{margin-left: auto; margin-right: auto; width: 80%; min-height: 200px;overflow: auto;
-  border-radius: 8px;
-  padding: 20px;
-  height: auto;
-  box-shadow: 1px 2px 10px #888888; 
-  background-color: #fff;
-  margin-top:20px;
-}
-.LeftContent .TextHolder{
-  all: initial;
-  * {
-    all: unset;
-  }
-}
-.modal-dialog{width: 90%;}
-.modal-body img {width: 100%;}*/
-/*****************************************************************************************************/
-
 .LeftContent .SourceImg{
 	/*max-height: 230px;*/
 	width: 350px;
@@ -64,23 +45,15 @@ h4 {
 
 .SourceImg{max-height: 390px;} 
 
-/*.SourceVid{max-height: 390px;}*/ /* DETTE FUNGERE IKKE */
-
-
-
 .SourceWrapper{max-height: 500px;}
 
 .LeftContent .SourceWrapper{
 	max-height: 500px;
-	/*max-width: 330px;*/
 	min-height: 230px;
 }
 
 .embed-responsive{max-height: 500px;} /* Virker ikke */
 
-
-
-/*.resultTable  .TextHolder{min-height: 0px; width: 100%;}*/
 
 .indent{margin-left: 10px}
 
@@ -94,9 +67,6 @@ h4 {
 
 .DivRow{
     margin-bottom: 10px; 
-    /*padding: 10px 10px 0px 10px;*/
-    /*border: 1px solid #C0C0C0;*/
-    /*cursor: pointer;*/
 }
 
 
@@ -146,9 +116,6 @@ h4 {
 
 .InnerScoreContainer{
     margin-top: 10px;
-    /*margin-bottom: 10px;*/
-    /*position: absolute;
-    bottom: 10px;*/
 }
 
 .InnerScoreContainer h5 {
@@ -167,19 +134,6 @@ hr {
     margin-bottom: 20px;
     margin-top: 30px;
 }
-
-/*
-.btn-primary{
-    background-color: #666666;
-    border: 1px solid #666666;
-    color: #fff;
-}
-.btn-primary:hover{
-    background-color: #969696;
-    border: 1px solid #969696;
-    color: #FFF;
-}
-*/
 
 #PagerContainer .btn-primary{   /* MARKOUT */
     background-color: #717272;
@@ -220,19 +174,6 @@ hr {
     border-style: none;
 }
 
-/*
-.CorrectAnswer{
-    background-color: #0dcea0;
-    border: 1px solid #0dcea0;
-    color: #FFF;
-}
-.CorrectAnswer:hover{
-    background-color: #2deec0;
-    border: 1px solid #2deec0;
-    color: #FFF;
-}
-*/
-
 .WrongAnswer{
     background-color: #ed3e3a;
     border: 1px solid #ed3e3a;
@@ -243,17 +184,6 @@ hr {
     border: 1px solid #ff5e5a;
     color: #FFF;
 }
-
-/*
-.StudentCorrect{ 
-    background-color: #00cb60;
-    border: 1px solid #00cb60;
-    color: #FFF;
-}
-.StudentCorrect:hover{
-
-}
-*/
 
 .StudentWrong{
     background-color: #717272;
@@ -267,17 +197,6 @@ hr {
 }
 
 
-.checkAllAnswers{  /* MARKOUT */
-    /*background-color: #05a0a8;
-    border-color: #05a0a8;
-    color: #fff;*/
-}
-.checkAllAnswers:hover{   /* MARKOUT */
-    /*background-color: #047176;
-    border-color: #047176;
-    color: #fff;*/
-}
-
 .RightContent{ 
     /*border: 1px solid #C0C0C0;*/
     margin-right: 0%;
@@ -289,17 +208,11 @@ hr {
 }
 
 .LeftContent{
-    /*float: left; 
-    width: 20%;*/
-    /*cursor: pointer;*/
-    /*margin-right: 10px;*/
-    /*padding-right: 10px;*/
     margin-top: 10px;
 }
 
 .InnerContainer{
     min-height: 230px;
-    /*border: 1px solid #C0C0C0;*/
     background-color: #FFF;
     padding: 20px 20px 20px 20px;
     margin: 10px 20px 0px 0px;
@@ -330,10 +243,6 @@ hr {
 
 .Source{margin-top: 10px;}
 
-/*
-.col-md-8{margin-left: 10px; width: 65.5%;}
-.col-sm-12{width: 100%; margin-top: 10px; margin-right: 0px;}
-*/
 
 .BtnContainer{
     padding-top: 10px; 
@@ -365,12 +274,7 @@ hr {
     border-color: #0dcea0;
     color: #fff;
 }
-/*
-.col-sm-12 .btn{
-    margin-top: 10px;
-    margin-bottom: 0px;
-}
-*/
+
 
 .ColorClass{
 	cursor: auto;
@@ -444,28 +348,7 @@ hr {
 }
 
 
-/* ATOs stylig på 1 errorbar */
 
-.ProcessBar{
-    background-color: rgba(255, 255, 255, 0.8);
-    bottom: 0;
-    position: absolute;
-    width: 100%;
-}
-
-/*
-.ProcessBar{
-    background-color: rgba(255, 255, 255, 0.8);
-}
-*/
-.ProcessBarGauge_correct{
-    background-color: rgba(42, 187, 42, 0.7); /*#2abb2a;*/
-    text-align: right;
-}
-.ProcessBarGauge_wrong{
-    background-color: rgba(237, 62, 58, 0.7); /*#ed3e3a;*/
-    text-align: right;
-}
 
 
 
