@@ -13,7 +13,7 @@
 				"type": "img", 
 				"src": "img/1872slaget-002MK-box.jpg", 
 				"alt": "Slaget på fælleden.",
-				"srcThumb": "img/1872slaget-002MK-box.jpg",
+				"srcThumb": "img/industrialisering_kilde1.jpg",
 				"sourceRef": {
 	                "showSrc": false,  
 	                "sourceInfo": "<a href='http://modkraft.dk/artikel/1-maj-2013-slaget-p%C3%A5-f%C3%A6lleden'>http://modkraft.dk/artikel/1-maj-2013-slaget-p%C3%A5-f%C3%A6lleden</a>"
@@ -35,7 +35,7 @@
 				"type": "img", 
 				"src": "img/csm_Arbejderbolig_i_Koebenhavn_14f2bf6539.jpg", 
 				"alt": "Arbejderboliger i københavn",
-				"srcThumb": "img/csm_Arbejderbolig_i_Koebenhavn_14f2bf6539.jpg",
+				"srcThumb": "img/industrialisering_kilde2.jpg",
 				"sourceRef": {
 	                "showSrc": false,
 	                "sourceInfo": "<a href='http://natmus.dk/fileadmin/_processed_/csm_Arbejderbolig_i_Koebenhavn_14f2bf6539.jpg'>http://natmus.dk/fileadmin/_processed_/csm_Arbejderbolig_i_Koebenhavn_14f2bf6539.jpg</a>"
@@ -56,7 +56,7 @@
 			"kildeData" : {
 				"type": "text", 
 				"text": "<p>Trods alt nåede vi fabrikken i rette tid. På første sal bankede Larsen på en dør, hvor der stod kontor. Da der blev lukket op, sagde Larsen, at her var den nye arbejdsmands gut. &quot;Det er godt&quot;, sagde en strengt udseende mand. Han sagde ikke noget til mig, men skubbede mig ind af en dør på den anden side gangen og råbte: &quot;Fru Sørensen, lær den fyr der at løse råtobak.&quot; Det var mesters velkomst til mig. </p>",
-				"srcThumb": "img/kilde3.jpg",
+				"srcThumb": "img/industrialisering_kilde3.jpg",
 				"sourceRef": {
 	                "showSrc": false,
 	                "sourceInfo": "<a href='http://danmarkshistorien.dk/leksikon-og-kilder/vis/materiale/christian-christensen-om-boernearbejde-paa-tobaksfabrik-i-1890erne/'>http://danmarkshistorien.dk/leksikon-og-kilder/vis/materiale/christian-christensen-om-boernearbejde-paa-tobaksfabrik-i-1890erne/</a>"
@@ -68,7 +68,7 @@
 		"userInterface" : {
 			"header" : "Find sammenhæng mellem kilderne",
 			"subHeader" : "Klik på de temaord du mener hver enkelt kilde handler om. Hvilke emner går igen i alle kilder?",
-			"AnswerOverViewText" : "Stig Møller - Thylejren 1970",
+			"AnswerOverViewText" : "Når jeg ser et rødt flag smælde",
 			"btn" : ["Ungdomsoprør", "Samfund", "Familie", "Individ", "Hippie", "Kønsroller"],
 			"btnWrong" : ["Atomkraft", "Rumfart", "Bandekrig"]
 		},
@@ -77,7 +77,7 @@
 			"kildeData" : {
 				"type": "video", 
 				"src": "https://www.youtube.com/embed/5nJObByA-n4?rel=0",
-				"srcThumb": "img/kilde4.jpg",
+				"srcThumb": "img/industrialisering_kilde4.jpg",
 				"sourceRef": {
 	                "showSrc": true,
 	                "sourceInfo": ""
