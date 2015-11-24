@@ -4,8 +4,8 @@
 			"header" : "Find sammenhæng mellem kilderne",
 			"subHeader" : "Klik på de temaord du mener hver enkelt kilde handler om. Hvilke emner går igen i alle kilder?",
 			"AnswerOverViewText" : "5. maj 1872 sammenstød på Fælleden mellem demonstrerende arbejdere og politi/militær",
-			"btn" : ["Ungdomsoprør", "Hippie", "Samfund", "Individ"],
-			"btnWrong" : ["Atomkraft", "Rumfart", "Bandekrig"]
+			"btn" : ["Arbejderliv", "Arbejderbevægelse", "Socialisme", "Røde Faner", "Arbejdskamp", "Statsmagt"],
+			"btnWrong" : ["Borgerskab", "Andelsbevægelse"]
 		},
 		"quizData" : {
 			"taskText" : "",
@@ -26,8 +26,8 @@
 			"header" : "Find sammenhæng mellem kilderne",
 			"subHeader" : "Klik på de temaord du mener hver enkelt kilde handler om. Hvilke emner går igen i alle kilder?",
 			"AnswerOverViewText" : "Arbejderboliger",
-			"btn" : ["Ungdomsoprør", "Ungdomskultur", "Individ", "Musik"],
-			"btnWrong" : ["Atomkraft", "Rumfart", "Bandekrig"]
+			"btn" : ["Arbejderliv", "Familie", "Børn", "Boligforhold"],
+			"btnWrong" : ["Borgerskab", "Andelsbevægelse"]
 		},
 		"quizData" : {
 			"taskText" : "",
@@ -48,8 +48,8 @@
 			"header" : "Find sammenhæng mellem kilderne",
 			"subHeader" : "Klik på de temaord du mener hver enkelt kilde handler om. Hvilke emner går igen i alle kilder?",
 			"AnswerOverViewText" : "Christian Christensen om børnearbejde på tobaksfabrik i 1890’erne",
-			"btn" : ["Ungdomsoprør", "Kvindebevægelsen", "Rødstrømper", "Kønsroller", "Individ", "Familie"],
-			"btnWrong" : ["Atomkraft", "Rumfart", "Bandekrig"]
+			"btn" : ["Arbejderliv", "Børn", "Børnearbejde"],
+			"btnWrong" : ["Borgerskab", "Andelsbevægelse"]
 		},
 		"quizData" : {
 			"taskText" : "",
@@ -69,8 +69,8 @@
 			"header" : "Find sammenhæng mellem kilderne",
 			"subHeader" : "Klik på de temaord du mener hver enkelt kilde handler om. Hvilke emner går igen i alle kilder?",
 			"AnswerOverViewText" : "Når jeg ser et rødt flag smælde",
-			"btn" : ["Ungdomsoprør", "Samfund", "Familie", "Individ", "Hippie", "Kønsroller"],
-			"btnWrong" : ["Atomkraft", "Rumfart", "Bandekrig"]
+			"btn" : ["Arbejderliv", "Arbejderbevægelse", "Socialisme", "Familie", "Røde Faner", "Arbejdersange", "Kommunisme"],
+			"btnWrong" : ["Borgerskab", "Andelsbevægelse"]
 		},
 		"quizData" : {
 			"taskText" : "",
