@@ -4,7 +4,7 @@
 			"header" : "Find sammenhæng mellem kilderne",
 			"subHeader" : "Klik på de temaord du mener hver enkelt kilde handler om. Hvilke emner går igen i alle kilder?",
 			"AnswerOverViewText" : "Thylejren i Frøstrup",
-			"btn" : ["Ungdomsoprør", "Hippie", "Samfund", "Individ"],
+			"btn" : ["Ungdomsoprør", "Hippie", "Samfund", "Individ", "Mandemøde"],
 			"btnWrong" : ["Atomkraft", "Rumfart", "Bandekrig"]
 		},
 		"quizData" : {
@@ -69,7 +69,7 @@
 			"header" : "Find sammenhæng mellem kilderne",
 			"subHeader" : "Klik på de temaord du mener hver enkelt kilde handler om. Hvilke emner går igen i alle kilder?",
 			"AnswerOverViewText" : "Stig Møller - Thylejren 1970",
-			"btn" : ["Ungdomsoprør", "Samfund", "Familie", "Individ", "Hippie", "Kønsroller"],
+			"btn" : ["Ungdomsoprør", "Samfund", "Familie", "Individ", "Hippie", "Kønsroller", "Ligestilling"],
 			"btnWrong" : ["Atomkraft", "Rumfart", "Bandekrig"]
 		},
 		"quizData" : {
